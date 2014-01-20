@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>HTML5 - Header,article, nav, footer</title>
+<style>
+*		{margin:0px; padding:0px;}
+
+header, hgroup, footer, section, aside, article, figcaption, figure, nav {
+	display: block;
+}
+
+div#wrapper {width:90%; margin: 10px auto;}
+
+header#site {
+	height:80px;
+	padding:10px;
+	background-color:#0033FF;
+	margin:10px 0px;
+	text-align:center;
+}
+
+footer {
+	font-size:0.8em;
+	clear:both;}
+
+footer .col {
+	width:30%;
+	margin:1% 1.1%;
+	padding:2px;
+	height:100px;
+	background-color:#F63;
+	float:left;
+}
+
+	
+nav {
+	background-color:#fff;
+	width:520px;
+	margin:10px auto;
+}
+
+nav ul {
+	list-style:none;}
+	
+nav ul li {
+	float:left;}
+
+nav ul li a {  
+    display: block;  
+	background-color:#CCC;
+    margin-right: 20px;  
+    width: 110px;  
+    line-height:1.5em;  
+    text-align: center;  
+    text-decoration: none;  
+    color: #000;  
+}  
+
+nav ul li a:hover {  
+        color: #fff;  
+		background-color:#39C;
+}  
+		
+article {
+	background-color:#0066FF;
+	float:left;
+	width:80%;
+	margin-right:10px;
+}
+
+article header {
+	background-color:#F90;
+	padding:15px;
+}
+
+section#abstract {
+	font-size:1.09em;
+	font-style:italic;
+	margin:10px 0px;
+	text-align:justify;
+	padding:5px 80px;
+}
+section#main {
+	font-size:1em;
+	padding:20px;
+	text-align:justify;
+}
+
+.ads {
+	height:100px;
+	width:18%;
+	background-color:#0033FF;
+	margin-bottom:20px;
+	float:left;	
+	}
+	
+.ads p:first-child {
+	padding:15px; 
+	font-size:2em;}
+	
+.ads p:last-child {
+	padding-left:15px; 
+	font-size:1em;color:#CCC;}
+</style>
+
+<!-- Tell IE we are using html5 + CSS -->
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+	<header id="site"> 
+		<h1>This is the site header</h1>
+		<nav>
+			<ul>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="#">Philosophy</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<article> 
+		<header>
+ 			<h2>This is the article header</h2>
+			<time datetime="25-11-2010" pubdate>25th November 2010</time>
+		</header>
+		<section id="abstract">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et orci sed neque tincidunt dictum nec at lacus. Fusce feugiat sagittis ligula ac aliquam. Integer ut sodales justo. Etiam ultrices cursus iaculis. Suspendisse bibendum. </p>
+		</section>
+		<section id="main">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac velit mauris. Nulla cursus pretium dapibus. Fusce at faucibus mi. Etiam ac nisi condimentum quam vulputate euismod. Nunc viverra consectetur tempor. Praesent rutrum diam in leo lacinia sit amet volutpat leo tempus. Donec sodales, velit et viverra imperdiet, velit leo placerat libero, fringilla scelerisque justo sapien sit amet sapien. Donec blandit tellus at mi hendrerit hendrerit. Sed suscipit sagittis sodales. Etiam sagittis, tortor quis sagittis laoreet, erat nibh mollis sem, ut tristique felis augue non metus. </p>
+			<p>Etiam in gravida mi. Maecenas placerat, justo vel gravida egestas, odio sem dictum justo, eget volutpat massa augue in augue. Sed tempus sem a nulla eleifend aliquet aliquet diam pharetra. Proin sit amet imperdiet est. Cras vitae felis in nulla tristique porttitor ut sit amet neque. Quisque sed nisi quam. Aliquam erat volutpat. Nullam dignissim augue odio. Nam sit amet ipsum arcu, id rutrum felis. Phasellus velit mauris, dictum eget tincidunt eget, condimentum eget risus. Proin nibh nulla, sagittis et feugiat in, luctus quis velit. Aenean lobortis mi ut odio accumsan adipiscing. Nulla quis ipsum magna. Suspendisse auctor mauris eu mi cursus ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida vulputate leo, consectetur porta sem euismod nec. Donec et dolor lectus, vel cursus massa. Morbi eu dictum arcu. Fusce luctus porttitor neque, sed eleifend orci tristique convallis. </p>
+		</section>
+	</article>
+	<aside class="ads"><p>Buy Me</p><p>Ads by Noodle</p></aside>
+	<aside class="ads"><p>Me Too</p><p>Ads by Noodle</p></aside>
+	<aside class="ads"><p>Me first</p><p>Ads by Noodle</p></aside>
+	<footer> 
+		<div class="col">
+			<h4>Contact</h4>
+			<adress>
+				<p><a href="#">Janet Griffith</a> from Public Relations</p>
+				<p><a href="#">Jil Sanders</a>, webmaster</p>
+			</address>
+		</div>
+		<div class="col">
+			<h4>Sites of interest</h4>
+			<aside>
+				<p><a href="#">Site A</a></p>
+				<p><a href="#">Another one</a></p>
+			</aside>
+		</div>
+		<div class="col">
+			<h4>Legal stuff</h4>
+			<p>Copyright</p>
+			<p>Terms of Service</p>
+		</div>
+	</footer>
+	</div>
+</body>
+</html>

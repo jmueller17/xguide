@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Joerg Mueller" />
+<meta name="revised" content="01/09/2008" />
+<meta name="keywords" content="xHTML, CSS, JavaScript, AJAX, Tutorial, PHP, webdesign, user interface design, interaction design, coding"/>
+<title>e508 - CSS - Margin, Padding, Border</title>
+<style type="text/css" media="screen">
+<!--
+@import url("../css/webDesign08.css");
+-->
+</style>
+<script src="../js/generic.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrap">
+	<!-- start of stage -->
+  <div id="stage">
+    <h1>CSS Padding - Margin - Border </h1>
+    <p>Padding and margin allows you to control the spacing between xHTML elements. To style the sides of elements, use border. </p>
+    <h3>border</h3>
+    <p>The border style of any xHTML element is controled by three properties: </p>
+    <p>a) <span class="codeInText">border-color:</span> any color value <br />
+    b) <span class="codeInText">border-width:</span> thin | thick | medium | numeric value <br />
+    c) <span class="codeInText">border-style:</span> dotted | 
+dashed | 
+solid | double |
+groove | 
+ridge | 
+inset |
+outset</p>
+    <p>Each of the four borders can be controlled individually with <span class="codeInText">border-left</span>, <span class="codeInText">border-top</span>, <span class="codeInText">border-bottom</span>, and <span class="codeInText">border-right</span>. One can also specify all four sides at the same time with <span class="codeInText">border:color width style</span></p>
+
+    <code>&lt;p style=&quot;border:#0033FF 3px dotted;&quot;&gt;<span class="codeContent">blue 3px dotted border</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;border-left:#6600CC 8px solid;&quot;&gt;<span class="codeContent">just the left&lt;br/&gt; border</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;border-top:#FF6600 1px ridge;&quot;&gt;<span class="codeContent">just the top border</span>&lt;/p&gt;</code>
+    <p class="codeInAction"><a href="javascript:void(null)" onclick="showLayer('e508_01')">Show</a>&nbsp;|&nbsp;<a href="javascript:void(null)" onclick="openWin('e508_css_marginPaddingBorder01.html', 450, 300)">Open</a></p>
+    <div id="e508_01" class="browser">
+      <object class="browserContent" type="text/html" data="e508_css_marginPaddingBorder01.html"></object>
+    </div>
+    <h3>margin</h3>
+    <p><span class="codeInText">margin:</span> defines the space between a selected element and its neighbouring, external elements. If you want to<em> create space around an element</em> use margin. You can either select each of the four sides individually or specify all at once. </p>
+    <p>You can specify each side invididually with margin-top, margin-right, margin-bottom, margin-left. Or all in one: <span class="codeInText">margin: top right bottom left</span>. The sequence is important! </p>
+    <code>&lt;html&gt;<br />
+      &nbsp;&lt;head&gt;      <br />
+      &nbsp;&nbsp;&nbsp;&lt;title&gt;<span class="codeContent">e508 - CSS - Margin</span>&lt;/title&gt;<br />
+      &nbsp;&nbsp;&nbsp;&lt;style type=&quot;text/css&quot;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>margin-top:40px;</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:#000099 1px solid;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
+&nbsp;&lt;/head&gt;<br />
+&nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<span class="codeContent">First paragraph with margin-top:40px</span>&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<span class="codeContent">Second paragraph with margin-top:40px</span>&lt;/p&gt;<br />
+    &nbsp;&lt;/body&gt;<br />
+    &lt;/html&gt;</code>
+	 <p class="codeInAction"><a href="javascript:void(null)" onclick="showLayer('e508_02')">Show</a>&nbsp;|&nbsp;<a href="javascript:void(null)" onclick="openWin('e508_css_marginPaddingBorder02.html', 450, 300)">Open</a></p>
+    <div id="e508_02" class="browser">
+      <object class="browserContent" type="text/html" data="e508_css_marginPaddingBorder02.html"></object>
+    </div>
+ <p>What is important in the above example is to note how margin introduces spacing <em>between</em> the paragraphs. </p>
+ 
+     <h3>padding</h3>
+    <p><span class="codeInText">padding:</span> defines the spacing between a selected element and <em>its content</em>. If you want to avoid text sticking to the border of a layer for example, use padding. Similar to margin you can set each side individually or all in one with  <span class="codeInText">padding: top right bottom left</span>.</p>
+
+    <code>&lt;html&gt;<br />
+&nbsp;&lt;head&gt; <br />
+&nbsp;&nbsp;&nbsp;&lt;title&gt;<span class="codeContent">e508 - CSS - Padding </span>&lt;/title&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;style type=&quot;text/css&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> padding:100px 40px 1px 30%;</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:#000099 1px solid;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
+&nbsp;&lt;/head&gt;<br />
+&nbsp;&lt;body&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<span class="codeContent">First paragraph with padding set </span>&lt;/p&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<span class="codeContent">Second paragraph with padding set </span>&lt;/p&gt;<br />
+&nbsp;&lt;/body&gt;<br />
+&lt;/html&gt;</code>
+    <p class="codeInAction"><a href="javascript:void(null)" onclick="showLayer('e508_03')">Show</a>&nbsp;|&nbsp;<a href="javascript:void(null)" onclick="openWin('e508_css_marginPaddingBorder03.html', 450, 300)">Open</a></p>
+    <div id="e508_03" class="browser">
+      <object class="browserContent" type="text/html" data="e508_css_marginPaddingBorder03.html">
+      </object>
+    </div>
+    <p>Note how padding introduces a spacing between the border of the paragraph (blue line) and its content. To spell it out: </p>
+    <p>padding-top: is set to 100px<br />
+    padding-right: to 40px<br />
+      padding-bottom: 1px<br />
+      padding-left: to 30% of the overall document width. 
+</p>
+    <p>&nbsp;</p>
+  </div>
+  <!-- end of stage -->
+  <!-- start of related section -->
+  <div id="relTeaser"><a href="javascript:void(null)" onclick="showLayer('relStage')">View related...</a></div>
+  <div id="relStage">
+    <div id="relStageL">
+      <div class="relHeading">Topics &amp; examples</div>
+	  <p><a href="e507_css_text.html">Text formatting</a><br />
+	  </p>
+    </div>
+    <div id="relStageC">
+       <div class="relHeading">Lessons</div>
+	    <p><a href="../lecture_notes/intro_css.html">Basics of CSS </a><br />
+    </div>
+    <div id="relStageR">
+       <div class="relHeading">Sites &amp; references</div>
+	   <p><a href="http://www.w3schools.com/css/css_reference.asp#border">W3C - CSS - Border</a><br />
+         <a href="http://www.w3schools.com/css/css_reference.asp#margin">W3C - CSS - Margin</a> <br />
+         <a href="http://www.w3schools.com/css/css_reference.asp#padding">W3C - CSS - Padding</a> </p>
+    </div>
+  </div>
+  <!-- end of related -->
+  <!-- start of footer -->
+  <div id="footer">
+    <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"> <img alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/> </a> </p>
+  </div>
+</div>
+<!--/Creative Commons License-->
+<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<Work rdf:about="">
+		<license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+	<dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+	</Work>
+	<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+	<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+	<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+	<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+	<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+	<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+	<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+	<requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+	</License>
+	</rdf:RDF> -->
+</body>
+</html>

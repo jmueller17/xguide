@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e541 - CSS - Image Rollover</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+
+@import url(../css/webDesignHeader.css);
+
+
+#content {
+	position:absolute;
+	width:550px;  
+	height:420px;
+	left:300px; 
+	top:140px;
+	border: 1px dotted #000000;
+	border-collapse: collapse;
+	padding:10px;
+	line-height:1.5em; 
+}
+
+#example{
+	position:absolute;
+	top:140px;
+	width:150px;
+	left: 100px;
+	float:left;
+}
+
+
+a.swapped{
+	display:block; 
+	width: 100px; 
+	line-height: 100px; 
+	text-decoration:none; 
+	background:url(../img/zanzibarB.jpg) no-repeat; 
+}
+
+a.swapped:hover {
+	background:url(../img/zanzibar.jpg) no-repeat;
+} 
+
+
+-->
+</style></head>
+
+<body>
+<div id="header"><span class="title1">e541 - CSS - Image Rollover </span></div>
+
+<div id="example">
+<a href="#" class="swapped">&nbsp;</a>
+</div>
+
+<div id="content">
+  <p>You can code an image rollover with pure CSS simply by swapping the background image linked to the pseudo-format  &quot;a:hover&quot;.  </p>
+  <p>a.swapped {
+    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;display:block;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;line-height:100px;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:none;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>background-image: url(path/to/image1.gif);</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;background-repeat:no-repeat;<br />
+}<br />
+<br />
+a.swapped:hover {
+<br />
+&nbsp;&nbsp;&nbsp;<strong>&nbsp;background-image:url(path/to/image2.gif);</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;background-repeat:no-repeat;<br />
+}</p>
+  <p>&nbsp;</p>
+  <p>Note that the width and line-height values actually correspond to the dimensions of the image. The actual link in the HTML document is coded like that: </p>
+
+<p><strong>&#060;a href=&#034;#&#034; class=&#034;swapped&#034;&#062;&#038;nbsp;&#060;&#047;a&#062;</strong></p>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+</body>
+</html>

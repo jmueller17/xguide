@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS - Classification</title>
+<style type="text/css">
+
+img.left {float:left; margin-right:10px; margin-bottom:10px; }
+img.right {float:right; margin-left:10px; margin-bottom:10px; }
+
+
+.clearLeft		{clear:left;} 
+.clearRight		{clear:right;}
+
+</style>
+</head>
+
+<body>
+<img class="left" src="../img/number_one.gif" width="100" height="80" alt="1" />
+<p>The image has a float.left and the second paragraph a clear:left.</p>
+<p class="clearLeft">Here starts the second paragraph with a fresh line below the image.</p>
+
+<img class="right" src="../img/number_two.gif" width="100" height="80" alt="1" />
+<p>The image has a float.right and the second paragraph a clear:right.</p>
+<p class="clearRight">Here starts the second paragraph with  a fresh line below the image.</p>
+
+<img class="left" src="../img/number_three.gif" width="100" height="80" alt="1" />
+<p>The image has a float.left but first and second paragraph have no clear property set. .</p>
+<p>Second paragraph starts here.</p>
+
+
+
+</body>
+</html>

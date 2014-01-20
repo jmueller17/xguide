@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTML // CSS // Javascript </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../js/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Google Prettify -->
+    <link href="../css/prettify.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/main.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery/jquery-1.10.2.mins.js"></script>
+    <script src="../js/prettify/prettify.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(function(){
+        window.prettyPrint && prettyPrint()
+      })
+    </script>
+  </head>
+
+  <body  data-spy="scroll" data-target=".bs-sidebar">
+
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav bs-docs-nav-html" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../" class="navbar-brand">{xGuide}</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav navbar-html">
+            <li class="active">
+              <a href="../guide-html">//HTML</a>
+            </li>
+            <li>
+              <a href="../guide-css/">CSS//</a>
+            </li>
+            <!--li>
+              <a href="../guide-javascript/">JavaScript//</a>
+            </li-->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-header-html" id="content">
+      <div class="container">
+        <h1>HTML</h1>
+        <p>The basics</p>
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+            <ul class="nav bs-sidenav">
+                <li>
+                  <a href="#basics">Introduction</a>
+                  <ul class="nav">
+                    <li><a href="#basics-html">What is HTML?</a></li>
+                    <li><a href="#basics-doc">Basic skeleton</a></li>
+                    <li><a href="#basics-tags">TAGs</a></li>
+                    <li><a href="#basics-flavors">HTML flavors</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#formatting">Basic text formatting</a>
+                  <ul class="nav">
+                    <li><a href="#formatting-pbr">Layers, paragraphs, linebreaks</a></li>
+                    <li><a href="#formatting-headings">Headings</a></li>
+                    <li><a href="#formatting-pbr">Lists</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#links">Hyperlinks</a>
+                  <ul class="nav">
+                    <li><a href="#links-intro">Introduction</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#grid">Images</a>
+                  <ul class="nav">
+                    <li><a href="#images-intro">Introduction</a></li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-9" role="main">
+            <!-- Global Bootstrap settings ================================================== -->
+          <div class="bs-docs-section">
+          
+            <div class="page-header">
+              <h1 id="basics">Introduction</h1>
+            </div>
+
+
+
+
+            <h3 id="basics-html">What is HTML?</h3>
+            <p>HTML is a markup language. In fact HTML means just that: HyperText Markup Language. A markup language has the ability to save information about information. It selects certain chunks of information - let's say a certain phrase in a written poem - and saves information about it - <strong>let's say its formatted in bold</strong>.</p>
+
+            <p>A HTML document thus contains two types of information: the actual content (the poem) and how to display it (for example bold). Consequently there exist two possibilities to view a HTML document: either in the browser window with the formatting information applied to the content, or in a simple text editor or a HTML authoring environment such as Dreamweaver giving access to the underlying source code as well.</p>
+
+            <p>Try it! Hit Ctrl+U while viewing this page in order to see its markup. As you will note there is a huge difference between the source code and the visible end result. If this looks very confusing to you, don't worry. At the end of these tutorials the whole structure will start to make sense.</p>
+
+
+
+            <h3 id="basics-doc">Basic Skeleton of HTML</h3>
+            <p>A HTML document has a basic structure of TAGs which is shown below: </p>
+<figure class="highlight">
+<code class="prettyprint">
+&lt;html&gt;<br>
+&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&lt;title&gt;My first webpage&lt;/title&gt;<br>
+&nbsp;&lt;/head&gt;<br>
+&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;Hello world!<br>
+&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+  </code>
+  <a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+</figure>
+
+            <p>The elements of a markup language - the elements used to code this meta-information - are called TAGs. Tags are distinguished from the content to which they apply by opening "&lt;" and closing "&gt;" brackets. To get a glimps of the different tags that might exist in a HTML document, check this reference <a href="http://www.w3schools.com/tags/default.asp">w3schools.</a></p>
+
+            <p>Apart from the top-level <code>&lt;html&gt;&lt;/html&gt;</code> which marks the start and end of the HTML document, each HTML file is furthermore composed of two mayor sections - <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. The head contains general information about the document, as for example its <code>&lt;title&gt;</code> (display at the top of your browser). The body in turn contains the overall content to be displayed. For plain HTML documents, everything visible in your browser window has to be contained between the <code>&lt;body&gt;&lt;/body&gt;</code> tag. Please note, that no TAG whatsoever is allowed between the head and body section of your document!</p>
+
+
+
+            <h3 id="basics-tags">TAGs explained</h3>
+            <p>Most but not all TAGs come in pairs. The TAGs are applied to "their" content. For example, whatever text is contained by the tag "strong" will be rendered <strong>bold</strong>: </p>
+<figure>
+<pre class="prettyprint"><code>
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;My first webpage&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      Hello &lt;strong&gt;<strong>world!</strong>&lt;/strong&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </code></pre>
+  <a href="../examples/e500_html_basic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+</figure>
+
+<p>However, there are also TAG's that do not have a closing pair such as the line-break <code>&lt;br&gt;</code> tag for example or the image tag to embed pictures <code>&lt;img&gt;</code>.</p>
+
+
+    <h4>Nesting Tags</h4> 
+    <p>TAGs can be <strong>nested</strong> into each other. Most TAGs can contain other TAGs in turn. The <code>&lt;html&gt;</code> TAG contains <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> TAGs before it closes again with <code>&lt;/html&gt;</code>. The <code>&lt;body&gt; &lt;/body&gt;</code> in turn contains many other tags such as paragraphs <code>&lt;p&gt; &lt;/p&gt;</code>. 
+
+   <p>It is essential that the nesting order is coherent. The opening and closing order has to be respected - the following code is therefore <strong>wrong</strong>: </p>
+
+<figure>
+<pre class="prettyprint"><code>
+  &lt;head&gt;
+    &lt;title&gt;my Title
+  &lt;/head&gt;
+    &lt;/title&gt;
+    </code></pre>
+</figure>
+
+    <p>The above example is not well-formed. The title needs to be closed inside the head. When working with the source code of a HTML document, indenting the code according to the nesting order improves greatly readability. The above code now corrected:</p>
+<figure>
+<pre class="prettyprint"><code>
+  &lt;head&gt;
+    &lt;title&gt;my Title&lt;/title&gt;
+  &lt;/head&gt;
+    </code></pre>
+</figure>
+
+            <p>The nested TAGs basically produce a document <strong>tree</strong> where the html-tag is the root or parent element which has then several "children" (head, body) which contain further "children" elements, etc.</p>
+
+            <h3 id="basics-flavors">HTML flavors</h3>   
+            <p>HTML comes in different standards. Ordered from olderst to newest we have HTML4.1, xHTML, HTML5. We will concentrate on the latest release of the HTML specification, namely HTML5. Most tags remain the same between different versions of HTML. Consulting for example the HTML <a href="http://www.w3schools.com/tags/default.asp" target="_blank">reference list by the W3C</a> the new tags for HTML5 are marked.</p>
+
+            <p><a href="http://www.w3schools.com/tags/tag_doctype.asp" target="_blank">Here is an overview of different document type declarations.</a> Which version should I choose? It basically depends on your needs. If you expect that your clients have up-to-date browsers, use HTML5. If your content needs to render correctly on old machines and browsers, maybe you have to use an older version such as xHTML or even HTML 4.01 as well.</p>
+
+
+    <p>Each HTML file has to have at its very start a doctype declaration to indicate which 
+      version of HTML is used. With HTML5 the doctype declaration has become much simpler. Instead of </p>
+    <figure>
+<pre class="prettyprint"></code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict //EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</code></pre>
+    </figure>
+
+    <p> which was until now the valid declaration for xHTML (strict) documents, we can simply write: </p>
+    
+    <figure>
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;</code></pre></figure>
+    
+    <p>And that's it.</p>
+    
+    <h4>Character encoding</h4>
+    <p>In addition, setting the character encoding has become much simpler as well. It can now be specified as attribute of the meta tag. Instead of writing in xHTML style :</p>
+    
+    <figure>
+<pre class="prettyprint"><code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code></pre></figure>
+    
+    <p>in HTML5 we can now simply write </p>
+    
+    <figure>
+<pre class="prettyprint"><code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></pre></figure>
+<p>Of course, the actual encoding of the file needs to match. See the details of the HTML <a href="http://www.w3schools.com/tags/att_meta_charset.asp" target="_blank">meta-tag on W3</a>, including a link to other than UTF-8 (standard choice) sets. 
+    
+    <h4>Basic Document structure</h4>
+    <p>Therefore the basic HTML5 document structure looks like this:</p>
+<figure class="highlight">
+<code class="prettyprint">
+&lt;!DOCTYPE html&gt; <br>
+&lt;html&gt;<br>
+&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+&nbsp;&nbsp;&lt;title&gt;My first webpage&lt;/title&gt;<br>
+&nbsp;&lt;/head&gt;<br>
+&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;Hello world!<br>
+&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+  </code>
+</figure>
+<a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    
+    
+    <h4>Validate your HTML!</h4>
+    <p>Validate your code and see if it is correct and complies with the specified standard. You can reference an existing page via URL or upload and test code snippets as well.</p>
+    <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
+    <p>&nbsp;</p>
+
+
+
+<div class="page-header">
+  <h1 id="txt-format">Text formatting</h1>
+</div>
+
+<h3 id="txt-format-pbrdiv">Paragraphs, linebreaks, layers</h3>
+<p>In order to add text to your HTML document you use the <code>&lt;p&gt;&lt;/p&gt;</code> TAG. You can align your paragraphs either left (default), right, center or justified. Be sure these paragraphs are contained by the <code>&lt;body&gt;&lt;/body&gt;</code></p>
+
+<figure class="highlight">
+<code class="prettyprint">&lt;html&gt;<br />
+    &nbsp;&nbsp;&lt;head&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;title&gt;&lt;/title&gt;&nbsp;<br />
+&nbsp;    &lt;/head&gt;<br />
+     &nbsp;&nbsp;&lt;body&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Hello world!&lt;/p&gt;<br />    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p align=&quot;right&quot;&gt;Adding content is easy!&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p align=&quot;center&quot;&gt;center this line&lt;/p&gt;<br />
+    &nbsp;&nbsp;&lt;/body&gt;<br />
+    &lt;/html&gt;</code>
+</figure>
+<a href="../examples/e503_html_textbasic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+<p>Note: the attributes like <code>align="center"</code> for aligning these paragraphs is outdated. Cascading Style Sheets will be used instead in upcoming sessions.</p>
+
+<p>&nbsp;</p>
+<p>Paragraphs introduce a linefeed.  If you want to jump to a new line without adding a linefeed you can use the &quot;linebreak&quot; tag: <span class="codeInText">&lt;br&gt;</span> </p>
+
+   <figure class="highlight">
+<code class="prettyprint">&nbsp;&lt;p&gt;<span class="codeContent">Hello world</span> &lt;br&gt; <span class="codeContent">here starts a new line.</span> &lt;br &gt; <span class="codeContent">here another</span> &lt;/p&gt; </code>
+</figure>
+<a href="../examples/e503_html_textbasic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+<p>&nbsp;</p>
+<h3 id="txt-format-headings">Text Structure/Headings</h3>
+    <p>HTML comes with a list of predefine headings ranging from <span class="codeInText">&lt;h1&gt;&lt;/h1&gt;</span> (the biggest) to <span class="codeInText">&lt;h6&gt;&lt;/h6&gt;</span> the smallest. Each heading introduces automatically a linefeed. </p>
+
+    <figure class="highlight">
+<code class="prettyprint">
+  &lt;h1&gt;Very big heading&lt;/h1&gt;<br />
+    &lt;h2&gt;Big heading&lt;/h2&gt;<br />
+    &lt;h3&gt;Not so big heading&lt;/h3&gt;
+    <br />
+    &lt;h4&gt;etc..&lt;/h4&gt;</code></figure>
+    <a href="../examples/e503_html_textbasic03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>Although <code>font-size</code> could be used to create headings "by hand", the <code>hx</code>-tags are important to structure your content hierarchically.</p>
+
+  <h3 id="txt-format-lists">Lists</h3>
+  <p>There are basically two types of lists: ordered <span class="codeInText">&lt;ol&gt;&lt;/ol&gt;</span> and unordered <span class="codeInText">&lt;ul&gt;&lt;/ul&gt;</span>. Individual entries are coded with <span class="codeInText">&lt;li&gt;&lt;/li&gt;</span></p>
+  <p>Example of a <strong>ordered</strong> list: </p>
+  <figure class="highlight">
+<code class="prettyprint">&lt;ol&gt;<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br />
+  &lt;/ol&gt;</code>
+</figure>
+  <a href="../examples/e503_html_textbasic04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+  <p>&nbsp;</p>
+  <p>Example of a <strong>unordered</strong> list : </p>
+  <figure class="highlight">
+<code class="prettyprint">&lt;ul&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">bullet item</span>&lt;/li&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">another one</span>&lt;/li&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">subsequent one</span> &lt;/li&gt;<br />
+&lt;/ul&gt;</code>
+</figure>
+<a href="../examples/e503_html_textbasic05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+<p>The important attributes for setting different starting numbers (<span class="codeInText">&lt;ol&gt;</span>) or the bullet type(s) (<span class="codeInText">&lt;ul&gt;</span>) is specified by Cascading Style Sheets. </p>
+</div>
+
+
+
+
+
+
+        </div><!-- end bs-docs-section -->
+      </div><!-- end bs-md-9 main -->
+    </div><!-- bs-docs-container -->
+
+    <!-- content footer -->
+    <footer id="footer">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"> <img alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/> </a> </p>
+    </footer>
+    <!--/Creative Commons License-->
+    <!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <Work rdf:about="">
+        <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+      <dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+      </Work>
+      <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+      <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+      <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+      <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+      <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+      <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+      <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+      <requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </License>
+      </rdf:RDF> -->
+  </body>
+</html>

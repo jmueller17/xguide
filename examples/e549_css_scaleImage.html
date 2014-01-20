@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>e549 - CSS - Scale Image Window Size</title>
+<style type="text/css">
+
+* {
+	margin: 0; 
+	padding: 0;
+}
+
+
+#bgLayer {
+	width:100%;
+	height:100%;
+	background-color:#006666;
+	z-index:0;
+}
+
+#scaleImage{
+}
+
+</style>
+<script language="javascript" type="text/javascript">
+
+var c=0; 
+
+function recalculateImage(){
+	
+
+	
+	var obj = document.getElementById("scaleImage");
+	obj.width =  window.innerWidth;
+	obj.height = window.innerHeight; 
+	
+	
+	
+
+}
+
+
+window.onresize = recalculateImage; 
+window.onload = recalculateImage;
+
+</script>
+</head>
+
+<body class="ep">
+<div id="bgLayer"><img src="../img/vaccant2006.jpg" id="scaleImage" /></div>
+</body>
+</html>

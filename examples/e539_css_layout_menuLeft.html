@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e539 - CSS - Menu Left</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css">
+<!--
+
+@import url(../css/webDesignHeader.css);
+
+body {
+	color:#000000;
+	background-color:#E8E8E8;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:18px;
+
+	
+}
+
+div#StageWrapper {
+	margin-top:100px;
+	margin-left:100px;
+	width:760px;
+	height:700px;
+	border-color:#000000; 
+	border-style:dashed;
+	border-width:thin;
+	padding-left:20px; 
+	padding-top:20px;
+}
+
+div#menuList {
+	width:140px;
+	height:450px;
+	background-color:#E9E9E9;
+	float:left;
+	padding: 10px 10px 10px 10px; 
+	border: 1px dotted #33ff33; 
+	
+}
+
+div#StageMain {
+	width:550px;
+	height:450px;
+	float:left;
+	background-color:#E9E9E9;
+	padding: 10px 10px 10px 10px; 
+	border: 1px dotted #FF9900; 
+
+}
+
+.menuItem {
+	border:1px dotted #0066FF;
+	border-collapse:collapse;
+}
+
+
+
+-->
+</style>
+</head>
+
+<body>
+<div id="header"><span class="title1">e539 - CSS - Menu Left </span></div>
+
+
+
+<div id="StageWrapper">
+	<p>*** Stage Wrapper ***</p>
+	<p>The StageWrapper is the enclosing &lt;div&gt;&lt;/div&gt; which allows to treat both menuList and StageMain as a unity. </p>
+	<p>&nbsp;</p>
+	
+	<div id="menuList">
+		*** menuList ***
+		<div class="menuItem">item 1</div>
+		<div class="menuItem">item 2</div>
+		<div class="menuItem">item 3</div>
+		<div class="menuItem">item 4</div>
+		<div class="menuItem">item 5</div>
+		<div class="menuItem">item 6</div>
+		<div class="menuItem">item 7</div>
+	</div>
+	<div id="StageMain">
+	  <p>*** StageMain *** </p>
+	  <p>The menuList and StageMain are both aligned with &quot;float:left&quot;. A little bit of care when choosing the respective widths and a perfect two column layout pops up. </p>
+	  <p>Check out the source code. </p>
+	</div>
+</div>
+</body>
+</html>

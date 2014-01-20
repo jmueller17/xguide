@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>e541 - CSS - Multiple Anchor Links</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #CCCCCC;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#000033;
+}
+
+/* default anchor style */
+a {
+	text-decoration:none;
+	color: #FF6600;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+
+/* custom anchor styles */
+
+a.style1{
+	background-color:#3399FF;
+	}
+a.style1:hover{
+	background-color:#FF9933;
+	color:#333333;
+	}
+
+a.style2{
+	border: 1px #6633FF dotted;
+}
+a.style2:hover{
+
+	border: 4px #ff0000 solid;
+	background-color:#6633FF;
+}
+
+
+-->
+</style></head>
+
+<body>
+
+<p>This would be some random text. Here we have <a href="#">the default link</a>. No special styles attached with the "class" selector. </p>
+<p>But of course we can also define in the CSS a <a href="#" class="style1">first custom anchor style</a> which is in action here. 
+  
+  Note that you link this custom style by simply introducing the &quot;class&quot; selector in the anchor tag: &lt;a class=&quot;style1&quot; ...&gt;&lt;/a&gt;</p>
+<p>Then, to make the case, I second custom style for yet another anchor. See it in action on <a href="#" class="style2">this very link</a>. Same thing as above, but now you just change the attached style: &lt;a class=&quot;style2&quot;...&gt;&lt;/a&gt; </p>
+</body>
+</html>

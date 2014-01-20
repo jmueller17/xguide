@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e519 - HTML - Frames</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../css/webDesignNotes.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="50" class="bloq">&nbsp;</td>
+    <td width="676" class="bloq"><span class="title1">e519 - HTML - frames</span></td>
+  </tr>
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="49"> 
+      <div align="right" class="title3">1.</div>
+    </td>
+    <td width="681" class="title3">Using frames</td>
+  </tr>
+  <tr> 
+    <td width="49"> 
+      <div align="right"><img src="../img/empty.gif" width="50" height="10"></div>
+    </td>
+    <td width="681">
+      <p> Frames give you the possibility to divide the browser window into two, 
+        three, ... independent zones. You can refresh the content of one frame 
+        without touching the other where each frame contains a normal, complete, 
+        independent HTML file. It's like you put another browser window inside 
+        the current window. </p>
+      <p>With the bandwidth available today frames have somehow ceased to be in 
+        fashion. The advantage of frames is, that items which stay the same for 
+        your whole site such as the navigation menu don't have to be reloaded 
+        each time. You just place them in one frame and load the new page into 
+        the neighour frame. This bandwidth argument, however, has lost its power, 
+        since images stay in the browsers cache anyway and don't really occupie 
+        bandwidth once they have downloaded. </p>
+      <p>Anyway, some time you might want to organize your site with frames. So 
+        let's see how it is done. The trick is to think in three HTML files from 
+        the beginning. You have file ONE which provides the base frame structure. 
+        This file contains actually the frame tag. In this file you decide how 
+        you want to organize your frames. Then you have the actual content which 
+        are just ordinary independent HTML files which you could load in a normal 
+        browser window. </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+ 
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="47"> 
+      <div align="right" class="title3">2.</div>
+    </td>
+    <td width="683" class="title3">Code - I - two vertical frames</td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683"> 
+      <p class="code">&lt;html&gt;<br>
+        &nbsp;&lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;e519a - HTML - Frameset&lt;/title&gt;<br>
+        &nbsp;&lt;/head&gt;</p>
+      <p class="code">&nbsp;&lt;frameset <strong>cols=&quot;150,*&quot;</strong> 
+        rows=&quot;*&quot; frameborder=&quot;NO&quot; border=&quot;0&quot; framespacing=&quot;0&quot; 
+        &gt; <br>
+        &nbsp;&nbsp;&nbsp;&lt;frame name=&quot;leftFrame&quot; scrolling=&quot;NO&quot; 
+        noresize src=&quot;e519a_html_framesLeft.html&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&lt;frame name=&quot;mainFrame&quot; src=&quot;e519a_html_framesRight.html&quot;&gt;<br>
+        &nbsp;&lt;/frameset&gt;<br>
+        &nbsp;&lt;noframes&gt;<br>
+        &nbsp;&nbsp;&nbsp;&lt;body bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternative message: Your browser 
+        cannot display frames!!<br>
+        <span class="code">&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br>
+        &nbsp;&lt;/noframes&gt;<br>
+        &lt;/html&gt;<br>
+        </span> </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47">&nbsp;</td>
+    <td width="683"> 
+      <p>The first thing to note is that there is no &lt;body&gt; tag. Right after 
+        the closing head-tag we find the &lt;frameset&gt;. This means that this 
+        HTML file actually has no content itself but rather is used to establish 
+        the structure for two other pages. Note that the &lt;body&gt; tag is inside 
+        the &lt;noframes&gt; tag which means, that it will only be displayed if 
+        we have a browser which doesn't understand frames. </p>
+      <p>The next thing to note is the distribution of the frames. Inside the 
+        &lt;frameset&gt; tag we decide how to split the browser window. In this 
+        case two columns, where the first one has a width of &quot;30%&quot; of 
+        the browser window and the second will adapt to the rest. You could also 
+        use a pixel value instead. And we define to have just one row. All in 
+        all, the browser window will split in two vertically. </p>
+      <p>Then, after we defined how many frames we want, it's time to reference 
+        those. This happens inside the &lt;frameset&gt; These are the pages that 
+        will be displayed. The first on the left side, the second frame &quot;mainFrame&quot; 
+        on the right. The &quot;src&quot; attribute should be pretty familiar 
+        and specifies the actual path. </p>
+      <p>Take also note of the name attributes. For example, if you want to load 
+        new content by clicking on a link in the <b>left</b> frame to be shown 
+        in the right frame you have to use the target attribute the following 
+        way: </p>
+      <p class="code">&lt;a href=&quot;myPage.html&quot; <strong>target=&quot;mainFrame&quot;</strong>&gt;go 
+        to my page&lt;/a&gt;</p>
+      <p>You can download those three files as a <a href="e519b_html_framesIndex.zip" class="pra">zip 
+        file here</a> or browse directly to them <a href="e519a_html_framesIndex.html" class="pra">here</a>. 
+      </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683">&nbsp;</td>
+  </tr>
+</table>
+<br>
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="47"> 
+      <div align="right" class="title3">3.</div>
+    </td>
+    <td width="683" class="title3">Code - II - three horizontal frames</td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683"> 
+      <p class="code">&lt;html&gt;<br>
+        &nbsp;&lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;e519b - HTML - Frameset&lt;/title&gt;<br>
+        &nbsp;&lt;/head&gt;</p>
+      <p class="code">&nbsp;&lt;frameset cols=&quot;*&quot; <strong>rows=&quot;100,*,100&quot;</strong> 
+        frameborder=&quot;NO&quot; border=&quot;0&quot; framespacing=&quot;0&quot; 
+        &gt; <br>
+        &nbsp;&nbsp;&nbsp;&lt;frame name=&quot;topFrame&quot; scrolling=&quot;NO&quot; 
+        noresize src=&quot;e519b_html_framesTop.html&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&lt;frame name=&quot;middleFrame&quot; src=&quot;e519b_html_framesMiddle.html&quot;&gt;<br>
+        &nbsp; &nbsp;&lt;frame name=&quot;bottomFrame&quot; src=&quot;e519b_html_framesBottom.html&quot;&gt;<br>
+        &nbsp;&lt;/frameset&gt;<br>
+        &nbsp;&lt;noframes&gt;<br>
+        &nbsp;&nbsp;&nbsp;&lt;body bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternative message: Your browser 
+        cannot display frames!!<br>
+        <span class="code">&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br>
+        &nbsp;&lt;/noframes&gt;<br>
+        &lt;/html&gt;<br>
+        </span> </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47">&nbsp;</td>
+    <td width="683"> 
+      <p>This is basically the same example like the one above. We just changed 
+        the direction: now we have three horizontal frames where by the middle 
+        one adapts when resized. The top and bottom one has a fixed size. </p>
+      <p>You can download those three files as a <a href="e519b_html_framesIndex.zip" class="pra">zip 
+        file here</a> or browse directly to them <a href="e519b_html_framesIndex.html" class="pra">here</a>. 
+      </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="50"> 
+      <div align="right" class="title3">4.</div>
+    </td>
+    <td class="title2">Further References</td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="right"><span class="code"><img src="../img/empty.gif" width="50" height="8"></span></div>
+    </td>
+    <td valign="top"> 
+      <p>&raquo; <a href="http://www.w3schools.com/tags/tag_frameset.asp" class="pra">W3 frameset</a> reference with tutorials.</p>
+      <p>&raquo; A second <a href="http://www.htmlcodetutorial.com/frames/frames.html" class="pra">tutorial</a>. </p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

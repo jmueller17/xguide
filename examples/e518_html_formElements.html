@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e518 -HTML - Form Elements</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../css/webDesignNotes.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+<!--
+
+function openSearchWin(selectionRef){
+		
+		//this is the reference to the <select> element, i.e. its current value
+		var selectedValue = selectionRef[selectionRef.selectedIndex].value; 
+	
+		//the first value is empty.
+		if (selectedValue != "doNothing"){
+			window.open(selectedValue, "aname","resizable=yes,scrollbars=yes,status=0,location=0, toolbar=no, menubar=no, width=200, height=200, screenX=0, screenY=0, left=0, top=0"); 
+		}
+	
+	}
+	
+	
+	function changeBg(){
+		
+		//extract the list of radio buttons from the form
+		var arrayRadioButtons = document.forms["testForm"].elements["bgc"];
+		
+		//check each radio button if it is checked or not
+		for (var i=0; i<arrayRadioButtons.length; i++){
+			//if it is checked, get is color value and save it into the
+			//variable "color"
+			if (arrayRadioButtons[i].checked) color = arrayRadioButtons[i].value;
+		}
+		
+		//assign the color value to the acutal body background CSS. 
+		document.getElementsByTagName("body")[0].style.backgroundColor = color;
+	}
+//-->
+</script>
+</head>
+
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="testForm">
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="50" class="bloq">&nbsp;</td>
+      <td width="676" class="bloq"><span class="title1">e518 - HTML - Form Elements </span></td>
+  </tr>
+</table>
+<br />
+  <table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+    <tr class="bloq"> 
+      <td width="50"> 
+        <div align="right" class="title3">1.</div>
+      </td>
+      <td width="656" class="title2">Forms </td>
+    </tr>
+    <tr> 
+      <td width="50"><img src="../img/empty.gif" width="50" height="8"></td>
+      <td valign="top"> 
+        <p>In order to insert a form into your HTML document use the following code: </p>
+        <p class="code">&lt;form name=&quot;testForm&quot; action=&quot;http://www.myserver.com/receiveForm.php&quot;&gt;<br />
+          <br />
+          &lt;/form&gt;
+        </p>        
+        <p>The example defines a form which has a <strong>name </strong>&quot;testForm&quot; and will send the data once submitted to the URL specified in the <strong>action </strong>parameter. In order to retrieve the values defined, you have to have a working script like the &quot;receiveForm.php&quot;. This will be treated in the final sessions of class on PHP. </p>
+      <p>All form elements that follow below have to be enclosed by this form tags. This allows you to define several forms in one HTML page and nevertheless define their values perfectly. </p>
+      <p>&nbsp;</p></td>
+    </tr>
+  </table>
+<br />
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq">
+    <td width="51">
+      <div align="right" class="title3">2.</div></td>
+    <td colspan="2" class="title2">Overview Form Elements </td>
+  </tr>
+  <tr>
+    <td class="borderBottom">
+      <div align="right"><img src="../img/empty.gif" width="50" height="8" /></div></td>
+    <td width="236" valign="top">
+      <p>
+        <input type="text" name="textfield" />
+      </p>      </td>
+    <td width="429" valign="top"><p>Normal<strong> text field</strong>. The name attribute will identify the value retrieved. </p>
+      <p class="code">&lt;input type=&quot;text&quot; name=&quot;surname&quot; /&gt;</p>
+      <p class="code">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top"><input name="textfield2" type="password" value="hello" /></td>
+    <td valign="top"><p>The <strong>password</strong> field is actually an attribute of a normal text field. Please be aware that this does not guarantee a safe transmission over the web. This dots are only there to not show what you type. </p>
+      <p class="code">&lt;input name=&quot;textfield2&quot; type=&quot;password&quot; value=&quot;hello&quot; /&gt;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code">
+      <p>
+        <textarea name="textarea" cols="15" rows="5"></textarea>
+      </p>      </td>
+    <td valign="top"><p><strong>Textarea</strong> for longer (email) texts for example. </p>
+      <p class="code">&lt;textarea name=&quot;textarea&quot; cols=&quot;15&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><input type="checkbox" name="checkbox" value="checkbox" />
+      Green<br />
+      <input type="checkbox" name="checkbox2" value="checkbox" /> 
+      Blue      <br />
+      <input type="checkbox" name="checkbox3" value="checkbox" /> 
+      Red</td>
+    <td valign="top"><p><strong>Check boxes</strong> to allow multiple selections. Each box is independent of the others </p>
+      <p class="code">&lt;input type=&quot;checkbox&quot; name=&quot;cbx1&quot; value=&quot;green&quot; /&gt;
+Green<br />
+&lt;input type=&quot;checkbox&quot; name=&quot;cbx2&quot; value=&quot;blue&quot; /&gt; Blue<br />
+&lt;input type=&quot;checkbox&quot; name=&quot;cbx3&quot; value=&quot;red&quot; /&gt; 
+Red</p>
+      <p class="code">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><p>
+     
+      <input type="radio" name="RadioGroup1" value="radio" />
+  Hot or 
+      <br />
+     
+      <input type="radio" name="RadioGroup1" value="radio" />
+  Cold      <br />
+    </p></td>
+    <td valign="top"><p><strong>Radio button</strong> groups are usually good for limiting the selection to either/or. Just one choice, her on temperature. See how both buttons have the same name?! </p>
+      <p class="code"> &lt;input type=&quot;radio&quot; name=&quot;temperature&quot; value=&quot;hot&quot; /&gt;<br />
+Hot or <br />
+&lt;input type=&quot;radio&quot; name=&quot;temperature&quot; value=&quot;cold&quot; /&gt;<br />
+Cold</p>
+      <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><select name="select">
+	<option>one one</option>
+	<option>two two</option>
+	<option>three three</option>
+    </select></td>
+    <td valign="top"><p>A <strong>selection</strong> list. </p>
+      <p class="code">&lt;select name=&quot;select&quot;&gt;<br />
+&lt;option&gt;one one&lt;/option&gt;<br />
+&lt;option&gt;two two&lt;/option&gt;<br />
+&lt;option&gt;three three&lt;/option&gt;<br />
+&lt;/select&gt;</p>
+      <p class="code">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><input type="file" name="file" /></td>
+    <td valign="top"><p><strong>File selection </strong>and upload. </p>
+      <p class="code">&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><input type="submit" name="Submit" value="Submit" /></td>
+    <td valign="top"><p>A button to submit the form values: </p>
+      <p class="code">&lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;Submit&quot; /&gt;</p></td>
+  </tr>
+  <tr>
+    <td class="borderBottom">&nbsp;</td>
+    <td valign="top" class="code"><span class="code"><input type="reset" name="Submit2" value="Reset" /></span></td>
+    <td valign="top"><p>And to reset it: </p>
+      <p class="code"><span class="code">&lt;input type=&quot;reset&quot; name=&quot;Submit2&quot; value=&quot;Reset&quot; /&gt;</span></p></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table>
+</br>
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq">
+    <td width="51"><div align="right" class="title3">3.</div></td>
+    <td colspan="2" class="title2">Further tags </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td width="371" valign="top"><span class="code">&lt;label <strong>for=&quot;surname&quot;</strong>&gt;Surname:&lt;/label&gt; <br />
+      &lt;input type=&quot;text&quot; name=&quot;surname&quot; <strong>id=&quot;surname&quot;</strong>  /&gt; </span></td>
+    <td width="294" valign="top"><p>The <span class="code">&lt;label&gt;</span> tag establish a logical connection between the descriptive text of a form element and the actual field. The connection - important for accessibility issues - is established between the &quot;for&quot; and the &quot;id&quot; attribute. </p>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><div align="right"><span class="code"><img src="../img/empty.gif" alt="empty" width="50" height="8" /></span></div></td>
+    <td valign="top"><p class="code">&lt;fieldset&gt;<br />
+      &nbsp;&nbsp;&nbsp;&lt;legend&gt;Adress&lt;/legend&gt;<br />
+         &nbsp;&nbsp;&nbsp;&lt;label for=&quot;surname&quot;&gt;Surname:&lt;/label) <br />
+        &nbsp;&nbsp;&nbsp;&lt;input type=&quot;text&quot; name=&quot;surname&quot; id=&quot;surname&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;...          <br />
+    &lt;/fieldset&gt;<br />
+    &lt;fieldset&gt;<br />
+      &nbsp;&nbsp;&nbsp;&lt;legend&gt;Wishlist&lt;/legend&gt;<br />
+        &nbsp;&nbsp;&nbsp;...<br />
+    &lt;/fieldset&gt;</p>      </td>
+    <td valign="top"><p>Forms can get quite long. With the  <span class="code">&lt;fieldset&gt; </span>tag you can establish groups of input fields. The <span class="code">&lt;legend&gt;</span> is the title of a specific fieldset. </p>      </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq">
+    <td width="50">
+      <div align="right" class="title3">4.</div>
+    </td>
+    <td class="title2">Further References</td>
+  </tr>
+  <tr>
+    <td>
+        <div align="right"><span class="code"><img src="../img/empty.gif" width="50" height="8"></span></div>
+      </td>
+    <td valign="top">
+        <p>&raquo; <a href="http://www.w3schools.com/tags/tag_form.asp" target="_blank" class="pra">w3 xHTML forms </a></p>
+      <p>&raquo; <a href="http://www.w3schools.com/html/html_forms.asp" target="_blank" class="pra">w3 on HTML and input </a></p>
+      <p>&raquo; Tut on <a href="http://www.echoecho.com/htmlforms.htm" target="_blank" class="pra">forms by echoecho.com </a></p></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</form>
+</body>
+</html>

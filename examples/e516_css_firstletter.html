@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e516 - CSS - First Letter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+body {
+	background-color:#1f6283;
+	color: #FFCC66;
+}
+
+.fb:first-letter {
+	float:left;
+	font-size:6em;
+	color:#FF9900;
+	margin-right:12px;
+	margin-bottom:4px;
+}
+
+#boxstuff {
+	background-color:#3399CC;
+	border-color:#CCCCCC;
+	border-style:solid;
+	border-width:1px;
+	width:200px;
+	text-align:justify;
+	padding:2px 8px 2px 8px; 
+	float:left;
+	margin-right:40px;
+	margin-left:100px;
+}
+
+.fc{
+	float:left;
+	font-size:6em;
+	color:#FF9900;
+	margin-right:12px;
+	margin-bottom:4px;
+
+}
+
+-->
+</style></head>
+
+<body>
+<div id="boxstuff">
+<p class="fb">This is an example of how to make the first letter big with the pseudo-format <strong>&quot;first-letter&quot;</strong>. Check it out in the source code. You'll see that the text starts right away in the &lt;p&gt; paragraph tag. Essential is the &quot;float:left&quot; value which moves the subsequent text nicely around the initial letter. Put in some margins and you are done. </p>
+</div>
+
+<div id="boxstuff">
+<p><span class="fc">T</span>his is the same, but now we have the first letter enclosed by a <strong>&lt;span&gt;T&lt;/span&gt;</strong> tag to which we attached a special style. This is the alternative. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>e570 - CSS - Layer Stacks &amp; Centering</title>
+<style type="text/css">
+
+#one {
+	width:400px; 
+	height:300px; 
+	background-color:#3366CC;
+	margin: auto;
+	z-index:0;
+}
+
+#two {
+	background-color:#00FF00;
+	width:200px; 
+	height:100px; 
+	z-index:1;
+	margin: auto;
+	margin-top:-150px;
+	opacity:.3;
+	filter: alpha(opacity=30);
+}
+
+#three {
+	width:400px; 
+	height:300px; 
+	background-color:#FF9900;
+	margin: auto;
+	margin-top:100px;
+	z-index:4;
+	text-align:center;
+
+}
+
+#four {
+	background-color:#0033FF;
+	width:200px; 
+	height:100px; 
+	margin-left:30px;
+	text-align:center;
+	
+}
+
+
+.firstP {
+	padding-top:120px;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+
+
+</style>
+</head>
+
+<body>
+<div id="one"><p class="firstP">The green layer is outside the blue one and has negative margins. It will not be affected by the content of the blue layer.</p></div>
+<div id="two"></div>
+
+<div id="three">
+	The blue layer is nested inside the orange one. This is the reason why it is displaced by the text. The text is centered<br />
+	but the layer is not. 
+    <div id="four"></div>
+</div>
+</body>
+</html>

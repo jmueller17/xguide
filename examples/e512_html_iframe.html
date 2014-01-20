@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e512 - HTML - iframes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../css/webDesignNotes.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="50" class="bloq">&nbsp;</td>
+    <td width="676" class="bloq"><span class="title1">e512 - HTML - iframes</span></td>
+  </tr>
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="49"> 
+      <div align="right" class="title3">1.</div>
+    </td>
+    <td width="681" class="title3">Using internal frames</td>
+  </tr>
+  <tr> 
+    <td width="49"> 
+      <div align="right"></div>
+    </td>
+    <td width="681">
+      <p>With HTML you can use internal frames. Internal frames act like a browser 
+        window inside the current window. They can scroll and display HTML pages 
+        just as a normal borwser window does. It's simply the chance to build 
+        a more modulare web page which different html feeds into one. Here is 
+        an example:</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="49">&nbsp;</td>
+    <td width="681">
+	<iframe src="e500_html_basic.html" width="600" height="300" scrollbars="yes" frameborder="1" name="winbox">
+	<p>Your browser does not support iframes. </p>
+	</iframe>
+	
+	<p>Show <a href="e501_html_tagAttribute.html" target="winbox">e501</a> inside iframe</p>
+
+</td>
+  </tr>
+</table>
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq"> 
+    <td width="47"> 
+      <div align="right" class="title3">2.</div>
+    </td>
+    <td width="683" class="title3">Code</td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683"> 
+      <p><span class="code">&lt;html&gt;<br />
+        &nbsp;&lt;head&gt;<br />
+        &nbsp;&lt;/head&gt;<br>
+        &nbsp;</span><span class="code">&lt;body&gt;<br />
+        &nbsp;&nbsp;&nbsp;<strong>&lt;iframe src=&quot;http://www.google.com&quot; 
+        width=&quot;300&quot; height=&quot;400&quot; name=&quot;winbox&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Your browser does not support iframes&lt;/p&gt;<br>
+        &nbsp;&nbsp;&nbsp;&lt;/iframe&gt;</strong><br />
+        &nbsp;&lt;/body&gt;<br />
+        &lt;/html&gt;<br>
+        </span></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="47">&nbsp;</td>
+    <td width="683">
+      <p>The above code embeds an internal frame into the current page. Clicking 
+        on links inside the frame will display the content again inside of it. 
+        Here is a bit more complex example: </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47">&nbsp;</td>
+    <td width="683">
+      <p><span class="code">...<br>
+        &lt;iframe src=&quot;http://www.google.com&quot; width=&quot;300&quot; 
+        height=&quot;400&quot;<strong> name=&quot;winbox&quot; scrolling=&quot;yes&quot; 
+        marginheight=&quot;0&quot; marginwidth=&quot;0&quot; frameborder=&quot;0&quot;&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>&lt;p&gt;Your browser does not 
+        support iframes&lt;/p&gt;<br>
+        &lt;/iframe&gt;</span></p>
+      <p><span class="code">&lt;a href=&quot;http://www.yahoo.com&quot; <strong>target=&quot;winbox&quot;</strong>&gt;yahoo&lt;/a&gt;<br>
+        ... </span></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47">&nbsp;</td>
+    <td width="683">
+      <p>iframes accept a range of attributes all well known from different tags 
+        such as the window (make scrollbars visible or not) or the frameborder, 
+        marginswith, etc. </p>
+      <p>Important is the &quot;name&quot; attribute since this allows to direct 
+        anchors from one document to display inside the iframe. In the above example, 
+        yahoo will be shown inside the inframe given by as target. </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="47"> 
+      <div align="right"></div>
+    </td>
+    <td width="683">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

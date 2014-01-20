@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e531 - CSS - Absolute Positioning</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+
+	
+	#layer01{
+		position:absolute;
+		left:0px;
+		top:150px;
+		width:257px;
+		height:217px;
+		background-color:#99CC99;
+	
+	}
+	
+	#layer02{
+		position:absolute; 
+		width:446px; 
+		height:235px; 
+		left:245px; 
+		top:67px; 
+		background-color: #6699FF;
+	}
+	
+	#layer03 {
+	position:absolute;
+	width:242px;
+	height:100px;
+	bottom: 4px;
+	right: 4px;
+	background-color: #33CCFF;
+	left: 200px;
+	}
+	
+</style>
+<link href="../css/webDesignNotes.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="layer01">
+  <p>*** layer01 ****</p>
+  <p>position:absolute;
+		<br />
+  left:0px;<br />
+top:150px;<br />
+width:257px;<br />
+height:217px;<br />
+background-color:#99CC99; </p>
+</div>
+
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="50" class="bloq">&nbsp;</td>
+    <td width="676" class="bloq"><span class="title1">e531 - CSS - Absolute Positioning </span></td>
+  </tr>
+</table>
+<div id="layer02">
+  <p>*** layer02 *** </p>
+  <p>position:absolute; <br />
+    left:245px; <br />
+top:67px; <br />
+    width:446px; <br />
+height:235px; <br />
+background-color: #6699FF;</p>
+  <div id="layer03">
+    <p>*** layer03 *** (nested inside 2) </p>
+    <p>position:absolute; 
+		  <br />
+    bottom: 4px; 
+		<br />
+	right: 4px; </p>
+  </div>
+  <p>&nbsp;</p>
+</div>
+</body>
+</html>

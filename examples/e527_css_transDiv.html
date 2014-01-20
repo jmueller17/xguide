@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e527 - CSS - Transparency</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+
+@import url(../css/webDesignHeader.css);
+
+
+#pngLayer{
+	position:absolute;
+	width:238px;
+	height:175px;
+	z-index:10; 
+	left: 120px;
+	top: 123px;
+	background-image:  url(../img/transparent.png);
+	border: 1px none #000000;
+	z-index: 20;
+}
+
+#gifLayer {
+	position:absolute; 
+	width:225px; 
+	height:178px; 
+	left: 445px; 
+	top: 118px;
+	z-index:15;  
+	background-image: url(../img/transparent.gif); 
+	border: 1px none #000000;
+}
+
+#filterLayer{
+	position:absolute; 
+	width:238px; 
+	height:194px; 
+	z-index:16; 
+	left: 456px; 
+	top: 360px; 
+	background-color: #FF6633;  
+	border: 1px none #000000; 
+	filter: alpha(opacity=50); /*works for IE*/
+}
+
+#opacityLayer{
+	position:absolute; 
+	width:238px; 
+	height:194px; 
+	z-index:17; 
+	left: 135px; 
+	top: 356px; 
+	background-color: #66CC99;  
+	border: 1px none #000000; 
+	opacity: .5; /* works for mozilla */
+}
+
+#backgroundLayer{
+	position:absolute; 
+	width:307px; 
+	height:230px; 
+	left: 259px; 
+	top: 209px;
+	z-index:1; 
+	border:1px none #000000;  
+	background-image: url(../img/tree04090058.jpg);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="header"><span class="title1">e527 - CSS - Transparency</span></div>
+
+
+<div id="pngLayer">
+  <p>PNG 24 Transparency with background image. </p>
+  <p>Works for all but IE. </p>
+</div>
+<div id="backgroundLayer"></div>
+<div id="gifLayer">
+  <p>GIF Transparency. Bad quality but works browser independent. </p>
+  <p>It actually is a gif image with a grid-mask. </p>
+</div>
+<div id="filterLayer">
+  <p>alpha filter transparency with <br />
+  &quot;filter: alpha(opacity=50)&quot; for IE </p>
+</div>
+<div id="opacityLayer">
+  <p>transparency with CSS attribute &quot;opacity: 0.5&quot; for mozilla browsers. <br />
+  </p>
+</div>
+</body>
+</html>

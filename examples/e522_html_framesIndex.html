@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>e522 - HTML - frames background loading</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../css/webDesignNotes.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+<!--
+	/**
+	 *	This is a little script to control how many pages there are to 
+	 *	be loaded. Once we have loaded all pages, we start again from 0
+	 */
+
+	//how many pages are there to be loaded in total
+	var nrOfItems = 2; 
+	
+	//a counter
+	var currentItem = 0; 
+	
+	//the name of the page-series to be loaded. Together with the counter
+	//the current page will be constructed. For example: e522_html_frames0.html
+	var nameItemGroup = "e522_html_frames";
+	
+	function loadNext(){
+		//check if pages are left to load
+		if (currentItem > nrOfItems) {
+			alert("All pages loaded. \n Starting from 0 again!");
+			currentItem = 0;
+		}
+		
+		//construct the current html file to be loaded
+		var url = nameItemGroup + currentItem + ".html";
+		
+		//set the loading message: 
+		document.getElementById("displayTxt").firstChild.nodeValue= "L O A D I N G";
+		
+		//actually load it in the backgroundFrame.
+		parent.backgroundFrame.location.href = url; 
+		
+		//increment the counter
+		currentItem++;
+	
+	}
+
+
+//-->
+</script>
+</head>
+
+<body>
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="50" class="bloq">&nbsp;</td>
+    <td width="676" class="bloq"><span class="title1">e522 - HTML - Frames Background Loading </span></td>
+  </tr>
+</table>
+
+
+<br />
+<table width="750" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr class="bloq">
+    <td width="29"><div align="right" class="title3">1.</div></td>
+    <td colspan="2" class="title3">Explanation</td>
+  </tr>
+  <tr>
+    <td><img src="../img/empty.gif" width="50" height="10" /></td>
+    <td width="374">
+	<p>This file is actually contained in a frameset. However, it spans the whole window heights. Clicking on the link below will start loading content in the invisible frame. If you check out the source files, you'll see that the hidden frame is called &quot;backgroundFrame&quot;. </p>
+	<p><a href="javascript:void(null)" onclick="loadNext()" class="pra">load &amp; display next </a>&raquo;</p>
+      <p> Once it has been loaded, the content of it - which is just some ordinary text - will be displayed on the right side. </p>
+      <p>A small script defines that you can load 3 pages one after the other, each content being displayed once it is loaded. </p>
+      <p>This technique comes in handy for hidden server communication without having to update the whole page. Check out the source of the files by downloading the<a href="e522_html_framesBgLoading.zip" class="pra"> zip file</a>.</p>
+      <p><br />
+      </p></td>
+    <td width="313" valign="top" bgcolor="#CCCC00" id="displayTxt">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
