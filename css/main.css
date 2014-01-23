@@ -6,7 +6,7 @@ body {
 p {text-align: justify;}
 
 h3 {padding-top: 18px;}
-h4 {padding-top: 12px;}
+h4 {padding-top: 20px;}
 
 /* Keep code small in tables on account of limited space */
 .table code {
@@ -37,8 +37,9 @@ code {background-color: #f7f7f9;}
 float:right;
 clear: left;
   margin-bottom:5px;
-  margin-left:20px;
+  margin-left:50px;
   margin-right:7px;
+  margin-top: 2px;
 }
 
 .bs-header-home {

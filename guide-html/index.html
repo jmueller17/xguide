@@ -18,6 +18,9 @@
     <!-- Custom styles for this template -->
     <link href="../css/main.css" rel="stylesheet">
 
+    <!-- Flowplayer skin -->
+    <link rel="stylesheet" href="../js/flowplayer-5.4.6/skin/minimalist.css">
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,10 +31,62 @@
     <script src="../js/jquery/jquery-1.10.2.mins.js"></script>
     <script src="../js/prettify/prettify.js"></script>
     <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/flowplayer-5.4.6/flowplayer.min.js"></script>
 
     <script>
       $(function(){
-        window.prettyPrint && prettyPrint()
+        window.prettyPrint && prettyPrint();
+
+
+
+        var allPlayList = [
+          [
+            { webm:  "../vid/clips/firstPage.webm" },
+            { mp4:   "../vid/clips/firstPage.mp4" }
+          ],
+          [
+            { webm:  "../vid/clips/uploadFTP.webm" },
+            { mp4:   "../vid/clips/uploadFTP.mp4" }
+          ],
+          [
+            { webm:  "../vid/clips/paths.webm" },
+            { mp4:   "../vid/clips/paths.mp4" }
+          ]
+        ];
+
+        $("#vidplayer").flowplayer({
+          playlist: allPlayList 
+        });
+
+
+        var player = flowplayer();
+
+
+        $(".btn-vid").on("click", function(){
+            var vidindex = parseInt($(this).attr("vidindex"));
+            var vidtitle = $(this).attr("title");
+
+            $("#videoModal .modal-title").append(" - " + vidtitle);
+            $("#videoModal").modal("show");
+
+            player.play(vidindex);
+
+        })
+
+
+        $('#videoModal').on('hidden.bs.modal', function (e) {
+          player.stop();
+        })
+
+
+        var offset = 80;
+        $('.bs-sidenav li a').click(function(event) {
+          event.preventDefault();
+          $($(this).attr('href'))[0].scrollIntoView();
+          scrollBy(0, -offset);
+        });
+
+
       })
     </script>
   </head>
@@ -89,23 +144,34 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#formatting">Basic text formatting</a>
+                  <a href="#txt-format">Text formatting</a>
                   <ul class="nav">
-                    <li><a href="#formatting-pbr">Layers, paragraphs, linebreaks</a></li>
-                    <li><a href="#formatting-headings">Headings</a></li>
-                    <li><a href="#formatting-pbr">Lists</a></li>
+                    <li><a href="#txt-format-pbr">Paragraphs, linebreaks, layers</a></li>
+                    <li><a href="#txt-format-headings">Headings</a></li>
+                    <li><a href="#txt-format-lists">Lists</a></li>
                   </ul>
                 </li>
                 <li>
                   <a href="#links">Hyperlinks</a>
                   <ul class="nav">
-                    <li><a href="#links-intro">Introduction</a></li>
+                    <li><a href="#links-anchor">Anchor TAG</a></li>
+                    <li><a href="#links-internal-anchor">Internal anchor</a></li>
+                    <li><a href="#links-paths">Paths</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#grid">Images</a>
+                  <a href="#image">Images</a>
                   <ul class="nav">
-                    <li><a href="#images-intro">Introduction</a></li>
+                    <li><a href="#image-add">Add images</a></li>
+                    <li><a href="#image-formats">Image formats</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#html5">HTML5</a>
+                  <ul class="nav">
+                    <li><a href="#html5-semantic">Semantic Markup</a></li>
+                    <li><a href="#html5-semantic">Video</a></li>
+                    
                   </ul>
                 </li>
             </ul>
@@ -145,8 +211,8 @@
 &nbsp;&lt;/body&gt;<br>
 &lt;/html&gt;<br>
   </code>
-  <a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 </figure>
+ <a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
             <p>The elements of a markup language - the elements used to code this meta-information - are called TAGs. Tags are distinguished from the content to which they apply by opening "&lt;" and closing "&gt;" brackets. To get a glimps of the different tags that might exist in a HTML document, check this reference <a href="http://www.w3schools.com/tags/default.asp">w3schools.</a></p>
 
@@ -228,12 +294,18 @@
     <figure>
 <pre class="prettyprint"><code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></pre></figure>
 <p>Of course, the actual encoding of the file needs to match. See the details of the HTML <a href="http://www.w3schools.com/tags/att_meta_charset.asp" target="_blank">meta-tag on W3</a>, including a link to other than UTF-8 (standard choice) sets. 
+
+    <h4>Validate your HTML!</h4>
+    <p>Whatever version you choose: validate your code and see if it is correct and complies with the specified standard. You can reference an existing page via URL or upload and test code snippets as well.</p>
+    <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
+    <p>&nbsp;</p>
+
     
-    <h4>Basic Document structure</h4>
-    <p>Therefore the basic HTML5 document structure looks like this:</p>
+<h3 id="">Make your first page</h3>
+    <p>Drawing everything together up to this point, we are ready to make a very basic first web page (in HTML5):</p>
 <figure class="highlight">
 <code class="prettyprint">
-&lt;!DOCTYPE html&gt; <br>
+&lt;!DOCTYPE html&gt;<br>
 &lt;html&gt;<br>
 &nbsp;&lt;head&gt;<br>
 &nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
@@ -246,12 +318,15 @@
   </code>
 </figure>
 <a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+<p>Open your favorite text editor and start writing the tags/code. Save and name your file, then open it in your browser and voilà! If things turn out not as expected, watch this first video tutorial</p>
+
+<button type="button" class="btn btn-warning btn-vid" vidindex="0" title="Coding my first HTML page"><span class="glyphicon glyphicon-facetime-video"></span> Watch video tutorial</button>
+
     
     
-    <h4>Validate your HTML!</h4>
-    <p>Validate your code and see if it is correct and complies with the specified standard. You can reference an existing page via URL or upload and test code snippets as well.</p>
-    <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
-    <p>&nbsp;</p>
+  
+
 
 
 
@@ -259,71 +334,529 @@
   <h1 id="txt-format">Text formatting</h1>
 </div>
 
-<h3 id="txt-format-pbrdiv">Paragraphs, linebreaks, layers</h3>
-<p>In order to add text to your HTML document you use the <code>&lt;p&gt;&lt;/p&gt;</code> TAG. You can align your paragraphs either left (default), right, center or justified. Be sure these paragraphs are contained by the <code>&lt;body&gt;&lt;/body&gt;</code></p>
+  <h3 id="txt-format-pbr">Paragraphs, linebreaks, layers</h3>
+    <p>In order to add text to your HTML document you use the <code>&lt;p&gt;&lt;/p&gt;</code> TAG. You can align your paragraphs either left (default), right, center or justified. Be sure these paragraphs are contained by the <code>&lt;body&gt;&lt;/body&gt;</code></p>
 
-<figure class="highlight">
-<code class="prettyprint">&lt;html&gt;<br />
-    &nbsp;&nbsp;&lt;head&gt;<br />
-&nbsp;&nbsp;&nbsp;&lt;title&gt;&lt;/title&gt;&nbsp;<br />
-&nbsp;    &lt;/head&gt;<br />
-     &nbsp;&nbsp;&lt;body&gt;<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Hello world!&lt;/p&gt;<br />    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p align=&quot;right&quot;&gt;Adding content is easy!&lt;/p&gt;<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p align=&quot;center&quot;&gt;center this line&lt;/p&gt;<br />
-    &nbsp;&nbsp;&lt;/body&gt;<br />
-    &lt;/html&gt;</code>
-</figure>
-<a href="../examples/e503_html_textbasic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <figure class="highlight">
+    <code class="prettyprint">
+        &lt;html&gt;<br />
+        &nbsp;&lt;head&gt;<br />
+        &nbsp;&nbsp;&lt;title&gt;&lt;/title&gt;&nbsp;<br />
+        &nbsp;&lt;/head&gt;<br />
+        &nbsp;&nbsp;&lt;body&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Hello world!&lt;/p&gt;<br />    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Adding content is &lt;strong&gt;easy&lt;/strong&gt;!&lt;/p&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;Italics text&lt;/em&gt;&lt;/p&gt;<br />
+        &nbsp;&lt;/body&gt;<br />
+        &lt;/html&gt;</code>
+    </figure>
+    <a href="../examples/e503_html_textbasic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
-<p>Note: the attributes like <code>align="center"</code> for aligning these paragraphs is outdated. Cascading Style Sheets will be used instead in upcoming sessions.</p>
+    <p>&nbsp;</p>
+    <p>Paragraphs introduce a linefeed.  If you want to jump to a new line without adding a linefeed you can use the &quot;linebreak&quot; tag: <span class="codeInText">&lt;br&gt;</span> </p>
+    <figure class="highlight">
+      <code class="prettyprint">&nbsp;&lt;p&gt;Hello world &lt;br&gt; here starts a new line. &lt;br &gt; here another &lt;/p&gt; </code>
+    </figure>
+    <a href="../examples/e503_html_textbasic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p> <p>&nbsp;</p>
+    <p>The <code>&lt;div&gt;</code> TAG can be used for grouping other elements together. For example if you would like to create a two column layout, two div elements could be deployed, each holding several paragraphs of text in each column. This will be explained in detail in the CSS layout section of this guide. Think about <code>&lt;div&gt;</code> in terms of Photoshop layers.</p>
 
-<p>&nbsp;</p>
-<p>Paragraphs introduce a linefeed.  If you want to jump to a new line without adding a linefeed you can use the &quot;linebreak&quot; tag: <span class="codeInText">&lt;br&gt;</span> </p>
 
-   <figure class="highlight">
-<code class="prettyprint">&nbsp;&lt;p&gt;<span class="codeContent">Hello world</span> &lt;br&gt; <span class="codeContent">here starts a new line.</span> &lt;br &gt; <span class="codeContent">here another</span> &lt;/p&gt; </code>
-</figure>
-<a href="../examples/e503_html_textbasic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
-
-<p>&nbsp;</p>
-<h3 id="txt-format-headings">Text Structure/Headings</h3>
+  <h3 id="txt-format-headings">Headings</h3>
     <p>HTML comes with a list of predefine headings ranging from <span class="codeInText">&lt;h1&gt;&lt;/h1&gt;</span> (the biggest) to <span class="codeInText">&lt;h6&gt;&lt;/h6&gt;</span> the smallest. Each heading introduces automatically a linefeed. </p>
 
     <figure class="highlight">
-<code class="prettyprint">
-  &lt;h1&gt;Very big heading&lt;/h1&gt;<br />
-    &lt;h2&gt;Big heading&lt;/h2&gt;<br />
-    &lt;h3&gt;Not so big heading&lt;/h3&gt;
-    <br />
-    &lt;h4&gt;etc..&lt;/h4&gt;</code></figure>
+      <code class="prettyprint">
+      &lt;h1&gt;Very big heading&lt;/h1&gt;<br />
+      &lt;h2&gt;Big heading&lt;/h2&gt;<br />
+      &lt;h3&gt;Not so big heading&lt;/h3&gt;
+      <br />
+      &lt;h4&gt;etc..&lt;/h4&gt;</code>
+    </figure>
     <a href="../examples/e503_html_textbasic03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
-    <p>Although <code>font-size</code> could be used to create headings "by hand", the <code>hx</code>-tags are important to structure your content hierarchically.</p>
+    <p>Although <code>font-size</code> could be used to create headings "by hand", the <code>hx</code>-tags are important to structure your content hierarchically. This gives search engines and users important information how your content fit together. </p>
+
+    <p>HTML5 offers new, additional TAGS to structure content. <a href="#html5-doc-structure">See the corresponding section</a>. 
 
   <h3 id="txt-format-lists">Lists</h3>
-  <p>There are basically two types of lists: ordered <span class="codeInText">&lt;ol&gt;&lt;/ol&gt;</span> and unordered <span class="codeInText">&lt;ul&gt;&lt;/ul&gt;</span>. Individual entries are coded with <span class="codeInText">&lt;li&gt;&lt;/li&gt;</span></p>
-  <p>Example of a <strong>ordered</strong> list: </p>
-  <figure class="highlight">
-<code class="prettyprint">&lt;ol&gt;<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br />
-  &lt;/ol&gt;</code>
-</figure>
-  <a href="../examples/e503_html_textbasic04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
-  <p>&nbsp;</p>
-  <p>Example of a <strong>unordered</strong> list : </p>
-  <figure class="highlight">
-<code class="prettyprint">&lt;ul&gt;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">bullet item</span>&lt;/li&gt;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">another one</span>&lt;/li&gt;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">subsequent one</span> &lt;/li&gt;<br />
-&lt;/ul&gt;</code>
-</figure>
-<a href="../examples/e503_html_textbasic05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>There are basically two types of lists: ordered <span class="codeInText">&lt;ol&gt;&lt;/ol&gt;</span> and unordered <span class="codeInText">&lt;ul&gt;&lt;/ul&gt;</span>. Individual entries are coded with <span class="codeInText">&lt;li&gt;&lt;/li&gt;</span></p>
+    <p>Example of a <strong>ordered</strong> list: </p>
+    <figure class="highlight">
+      <code class="prettyprint">&lt;ol&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br />
+      &lt;/ol&gt;</code>
+    </figure>
+    <a href="../examples/e503_html_textbasic04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Example of a <strong>unordered</strong> list : </p>
+    <figure class="highlight">
+      <code class="prettyprint">&lt;ul&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">bullet item</span>&lt;/li&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">another one</span>&lt;/li&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<span class="codeContent">subsequent one</span> &lt;/li&gt;<br />
+      &lt;/ul&gt;</code>
+    </figure>
+    <a href="../examples/e503_html_textbasic05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
-<p>The important attributes for setting different starting numbers (<span class="codeInText">&lt;ol&gt;</span>) or the bullet type(s) (<span class="codeInText">&lt;ul&gt;</span>) is specified by Cascading Style Sheets. </p>
+    <p>The important attributes for setting different starting numbers (<span class="codeInText">&lt;ol&gt;</span>) or the bullet type(s) (<span class="codeInText">&lt;ul&gt;</span>) is specified by Cascading Style Sheets. </p>
+    <p>&nbsp;</p>
+
+
+
+
+
+<!--    HYPERLINKS AND PATHS                 -->
+<div class="page-header">
+  <h1 id="links">Hyperlinks</h1>
 </div>
+
+  <p>The following section will demonstrate how to get connected and link to other HTML files. </p>
+
+  <h3 id="links-anchor">Getting connected: the anchor tag </h3>
+    <p>A hyperlink is easy to create with the anchor tag: <span class="codeInText">&lt;a&gt;&lt;/a&gt;</span> In order to reference an external HTML document one specifies the address (URL) with the <span class="codeInText">href</span> attribute. </p>
+
+    <figure class="highlight">
+    <code class="prettyprint">&lt;a href=&quot;http://en.wikipedia.org&quot;&gt;click here to visit wikipedia&lt;/a&gt; </code></figure>
+    
+    <p>The <span class="codeInText">&lt;a&gt;&lt;/a&gt;</span> will enclose the text visible to the users as link. </p>
+    <p>Specifying a specific HTML file on a remote host is done by adding the path and the name of the file: </p>
+    <figure class="highlight">
+      <code class="prettyprint">&lt;a href=&quot;http://www.w3schools.com<strong>/html/html_links.asp</strong>&quot;&gt;Learn about  paths&lt;/a&gt;</code>
+    </figure>
+    <a href="../examples/e506_html_anchors01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Creating a link between two files of the same project is even easier since specifying the name of the file is enough. The following link points to a file name &quot;my_second_file.html&quot; which is located in the same folder as the current document of the link. Note how the URL does not contain any server or host address. </p>
+
+    <figure class="highlight">
+      <code class="prettyprint">&lt;a href=&quot;<strong>my_second_file.html</strong>&quot;&gt;Visit my other page&lt;/a&gt;</code>
+    </figure>
+
+    <p>To understand the logic of assembling these addresses and paths for linking files hosted on the same domain is essential because it not only serves to reference correctly other HTML pages but also to embedd external files such as images or videos into HTML. This is explained in more detail in an upcoming section <a href="#paths">understanding paths</a></p>
+
+  <h3 id="links-internal-anchor">Internal anchors</h3>
+    <p>Anchors can be internal in the same document. It allows you to jump from the top to the bottom of the same document (or the other way round). This is called <em>internal</em> anchor: </p>
+
+    <figure class="highlight">
+      <code class="prettyprint">&lt;a href=&quot;<strong>#</strong>section2&quot;&gt;Jump to section 2&lt;/a&gt;<br />
+      ....<br />
+      &lt;a name=&quot;section2&quot;&gt;Here starts section 2&lt;/a&gt; </code>
+    </figure>
+    <a href="../examples/e506_html_anchors02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Internal anchors can also form part of a complete address. Users can jump to a specific section of another document located on a other server. The important symbol is the &quot;#&quot; sign which indicates to the browser &quot;#here starts the internal part of the link....&quot;</p>
+    <figure class="highlight">
+      <code class="prettyprint">&lt;a href=&quot;http://www.nevermind.com/<strong>bla.html#chapter4</strong>&quot;&gt;External chapter 4&lt;/a&gt; </code>
+    </figure>
+
+
+  <h3 id="links-paths">Understanding paths</h3>
+    <p>This section demonstrates how to reference external media  files in HTML documents. Since HTML files contain text only it does not contain other files such as images or videos for example.  However, HTML allows to describe the location where additional  material is located. The issue is to understand how to  reference correctly those external resources. </p>
+
+    <h4>Site relative, document relative and absolute paths </h4>
+    <p>A fundamental difference exists between <em>absolute</em> vs. <em>relative</em> paths.</p> 
+
+    <p><strong>Absolute path</strong> describes the location of a certain file taking into account the  specific computer / domain this file is stored.It is the complete URL to a specific document. The absolute path of this document is: </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) &nbsp;<span class="codeInText">&nbsp;http://www.toytic.com/class/guide-html/index.html</span></p>
+    <p>Anybody on the Internet can identify and link to it by citing the above address. This path is independent from where it is located itself. </p>
+
+    <p><strong>Relative paths</strong> in contrast identify a given file in relation to another file/location. Here location matters. Consider the following: </p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;(2) &nbsp;&nbsp;<span class="codeInText">e506_html_anchors01.html</span></p>
+    <p>With just the name of the file it is not possible to know where this file is located precisely. Its absolute path could be as in example (1) but it also could be something different such as http://www.nevermind.com/e506_html_anchors01.html </p>
+
+    <p>As a consequence, when thinking in relative paths, it is important to bear in mind the location of the current link. There is a basic difference between "site relative paths" vs. "document relative paths." a) Site relative paths always take into consideration the root folder of the current site. Their applicatio is a bit more specific and not recommended for a start (<a href="http://help.adobe.com/en_US/dreamweaver/cs/using/WScbb6b82af5544594822510a94ae8d65-7c44a.html" target="_blank">see details</a>) b) Document relative paths take into account the current document. </p>
+
+    <p><span class="noteTxt">Note</span>: When creating a site use <strong>document relative</strong> paths. The links will always work as long as you keep the locations of files and folders consistent in relation to each other.</p>
+
+    <h4>Document relative paths example</h4>
+    <p>Below you see an example file structure captured from Dreamweaver.  It does not matter if it is Dreamweaver or the Windows Explorer or  Finder (on Mac). The file structure on computers are always those tree  systems of folders and files. </p>
+    <p><img src="../img/siteStructure.png" alt="example site structure" width="202" height="122" /></p>
+
+    <p>A  first folder &quot;e506root&quot; which contains two HTML files: pageA and pageB.  Furthermore it contains a sub folder called &quot;subSection&quot; which in turn  contains a pageC and a folder with an image. In the examples below I  will show you the code for linking the various documents and files. </p>
+    <h4>(1) pageA -&gt; pageB (same folder)</h4>
+    <p>The code below is <em>contained in pageA.html</em> and will produce a hyperlink (when viewed in a browser) to jump to pageB. We stay in the same directory. </p>
+   <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&lt;title&gt;pageA&lt;/title&gt;<br />
+      &nbsp;&lt;/head&gt;<br />
+      &nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;<strong>&lt;a href=&quot;pageB.html&quot;&gt;</strong> Link to pageB &lt;/a&gt; <br />
+      &nbsp;&lt;/body&gt;<br />
+      &lt;/html&gt;</code>
+    </figure>
+    <h4>(2) pageA -&gt; pageC (descend into child folder) </h4>
+    <p>In order to access pageC from within pageA we just have to further specify the path to the child folder. We enter into a child folder. </p>
+    <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&lt;title&gt;pageA&lt;/title&gt;<br />
+      &nbsp;&lt;/head&gt;<br />
+      &nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;<strong>&lt;a href=&quot;subsection/pageC.html&quot;&gt;</strong> Link to pageC &lt;/a&gt; <br />
+      &nbsp;&lt;/body&gt;<br />
+      &lt;/html&gt;</code>
+    </figure>
+    <h4>(3) pageC -&gt; pageA (ascend to parent folder) </h4>
+    <p>Note that this code is <em>contained in the file pageC.html </em>In order to get back from pageC to pageA we have to access the parent folder with the following syntax <span class="codeInText">../</span></p>
+    <p>If you want to ascend two levels in the folder hierarchy you have to concatenate this syntax: <span class="codeInText">../../</span> etc. </p>
+    <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&lt;title&gt;pageC&lt;/title&gt;<br />
+      &nbsp;&lt;/head&gt;<br />
+      &nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;<strong>&lt;a href=&quot;../pageA.html&quot;&gt;</strong> Link to pageA &lt;/a&gt; <br />
+      &nbsp;&lt;/body&gt;<br />
+      &lt;/html&gt;</code>
+     </figure> 
+    <h4>(4) pageA -&gt; goose.jpg </h4>
+    <p>In order to reference an image file which is contained even deeper in the file structure we just specify further the folders. Note that I don't use hyperlinks now but the <span class="codeInText">&lt;img&gt;</span> tag to reference an image. A browser will replace the code with the actual image file specified by the <span class="codeInText">src</span> attribute. The source attribute is also used in conjunction with other tags (for example to reference multimedia or external Style-Sheets.)</p>
+    <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&lt;title&gt;pageA&lt;/title&gt;<br />
+      &nbsp;&lt;/head&gt;<br />
+      &nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;<strong>&lt;img src=&quot;subSection/img/goose.jpg&quot;/&gt;</strong> <br />
+      &nbsp;&lt;/body&gt;<br />
+      &lt;/html&gt; </code>
+    </figure>
+    <a href="../examples/e506root/pageA.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p><button type="button" class="btn btn-warning btn-vid" vidindex="2"><span class="glyphicon glyphicon-facetime-video"></span> Watch video tutorial</button> for creating document relative paths. 
+    </p>
+  <p>&nbsp;</p>
+
+
+
+<!--   IMAGES                 -->
+<div class="page-header">
+  <h1 id="image">Images</h1>
+</div>
+
+
+  <h3 id="image-add">Adding images</h3>
+  <p>Inserting an image into a HTML document is done with the <span class="codeInText">&lt;img&gt;</span> tag. Its most important attribute is  the source &quot;src&quot; which indicates where the actual image file is located. Inserting an image is altogether quite easy: </p>
+  <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;<span class="codeContent">adding an image</span>&lt;/title&gt; <br />
+      &nbsp; &lt;/head&gt;<br />
+      &nbsp;&nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;img src=&quot;goose.jpg&quot; &gt; </strong><br />
+      &nbsp;&nbsp;&lt;/body&gt;<br />
+      &lt;/html&gt;</code>
+  </figure>
+  <p>The example assumes that an image file called &quot;goose.jpg&quot; resides in the same directory as the HTML file itself. </p>
+
+  <p>In order to learn how to correctly reference images located in different folders of a site, consult the <a href="#links-path">understanding paths</a> section of this guide. </p>
+
+  <h4>Core attributes</h4>
+  <p>The <span class="codeInText">&lt;img&gt;</span> TAG has several importan attributes besides <span class="codeInText">src</span></p> 
+
+  <p><span class="codeInText">width</span> / <span class="codeInText">height</span> specify the dimensions of the image.  Note that you can <em>scale</em> the image by modifying those values. Making it larger than it actually  is will result in a pixelated, low quality image; making it smaller  than it actually is in wasting bandwith, since you download more pixels  than you need. In general you should always specify the correct image  dimensions since this <em>speeds up display-time</em> by the browser! Note that "width" and "height" can also be set using CSS</p>
+
+  <p><span class="codeInText">alt</span> will display an alternative text meanwhile the image is downloading or when using a non-image browser. Providing an alt-attribute is required for making accessible webpages.</p>
+  <p><span class="codeInText">title</span> is a standard attribute to display a tool tip. All in all, a the standard code for embedding an image in your webpage looks like follows: </p>
+  <br>
+  <figure class="highlight">
+  <code class="prettyprint">
+    &lt;img src=&quot;goose.jpg&quot; width=&quot;120&quot; height=&quot;73&quot; alt=&quot;my goose&quot; title=&quot;isn't he cute?&quot;  &gt;<br />
+  </code>
+  </figure>
+  <a href="../examples/e502_html_img01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+ <p>Alignment of images is controlled with CSS.</p>
+
+<h3 id="image-formats">Webgraphics Image Formats </h3>
+  <p>To add an image to your web page is fairly easy: just use the <span class="codeInText">&lt;img &gt;</span> tag as described previously.  Most browsers understand by default a list of different image formats  which will be presented below. Deciding carefully which format to  choose is a point of vital importance since each serves different  purposes. Choosing a wrong format not only diminishes the quality of  your image but also the file size and hence download speed.</p>
+
+  <h4>GIF </h4>
+  <p>The Graphic Interchange Format (file extension *.gif).  It is limited to 8 bits which makes  it very effective for images which contain less than 256 colors. If  your image contains more than 256 colors it is better to use either  JPEG or PNG. Typically you use GIF for simple graphics like  titles/text, a logo, other graphic elements which incorporate few  colors. When saving an image for the web (File &gt; Save for the web),  image editors usually indicate the number of colors at the bottom  of the Color Table. </p>
+  <p>If your image contains more than  256 colors, then GIF uses &quot;dithering&quot; and will create intermediate  colors automatically which seriously affects image quality and  increases file size. 
+    <ul>
+      <li>lossless compression</li>
+      <li>8-bit color palette (less than 256 colors)</li>
+      <li>supports transparency on one color </li>
+    </ul>
+  </p>
+
+  <h4>JPEG</h4>
+  <p>The Joint Photographic Experts Group (file extension *.jpg or *.jpeg) format is a 24 bit format and  hence allows to store 16.8 Millions of colors (true color). It  therefore is an excellent candidate for storing photos. </p>
+  <p>The  disadvantage of JPEG is is lossy compression. If you store an image at  50% of its original quality, you cannot restore it to 100%.  ImageReady/Photoshop let's you experiment with the different file size  and quality settings when saving images to the web (File &gt; Save for  the web). 
+    <ul>
+      <li>lossy compression</li>
+      <li>truecolor (photos) and gray scale </li>
+      <li>does not support transparency </li>
+    </ul>
+  </p>
+
+  <h4>PNG</h4>
+  <p>The Portable Network Graphics format (file extension *.png). Think of it as the evolution of GIF. It  achieves smaller files for images with uniform color patches but also  supports true color. Given that it is a lossless compression it can be  used for saving photos. The big advantage of PNG is also its variable  transparency. As one page has it: the larger the GIF the bigger the  saving with PNG. 
+    <ul>
+      <li>lossless compression</li>
+      <li>truecolor, grayscale, 8-bit palette </li>
+      <li>supports alpha channel (variable transparency) </li>
+    </ul>
+  </p>
+
+   
+  <h4>Bitmap vs. Vector Graphics</h4>
+    <p>There is a fundamental difference when talking about image formats.  There are Bitmap (or raster) based image formats and vector based ones.  Whereas bitmaps store the color information of every pixel, a vector  based format (such as Flash shockwave or the w3 standard <a href="http://www.w3.org/Graphics/SVG/" target="_blank">SVG</a>)  stores the mathematical description of the shapes the image is composed  of. That is, whereas raster based images store each pixel of a circle for example, a vector based format stores its geometrical  formula. It is evident that this saves huge amounts of data for images  made up of simple geometrical shapes filled with uniform colors.  Bitmaps on the contrary work good for images with lots of shapes and  contours filled with many different colors such as photos for example. </p>
+    <p>Since there are no standard, open vector image  formats that would be supported by the main browsers on equal grounds,  we focus in the following on the standard raster formats for the web. </p>
+    
+  <h4>File Compression </h4>
+    <p>The A and O of online image formats is file size. Reducing file size  reduces download speed. There are two types of compressing data: lossy  and lossless. JPEG for example uses a lossy file compression algorithm.  Repeatedly saving an image with JPEG results in loss of image quality.  GIF and PNG on the other hand work lossless. Saving in those file  formats does not affect the original level of detail and hence quality  of the image.</p>
+    <p>&nbsp; </p>
+
+
+
+
+
+<!--    HTML5                 -->
+<div class="page-header">
+  <h1 id="html5">HTML5</h1>
+</div>
+
+
+  <!--h3 id="html5-intro">Introduction</h3-->
+
+
+
+  <h3 id="html5-semantic">Semantic Markup</h3>
+    <p>HTML5 comes with a couple of new tags that basically structure your content in a more meaningful way but do not add any content itself. The new semantic elements on the level of document structure are:
+      <ul>
+        <li><span class="codeInText">&lt;hgroup&gt;</span> (<a href="http://dev.w3.org/html5/markup/hgroup.html#hgroup" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-hgroup-element" target="_blank">WHATWG</a>) </li>
+        <li><span class="codeInText">&lt;header&gt;</span> (<a href="http://dev.w3.org/html5/markup/header.html#header" target="_blank">W3C specs</a> - <a href="http://dev.w3.org/html5/markup/section.html#section" target="_blank">WHATWG</a>)</li>
+        <li><span class="codeInText">&lt;article&gt;</span> (<a href="http://dev.w3.org/html5/markup/article.html#article" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-article-element" target="_blank">WHATWG</a>)</li>
+        <li><span class="codeInText">&lt;section&gt;</span> (<a href="http://dev.w3.org/html5/markup/section.html#section" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-section-element" target="_blank">WHATWG</a>)</li>
+        <li><span class="codeInText">&lt;aside&gt;</span> (<a href="http://dev.w3.org/html5/markup/aside.html#aside" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-aside-element" target="_blank">WHATWG</a>)</li>
+        <li><span class="codeInText">&lt;footer&gt;</span> (<a href="http://dev.w3.org/html5/markup/footer.html#footer" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-footer-element" target="_blank">WHATWG</a>)</li>
+        <li><span class="codeInText">&lt;nav&gt;</span> (<a href="http://dev.w3.org/html5/markup/nav.html" target="_blank">W3C specs</a> - <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-nav-element" target="_blank">WHATWG</a>)</li>
+      </ul>
+    </p>
+
+    <p>Since these elements do not affect in a visible way the display of our page, opinions might be divided when and where to best use them. </p>
+
+    <p class="note">Note: semantic markup does not invalidate &lt;div&gt; tags for constructing your page layout! You can still use them. </p>
+
+  <h4 id="html5-nav">nav</h4>
+    <p>The <span class="codeInText">nav</span> element indicates navigational elements on your page. Note, that not all links on a page are used for navigation and that the same page can contain several menus, i.e. <span class="codeInText">nav</span>'s</p>
+      
+    <p>A simple example would be: </p>
+    <figure>
+<pre class="prettyprint"><code> &lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About us&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;products.html&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/nav&gt;</code></pre>
+    </figure>
+    <a href="../examples/e802_html5_nav01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+    <p>The following example contains two menus, each with its own <span class="codeInText">nav</span> tag. Check the source to see the CSS for the formatting. </p>
+      <figure>
+<pre class="prettyprint"><code> &lt;nav id=&quot;horizontalMenu&quot;&gt;
+  &lt;h3&gt;Horizontal nav bar&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About us&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;products.html&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/nav&gt;
+
+ &lt;nav id=&quot;verticalMenu&quot;&gt;
+  &lt;h3&gt;Vertical nav bar&lt;/h3&gt; 
+   &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;deer.html&quot;&gt;John Deer&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;fer.html&quot;&gt;Nancy Fernandez&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;wu.html&quot;&gt;Lin Wu&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;     
+ &lt;/nav&gt;</code></pre>
+    </figure>
+    <a href="../examples/e802_html5_nav02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      
+    <p>An example for a collection of links that do <em>NOT</em> need a nav element are terms of service, copyright links usually found in at the footer of a page. </p>
+
+
+  <h4 id="html5-hdr">header, hgroup, h1-h6</h4>
+    <p>HTML5 adds two new tags to mark off header sections, <span class="codeInText">&lt;hgroup&gt;</span> and <span class="codeInText">&lt;header&gt;</span>. Together with the previous <span class="codeInText">&lt;h1&gt;</span>-<span class="codeInText">&lt;h6&gt;</span> this makes three different types of tags to indicate headers! </p>
+
+    <p>Thinking hierarchically, a <span class="codeInText">header</span> tag usually contains <span class="codeInText">hgroup</span> tags which in turn contain <span class="codeInText">h1-h6</span>. </p>
+      <ul>
+        <li>Use the <span class="codeInText">header</span> to set off a whole header section that might contain besides a <span class="codeInText">hgroup</span> other elements such as navigation, a paragraph or other meta-data. </li>
+        <li>Use the <span class="codeInText">hgroup</span> to group one or more <span class="codeInText">h1-h6</span> tags exclusively. If you have only one heading (such as h1-h6) no need for the <span class="codeInText">hgroup</span>. </li>
+        <li>Use <span class="codeInText">h1-h6</span> to actually specify a heading. </li>
+      </ul>
+    </p>
+
+    <p>See the example below for a combination of these usages: </p>
+    <figure>
+<pre class="prettyprint"><code> &lt;body&gt; 
+  &lt;header&gt;
+   &lt;hgroup&gt;
+    &lt;h1&gt;Main title: HTML5 Example&lt;/h1&gt;
+    &lt;h2&gt;Sub-title: Usage of header, hgroup and h1-h6 tags&lt;/h2&gt;
+   &lt;/hgroup&gt;
+   &lt;nav&gt;Navigation would go here...&lt;/nav&gt;
+   &lt;p&gt;All the above elements are contained by the header-tag.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;section&gt;Rest of the content... bla bla&lt;/section&gt;
+  ...
+ &lt;/body&gt;</code></pre>
+    </figure>
+    <a href="../examples/e800_html5_header01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>In other words, the <span class="codeInText">header</span> tag is used to encapsulate all elements/tags that you consider part of the entry part of your document while the <span class="codeInText">hgroup</span> bundles<em> </em>two or more h1-h6 elements. </p>
+    <p>If you have to use a simple heading in the text flow, use the h1-h6 straight away, no need for header or hgroup.</p>
+
+    <figure>
+    <pre class="prettyprint"><code> &lt;p&gt;Here we have some sort of text&lt;/p&gt;
+ &lt;h1&gt;Sort of title&lt;/h1&gt;
+ &lt;p&gt;Followed by more text>&lt;/p&gt;</code></pre>
+    </figure>
+    <a href="../examples/e800_html5_header02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+  <p>&nbsp;</p>
+  <h4 id="html5-article">article, section, aside</h4>
+    <p>To understand when to use <span class="codeInText">article</span> vs. <span class="codeInText">section</span> is confusing, to say the least. The main difference is that <span class="codeInText">article</span> should be a self-contained piece of content whereas <span class="codeInText">section</span> is not. Again, since we are dealing with semantic markup, judgment of how to use these tags depends a good deal on yourself. If  you think something can stand for itself and be moved between contexts (different sites for example) call it an <span class="codeInText"> article</span>, otherwise set it off with <span class="codeInText">section</span>. </p>
+    <p>Illustrative  would be an article about a writer for example: </p>
+    <figure>
+<pre class="prettyprint"><code> &lt;body&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Work and Life of Susan Smith&lt;/h1&gt;
+      &lt;p&gt;The unoffical version&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt; 
+      &lt;h3&gt;Biography&lt;/h3&gt;
+      &lt;p&gt;Was born... &lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Works&lt;/h3&gt;
+      &lt;p&gt;Her first and most famous book was published in &lt;/p&gt;
+      &lt;p&gt;Her second bestseller followed three years afterwards&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;
+      &lt;h4&gt;External Links>&lt;/h4&gt;
+      &lt;a href=&quot;&quot;&gt;authors site&lt;/a&gt;
+    &lt;/aside&gt;
+  &lt;/article&gt;
+ &lt;/body&gt;</code></pre>
+    </figure>
+    <a href="../examples/e801_html5_articlesectionaside.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+    <p>Note how the <span class="codeInText">article</span> contains several <span class="codeInText">sections</span> all dealing with different aspects of the life and work of the author in question. Finally, the <span class="codeInText">aside</span> tag points to related content of the article but which is not the primary focus (examples include glossaries, ads, etc.). </p>
+     <p>Other typical examples for <span class="codeInText"> article</span> would be forum post, a magazine or newspaper article, a blog entry, a user-submitted comment, an interactive widget or gadget, or any other independent item of content.</p>
+      
+  <h4 id="html5-footer">footer</h4>
+    <p>The footer element provides additional information to its &quot;root&quot; or &quot;parent&quot; element. Thus, copyright or date-info of a page is usually contained by the footer of the body element: </p>
+    <figure>
+<pre class="prettyprint"><code> &lt;body&gt;
+  &lt;!-- other tags such as header, article, etc. here --&gt; 
+  &lt;footer&gt;
+    &lt;p&gt;copyleft &amp;copy; susan smith&lt;/p&gt;
+    &lt;p&gt;sitemap&lt;/p&gt;
+    &lt;p&gt;top&lt;/p&gt;
+  &lt;/footer&gt;
+ &lt;/body&gt;</code></pre>
+    </figure>
+    <a href="../examples/e805_html5_footer01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>However, footers can also be attached to articles or sections of your page.</p>
+    <figure>
+<pre class="prettyprint"><code> &lt;body&gt;
+  &lt;article&gt;
+   &lt;h2&gt;Main article&lt;/h2&gt;
+   &lt;p&gt;Here goes the content&lt;/p&gt;
+   &lt;footer&gt;
+    &lt;p&gt;here the footer: written by Susan Smith&lt;/p&gt;
+   &lt;/footer&gt;
+  &lt;/article&gt;
+ &lt;/body&gt;</code></pre>
+    </figure>
+     <a href="../examples/e805_html5_footer02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+
+  <h4 id="html5-figure">Figure and figcaption</h4>
+  <p>The <span class="codeInText">figure</span> and <span class="codeInText">figcaption</span> elements are supposed to be used together. <span class="codeInText">figure</span> is not limited to represent image elements <span class="codeInText">&lt;img&gt;</span> but can be used to denote code listings for example. It is important to note that a <span class="codeInText">figure</span> could potentially be moved away from the primary content without affecting the flow of the document.<span class="codeInText"> figcaption</span> represents the caption of this element. Here is a simple example: </p>
+
+  <figure>
+  <pre class="prettyprint"><code> &lt;figure&gt;<br>  &lt;img src=&quot;../img/number_one.gif&quot; alt=&quot;the number one&quot;&gt;&lt;br&gt;<br>  &lt;figcaption&gt;The number one&lt;/figcaption&gt;<br> &lt;/figure&gt;</code></pre>
+  </figure>
+   <a href="../examples/e804_html5_figure01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+   <p>&nbsp;</p>
+  <p>Using several images with the same figcaption is just as easy: </p>
+  <figure>
+    <pre class="prettyprint"><code> &lt;figure&gt;<br>  &lt;img src=&quot;../img/number_one.gif&quot; alt=&quot;the number one&quot;&gt;<br>  &lt;img src=&quot;../img/number_two.gif&quot; alt=&quot;the number two&quot;&gt;<br>  &lt;img src=&quot;../img/number_three.gif&quot; alt=&quot;the number three&quot;&gt;&lt;br&gt;<br>  &lt;figcaption&gt;The numbers one to three&lt;/figcaption&gt;<br> &lt;/figure&gt;</code></pre>
+  </figure>
+  <a href="../examples/e804_html5_figure02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+   <p>&nbsp;</p>
+
+  <p>And last but not least: using figure/figcaption in conjunction with code examples:</p>
+  <figure>
+    <pre class="prettyprint"><code> &lt;figure&gt;<br>  &lt;pre&gt;&lt;code&gt; ... &lt;/code&gt;&lt;/pre&gt;<br>  &lt;figcaption&gt;Code example 3: bla bla&lt;/figcaption&gt;<br> &lt;/figure&gt;</code></pre>
+  </figure>
+  <a href="../examples/e804_html5_figure03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+
+<h3 id="html5-video">Video and audio</h3>
+  <p>Let's just define some basic terms often used in the context of video and audio formats online. </p>
+  <h4>Container format</h4>
+  <p>Often, when talking about different video formats such as AVI or MOV we are not talking about the video file itself but its wrapper format. Wrapper or container formats wrap several multimedia files + information about them into one file. For example, apart from the actual video file itself, a wrapper file usually contains subtitles or menu information (such as in DVDs). A container format thus contains several other files, starting from the video and audio file, plus some metadata about these multimedia streams. The most common container formats are: </p>
+  <ul>
+    <li>AVI - Audio Video Interleave (Microsoft)</li>
+    <li>DivX- DivX Media Format (DivX Inc)</li>
+    <li>FLV - Adobe Flash Video Format (Sorenson H.263, H.264, MP3)</li>
+    <li>Ogg - Xiph.org Foundation (Theora, Vorbis)</li>
+    <li>MPEG-4 / MP4 - ISO (H.264)</li>
+    <li>WebM - Mozilla, Opera, Google and others. (VP8, Vorbis)</li>
+    </ul>
+  <p>Even if a certain media player understands the wrapper format of a specific file, it might happen that it cannot read the actual video or audio file contained. The format of the video/audio file depends on the <em>codec</em> used.  </p>
+  <p>Check out the <a href="http://en.wikipedia.org/wiki/Comparison_of_container_formats">comparison of container formats</a> on wikipedia. </p>
+  
+  <h4>Codecs</h4>
+  <p>Raw uncompressed audio or video produces very large files. Codecs (short for coder/decoder) are essentially algorithms to compress/uncompress data. Different types of video/audio materials need different compression techniques. </p>
+  <p>Amongst the most well known <strong>video</strong> codecs are: </p>
+  <ul>
+    <li>Theora (Ogg)</li>
+    <li>H.264 (MP4)</li>
+    <li>Sorenson H.263 (Flash)</li>
+    <li>VP8, VP9 (webm)</li>
+    </ul>
+    <p>And some examples of <strong>audio</strong> codecs: </p>
+    <ul>
+      <li>Vorbis (Xiph.org)</li>
+      <li>MP3</li>
+      <li>WMA</li>
+    </ul>
+    <p>The Flash Video Format, for example, supports H.264 video codec and MP3 audio codec (amongst others). </p>
+    <p>See <a href="http://en.wikipedia.org/wiki/Comparison_of_video_codecs">comparison of video codecs</a> and <a href="http://en.wikipedia.org/wiki/Comparison_of_audio_codecs">comparison of audio codecs</a> at wikipedia.</p>
+
+    <h4>Your best bet</h4>
+    <p>Not all browsers support all codecs. Thankfully HTML5 <code>&lt;video&gt;</code> tag allows to specify various video sources (see example below). The "who-supports-what" of HTML5 video is continuously shifting given the huge variety of operating sytems, browsers, mobile devices, etc. Your best best bet is to use a combination of webM and H.264 codecs which covers most cases (see the <a href="http://en.wikipedia.org/wiki/HTML5_video#Browser_support" target="_blank">browser support comparison here</a>.)</p>
+
+    <h4>Embedding video</h4>
+
+    <p>&nbsp;</p>
+
+    <p>&nbsp;</p>
+
+
+    <h4>Javascript based video players</h4>
+
+
+
+
 
 
 
@@ -356,5 +889,25 @@
       <requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
       </License>
       </rdf:RDF> -->
+
+
+      <!-- modal for videos -->
+      <div class="modal fade" id="videoModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Video Tutorial</h4>
+          </div>
+          <div class="modal-body">
+            <div id="vidplayer" class="flowplayer"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
   </body>
 </html>
