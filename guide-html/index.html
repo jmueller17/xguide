@@ -66,7 +66,7 @@
             var vidindex = parseInt($(this).attr("vidindex"));
             var vidtitle = $(this).attr("title");
 
-            $("#videoModal .modal-title").append(" - " + vidtitle);
+            $("#videoModal .modal-title").empty().append("Video Tutorial - " + vidtitle);
             $("#videoModal").modal("show");
 
             player.play(vidindex);
@@ -109,9 +109,9 @@
             <li class="active">
               <a href="../guide-html">//HTML</a>
             </li>
-            <li>
+            <!--li>
               <a href="../guide-css/">CSS//</a>
-            </li>
+            </li-->
             <!--li>
               <a href="../guide-javascript/">JavaScript//</a>
             </li-->
@@ -125,7 +125,7 @@
     <div class="bs-header-html" id="content">
       <div class="container">
         <h1>HTML</h1>
-        <p>The basics</p>
+        <p>The very basics</p>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
                   <a href="#html5">HTML5</a>
                   <ul class="nav">
                     <li><a href="#html5-semantic">Semantic Markup</a></li>
-                    <li><a href="#html5-semantic">Video</a></li>
+                    <li><a href="#html5-video">Video</a></li>
                     
                   </ul>
                 </li>
@@ -212,7 +212,6 @@
 &lt;/html&gt;<br>
   </code>
 </figure>
- <a href="../examples/e500_html_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
             <p>The elements of a markup language - the elements used to code this meta-information - are called TAGs. Tags are distinguished from the content to which they apply by opening "&lt;" and closing "&gt;" brackets. To get a glimps of the different tags that might exist in a HTML document, check this reference <a href="http://www.w3schools.com/tags/default.asp">w3schools.</a></p>
 
@@ -358,8 +357,21 @@
       <code class="prettyprint">&nbsp;&lt;p&gt;Hello world &lt;br&gt; here starts a new line. &lt;br &gt; here another &lt;/p&gt; </code>
     </figure>
     <a href="../examples/e503_html_textbasic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
-    <p>&nbsp;</p> <p>&nbsp;</p>
-    <p>The <code>&lt;div&gt;</code> TAG can be used for grouping other elements together. For example if you would like to create a two column layout, two div elements could be deployed, each holding several paragraphs of text in each column. This will be explained in detail in the CSS layout section of this guide. Think about <code>&lt;div&gt;</code> in terms of Photoshop layers.</p>
+    <p>&nbsp;</p>
+    <p>The <code>&lt;div&gt;&lt;/div&gt;</code> TAG can be used for grouping other elements together.</p>
+
+    <figure>
+    <pre class="prettyprint"><code> &lt;div&gt;  
+  &lt;h1&gt;A heading&lt;/h1&gt;
+  &lt;p&gt;some text&lt;/p&gt;
+ &lt;/div&gt;
+ &lt;div&gt;
+  &lt;h1&gt;Another heading&lt;/h1&gt;
+  &lt;p&gt;with its text&lt;/p&gt;
+ &lt;/div&gt;</code></pre></figure> 
+    <a href="../examples/e503_html_textbasic06.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+<p>The above example could be used to code a two column layout where each layer ( <code>&lt;div&gt;&lt;/div&gt;</code> ) holds several paragraphs of text. Right now, the layers are placed one below the other. However, with the adquate CSS rules, layers can be placed and stacked wherever on the page. Think about <code>&lt;div&gt;</code> in terms of Photoshop layers, a more or less (it introduces a liniefeed) neutral container element. </p>
 
 
   <h3 id="txt-format-headings">Headings</h3>
@@ -529,7 +541,7 @@
     </figure>
     <a href="../examples/e506root/pageA.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
-    <p><button type="button" class="btn btn-warning btn-vid" vidindex="2"><span class="glyphicon glyphicon-facetime-video"></span> Watch video tutorial</button> for creating document relative paths. 
+    <p><button type="button" class="btn btn-warning btn-vid" vidindex="2" title="Document relative paths"><span class="glyphicon glyphicon-facetime-video"></span> Watch video tutorial</button> for creating document relative paths. 
     </p>
   <p>&nbsp;</p>
 
@@ -568,7 +580,7 @@
   <br>
   <figure class="highlight">
   <code class="prettyprint">
-    &lt;img src=&quot;goose.jpg&quot; width=&quot;120&quot; height=&quot;73&quot; alt=&quot;my goose&quot; title=&quot;isn't he cute?&quot;  &gt;<br />
+    &lt;img src=&quot;goose.jpg&quot; width=&quot;120&quot; height=&quot;73&quot; alt=&quot;my goose&quot; title=&quot;isn't it cute?&quot;  &gt;
   </code>
   </figure>
   <a href="../examples/e502_html_img01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
@@ -809,7 +821,7 @@
 
 
 
-<h3 id="html5-video">Video and audio</h3>
+<h3 id="html5-video">Video</h3>
   <p>Let's just define some basic terms often used in the context of video and audio formats online. </p>
   <h4>Container format</h4>
   <p>Often, when talking about different video formats such as AVI or MOV we are not talking about the video file itself but its wrapper format. Wrapper or container formats wrap several multimedia files + information about them into one file. For example, apart from the actual video file itself, a wrapper file usually contains subtitles or menu information (such as in DVDs). A container format thus contains several other files, starting from the video and audio file, plus some metadata about these multimedia streams. The most common container formats are: </p>
@@ -818,7 +830,7 @@
     <li>DivX- DivX Media Format (DivX Inc)</li>
     <li>FLV - Adobe Flash Video Format (Sorenson H.263, H.264, MP3)</li>
     <li>Ogg - Xiph.org Foundation (Theora, Vorbis)</li>
-    <li>MPEG-4 / MP4 - ISO (H.264)</li>
+    <li>MPEG-4 / MP4 - ISO (H.264, ACC)</li>
     <li>WebM - Mozilla, Opera, Google and others. (VP8, Vorbis)</li>
     </ul>
   <p>Even if a certain media player understands the wrapper format of a specific file, it might happen that it cannot read the actual video or audio file contained. The format of the video/audio file depends on the <em>codec</em> used.  </p>
@@ -843,16 +855,34 @@
     <p>See <a href="http://en.wikipedia.org/wiki/Comparison_of_video_codecs">comparison of video codecs</a> and <a href="http://en.wikipedia.org/wiki/Comparison_of_audio_codecs">comparison of audio codecs</a> at wikipedia.</p>
 
     <h4>Your best bet</h4>
-    <p>Not all browsers support all codecs. Thankfully HTML5 <code>&lt;video&gt;</code> tag allows to specify various video sources (see example below). The "who-supports-what" of HTML5 video is continuously shifting given the huge variety of operating sytems, browsers, mobile devices, etc. Your best best bet is to use a combination of webM and H.264 codecs which covers most cases (see the <a href="http://en.wikipedia.org/wiki/HTML5_video#Browser_support" target="_blank">browser support comparison here</a>.)</p>
+    <p>Not all browsers support all codecs. Thankfully HTML5 <code>&lt;video&gt;</code> tag allows to specify various video sources (see example below). The "who-supports-what" of HTML5 video is continuously shifting given the huge variety of operating sytems, browsers, mobile devices, etc. Your best best bet is to deploy your videos in both webM and mp4 containers which cover most cases (see the <a href="http://en.wikipedia.org/wiki/HTML5_video#Browser_support" target="_blank">browser support comparison here</a>). Thus, create two files, one encoded with VP8 (video) and Vorbis (audio) for webm, and H.264 (video) / ACC (audio) for mp4.</p>
 
     <h4>Embedding video</h4>
+    <p>HTML5 introduces the <code>&lt;video&gt;</code> TAG. This eliminates the need for third party plugins like Flash or Quicktime as long as the browser supports HTML5 and the deployed container/codec format. Here is the most basic setup specifying two video formats: </p>
+
+    <figure>
+<pre class="prettyprint"><code> &lt;video controls&gt;
+   &lt;source src="myVideo.mp4" type="video/mp4"&gt;
+   &lt;source src="myVideo.webm" type="video/webm"&gt;
+ &lt;/video&gt;
+</code></pre>
+    </figure>
+      <a href="../examples/e820_html5_video.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+    <p>The browser automatically chooses the video format that it supports. The <code>type</code> attribute of the source-tag delivers this information upfront. <code>controls</code> displays play/pause button, the timeline and volumne control. In addition <code>&lt;video&gt;</code> supports the following attributes: <code>autoplay</code>, <code>preload</code>, <code>poster</code>, <code>height</code>, <code>width</code>, <code>loop</code>, <code>muted</code>. The <code>poster</code> attributes allows you to specify a still-image meanwhile the video is loading. Try out these controls interactively <a href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_video_all" target="_blank">here</a>.</p>
+
+    <p>Video in HTML5 is much more powerful than this simple example suggests. Playback of specific fragments is possible by specifing the time range you are interested in; subtitles and captions can be included with the <code>&lt;track&gt;</code> TAG. CSS is used for skinning. Videos are also completely controllable through JavaScript, giving rise to different HTML5 video player libraries (see below). These basics are covered in some more detail in <a href="http://www.html5rocks.com/en/tutorials/video/basics/" target="_blank">this html5rocks tutorial</a>.</p>
+
+    <h4>HTML5 Video Players</h4>
+    <p>There is a whole range of different HTML5 video players available. Check out this very good player comparison here <a href="http://praegnanz.de/html5video/" target="_blank">VideoSWS</a>.</p> 
+
+    <p><a href="http://www.videojs.com/" target="_blank">Videojs</a> is an open source library. It is quite easy to setup and if you run into trouble, its big community has solved most problems already for you.</p>
+
+    <p>Another promient player is <a href="http://flowplayer.org/" target="_blank">flowplayer</a>. It's feature rich, integrates well with JQuery and has great <a href="http://flowplayer.org/demos/playlist/" target="_blank">playlist</a> capabilities. </p>
 
     <p>&nbsp;</p>
 
-    <p>&nbsp;</p>
-
-
-    <h4>Javascript based video players</h4>
 
 
 
