@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{xGuide} - CSS </title>
+    <title>HTML // CSS // Javascript</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../js/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -31,7 +31,14 @@
 
     <script>
       $(function(){
-        window.prettyPrint && prettyPrint()
+        window.prettyPrint && prettyPrint();
+
+        var offset = 76;
+        $('.bs-sidenav li a').click(function(event) {
+          event.preventDefault();
+          $($(this).attr('href'))[0].scrollIntoView();
+          scrollBy(0, -offset);
+        });
       })
     </script>
   </head>
@@ -70,7 +77,7 @@
     <div class="bs-header-css" id="content">
       <div class="container">
         <h1>CSS</h1>
-        <p>Learning CSS</p>
+        <p>The very basics</p>
       </div>
     </div>
 
@@ -80,11 +87,57 @@
           <div class="bs-sidebar hidden-print" role="complementary" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
             <ul class="nav bs-sidenav">
                 <li>
-                  <a href="#basics">Basics</a>
+                  <a href="#basics">Introduction</a>
                   <ul class="nav">
-                    <li><a href="#basics-html">Introduction</a></li>
-                    <li><a href="#basics-syntax">Syntax</a></li>
-                    <li><a href="#"></a></li>
+                    <li><a href="#basics-css">What are CSS</a></li>
+                    <li><a href="#basics-syntax">Simple Syntax</a></li>
+                    <li><a href="#basics-link">Link CSS &amp; HTML</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#selectors">CSS selectors</a>
+                  <ul class="nav">
+                    <li><a href="#selectors-type">Type</a></li>
+                    <li><a href="#selectors-class">Class</a></li>
+                    <li><a href="#selectors-id">ID</a></li>
+                    <li><a href="#selectors-descendant">Descendant</a></li>
+                    <li><a href="#selectors-grouping">Grouping</a></li>
+                    <li><a href="#selectors-inheritance">Inheritance</a></li>
+                    <li><a href="#selectors-pseudo">Pseudo formats</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#text-css">Styling text</a>
+                  <ul class="nav">
+                    <li><a href="#text-css-font">font</a></li>
+                    <li><a href="#text-css-text">text</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#box">Box model</a>
+                  <ul class="nav">
+                    <li><a href="#box-margin">margin</a></li>
+                    <li><a href="#box-padding">padding</a></li>
+                    <li><a href="#box-border">border</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#classification">Classification</a>
+                  <ul class="nav">
+                    <li><a href="#classification-float">float</a></li>
+                    <li><a href="#classification-clear">clear</a></li>
+                    <li><a href="#classification-display">display</a></li>
+                    <li><a href="#classification-visibility">visibility</a></li>
+                    <li><a href="#classification-overflow">overflow</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#layout">Page layout</a>
+                  <ul class="nav">
+                    <li><a href="#layout-hsf">header, main, footer</a></li>
+                    <li><a href="#layout-h2cf">header, 2 col, footer</a></li>
+                    <li><a href="#layout-complex">More complex</a></li>
                   </ul>
                 </li>
             </ul>
@@ -98,23 +151,760 @@
             <div class="page-header">
               <h1 id="basics">Introduction</h1>
             </div>
-            <p class="lead">Lead stuff</p>
-
-            <h3 id="basics-html">Bla</h3>
-            
-            
-            <div class="highlight">
-              <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;</code></pre>
-            </div>
-
            
 
+            <h3 id="basics-css">What are Cascading Style Sheets?</h3>
+
+           <p>Cascading Style Sheets (CSS) are used to control the layout of a HTML  documents. They have been introduced to seperate better between  content and layout. Style-Sheets offer you a wider and more  flexible way to design your web pages. With HTML tags you structure information (paragraphs, anchors, lists, etc.) -<em> with CSS you decide their look. </em>Note that its syntax and language has nothing to do with HTML itself. You have to start from scratch! </p>
+          <p>The advantages of CSS are: </p>
+          <p>
+              <ul>
+                <li>more <strong>precise control</strong> over layout, fonts, colors, backgrounds, and other typographical effects;<br />
+                </li>
+                <li><strong>maintaining</strong> the appearance and formatting of an unlimited number of pages by changing just one document; <br />
+                </li>
+                <li><strong>compatibility</strong> across browsers and platforms; and <br />
+                </li>
+                <li>less code, smaller pages, and faster downloads. </li>
+              </ul>
+            </p>
+            
+           
+<h3 id="basics-syntax">Simple Syntax</h3>
+    <p>CSS works by defining rules. Each rule is made up of three parts: select the element you want to style, specify the property you want to style and define its value: </p>
+    <figure class="highlight">
+    <code class="prettyprint">selector {property:value;} </code></figure>
+    <p>A solution for setting the color of your paragraph with CSS would look like this: </p>
+    
+    <figure class="highlight">
+    <code class="prettyprint">p {color:red;} </code></figure>
+
+    <p>All text contained by the <code>&lt;p&gt;&lt;/p&gt;</code> tag inside the HTML document would then appear red. Or, to give a second example: switching from underline to overline for all hyperlinks: </p>
+    <figure class="highlight">
+    <code class="prettyprint">a {text-decoration:overline;} </code></figure>
+    <p>All <code>&lt;a&gt;</code> inside the HTML file would then display a <span style="text-decoration:overline">overline</span> instead of the standard <span style="text-decoration:underline">underline</span>. </p>
+    <p>&nbsp;</p>
+
+    <h3 id="basics-link">Link CSS &amp; HTML</h3>
+    <p>There are several ways how CSS can be linked to HTML. There are three options: (1) writing CSS directly into the <code>&lt;head&gt;&lt;/head&gt;</code> of a HTML file, (2) linking to external CSS files, or (3) attaching CSS directly to TAGS. </p>
+ 
+    <h4>(1) CSS in HTML header section </h4>
+    <p>CSS rules can be written directly into the HTML document's header section. This makes sense if the CSS rules are specific for this particular HTML file and this file only. Watch this example in action and see how it affects the size of the text (font-size) and the background color of your page. </p>
+
+<figure class="highlight">
+<code class="prettyprint">&lt;html&gt;<br />
+    &nbsp;&lt;head&gt;<br />
+    &nbsp;&nbsp;&lt;title&gt;CSS&lt;/title&gt;<br />
+    &nbsp;&nbsp;<strong>&lt;style type=&quot;text/css&quot;&gt;</strong><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>p {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:40px;
+    <br />
+    &nbsp;&nbsp;&nbsp; &nbsp; } </strong><br />
+    &nbsp;&nbsp;<strong>&lt;/style&gt;</strong><br />
+    &nbsp;&lt;/head&gt;<br />
+    &nbsp;&lt;body&gt;<br />
+    &nbsp;&nbsp; &lt;p&gt; My First CSS Rule &lt;/p&gt;<br />
+    &nbsp;&lt;/body&gt;<br />
+    &lt;/html&gt;<br />
+    </code></figure>
+     <a href="../examples/e507_css_text01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+<h4>(2) Importing external CSS files</h4>
+    <p>All CSS information can also be contained in an extra, separate file. Fire-up your favorite text editor, create a new document and save it as &quot;myCSSRules.css&quot;. Note the new file extension &quot;*.css&quot; Now write your CSS rules: </p>
+   <figure class="highlight">
+<code class="prettyprint">body {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   background-color:#000000; /* sets the page background to black */ <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:#ffffff; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* and the text to white */<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+    <br />
+    p {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:3em;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* font size to triple than default */ <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter-spacing:2em;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line-height:2em;<br />
+    &nbsp;&nbsp;}</code></figure>
+
+    <p>Note the &quot;em&quot; unit. 1 &quot;em&quot; is equal to the default font size. 2 &quot;em&quot; therefore indicates to double the font size. CSS values can be given in absolute units such as pixel (px), inch (in), centimeter (cm) or in relative units such as &quot;em&quot; or percentage (%). </p>
+    <p>Save your CSS. Now open a fresh HTML file. In the header section  import the external CSS file (given it is located in the same folder as your HTML): </p>
+    <figure class="highlight">
+<code class="prettyprint">&lt;html&gt;<br />
+    &nbsp;&lt;head&gt;<br />
+    &nbsp;&nbsp;&lt;title&gt;CSS&lt;/title&gt;<br />
+    &nbsp;&nbsp;&lt;style type=&quot;text/css&quot;&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>@import url(&quot;myCSSRules.css&quot;); </strong><br />
+    &nbsp;&nbsp;&lt;/style&gt;<br />
+    &nbsp;&lt;/head&gt;<br />
+    &nbsp;&lt;body&gt;<br />
+    &nbsp;&nbsp; &lt;p&gt; My First CSS Rule &lt;/p&gt;<br />
+    &nbsp;&lt;/body&gt;<br />
+    &lt;/html&gt; </code></figure>
+<a href="../examples/e507_css_text02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+ <p>Finished. You can import the external CSS into as many HTML documents as you wish. Think about it: from one CSS you can control and manage a unlimited number of HTML files! </p>
+    <h4>(3) attach CSS directly to tags</h4>
+    <p>Writing CSS rules directly inside HTML tags is of limited use. The power of CSS consist in controling a large number of HTML from one central place. Obviously the styles attached to tags apply to this tag only! Use with caution!! </p>
+    <figure class="highlight">
+<code class="prettyprint">&nbsp;&lt;p <strong>style=&quot;font-weight:bold;&quot;</strong>&gt;to make some text bold&lt;/p&gt; </code> </figure>
+  <p>&nbsp; </p>
+
+
+<div class="page-header">
+  <h1 id="selectors">CSS Selectors</h1>
+</div>
+
+    <p>CSS2 is a very powerful language. It is very flexible when it comes to &quot;knitting&quot; CSS and HTML together. Laying down which styles apply to which HTML tags is crucial for efficient use of CSS. A simple selector has already been introduced, namely the selector which is based on the type of the HTML tag. But there are many more possibilities as shown below. For a complete list of CSS selectors, check out the W3 schools <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">CSS reference</a> (notice the right most column which indicates in which CSS version the property is defined). </p>
+    <p>&nbsp;</p>
+    
+    <h3 id="selectors-type">Type </h3>
+    <p>Applying a CSS rule according to the type of the HTML tag. By using the name of the HTML tag element itself, the CSS rule will apply to all tags of the same kind. </p>
+    <figure class="highlight">
+    <code class="prettyprint">body &nbsp;{padding:100px 100px;} <br />
+    p &nbsp;&nbsp;&nbsp;&nbsp;{color:orange;}<br />
+    a &nbsp;&nbsp;&nbsp;&nbsp;{text-decoration:none}<br />
+    td &nbsp;&nbsp;&nbsp;{background-color:green;}</code></figure>
+    <a href="../examples/e510_css_rules01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>CSS defines here a style for each of the above mentioned tags. </p>
+    <p>&nbsp;</p>
+    
+    <h3 id="selectors-class">Class&nbsp;&nbsp; &quot;.&quot; </h3>
+    <p>CSS allows you to define several rules independent of existing tags. These style can be attached to any HTML element by using the <span class="codeInText">class</span> attribute. </p>
+    <figure class="highlight">
+<code class="prettyprint">h1.main &nbsp;&nbsp;&nbsp;{color:red;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* specific to h1 */<br />
+    .underline {text-decoration:underline;}&nbsp;&nbsp;&nbsp;/* any element */ <br />
+    .highlight {background-color:yellow;}    &nbsp;&nbsp;&nbsp;/* &nbsp;any element */ </code></figure>
+    <p>The class selector uses the &quot;.&quot; and can be attached to several HTML element with the class attribute. Note that the first rule combines a type selector with a class selector. This means &quot;.main&quot; can only be attached to <code>&lt;h1&gt;&lt;/h1&gt;</code> tags.  The rest of the styles can be attached to different HTML tags. </p>
+    <figure class="highlight">
+<code class="prettyprint">&lt;h1 <strong>class=&quot;main&quot;</strong>&gt;principal heading&lt;/h1&gt; <br />
+    &lt;p <strong>class=&quot;underline</strong>&quot;&gt;This text is underlined&lt;/p&gt;<br />
+    &lt;p <strong>class=&quot;highlight&quot;</strong>&gt;and this one highlighted&lt;/p&gt;<br />
+    &lt;h2&gt;&lt;span class=&quot;hightlight&quot;&gt;sub-heading&lt;/span&gt;&lt;/h2&gt;</code></figure>
+    <a href="../examples/e510_css_rules02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    
+    <h3 id="selectors-id">ID  &nbsp;&nbsp;&quot;#&quot; </h3>
+    <p>The id selector is used to define a unique style. </p>
+    <p class="note"><span class="noteTxt">Note:</span> ID's have to be unique within your HTML document! You cannot have two tags with the same ID!! </p>
+    <p>It applies only to that element whose ID equals the CSS rule. Usually the ID selector is used to control positioning of elements where each tag (e.g. a layer) has a unique position. To define a unique style use the &quot;#&quot;: </p>
+    <figure class="highlight">
+<code class="prettyprint"><strong>#layer01</strong> {position:absolute; bottom:10px; right:10px; background-color:green;} </code></figure>
+  <p>This rule is then linked to HTML the following way:  </p>
+  <figure class="highlight">
+<code class="prettyprint"><strong>&lt;div id=&quot;layer01&quot;&gt;</strong> inside layer 01 &lt;/div&gt; </code></figure>
+<a href="../examples/e510_css_rules03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="selectors-descendant">Descendant </h3>
+    <p>Certain CSS rules can take into account the actual nesting of the HTML elements in order to apply. The following rules specify two font sizes for paragraphs. </p>
+    <figure class="highlight">
+<code class="prettyprint">p &nbsp;&nbsp;&nbsp;&nbsp;{font-size:26px;} <br />
+    td p &nbsp;{font-size:12px;}</code></figure>
+    <a href="../examples/e510_css_rules04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>CSS automatially will apply the small font to the paragraph contained with the table cells and the normal font size to paragraphs outside table cells. </p>
+    <p>Contextual selectors are a convenient way to specify styles without having to use the &quot;class&quot; or &quot;id&quot; attribute all the time.  The following second example defines a CSS rule for the anchor tag inside a menu layer.  </p>
+    <figure class="highlight">
+<code class="prettyprint">a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{color:blue;}<br />
+    <br />
+    div#menu &nbsp;&nbsp;&nbsp;{width:150px; height:200px; background-color:gray;}<br />
+    div#menu a&nbsp;&nbsp;{color:red; display:block;}</code></figure>
+    <a href="../examples/e510_css_rules05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="selectors-grouping">Grouping</h3>
+    <p>You can group or line up several selectors. For example to specify the same rule for both paragraphs <span class="codeInText">&lt;p&gt;&lt;/p&gt;</span> and list elements <span class="codeInText">&lt;li&gt;&lt;/li&gt;</span>, write: </p>
+    <figure class="highlight">
+    <code class="prettyprint">p, li {font-size:2em;}&nbsp;</code></figure>
+    <p>Or you can specify the color of several headings in one line</p>
+    <figure class="highlight">
+    <code class="prettyprint">h1, h2, h3, h4 {color:green;} </code></figure>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="selectors-inheritance">Inheritance </h3>
+    <p>Another important concept with CSS is inheritance. This means that HTML elements contained by another higher-level HTML elements will inherit its associated parent CSS properties. All paragraphs will inherent for example the CSS rules specified for the body. The advantage is that you can specify a default font-family for the &lt;body&gt; and then only define the exceptions to the rule. Example: </p>
+    <figure class="highlight">
+<code class="prettyprint">body {font-family: &quot;Times New Roman&quot;; font-size:2em;}<br />
+    p.quote {font-family: Verdana; font-size:1em;} </code></figure>
+    <p>By default all &lt;p&gt;&lt;/p&gt; - since they are contained by the &lt;body&gt;&lt;/body&gt; - will be displayed with &quot;Times New Roman.&quot; Certain paragraphs are set off with a specific font (Verdana). </p>
+    <figure class="highlight">
+<code class="prettyprint">&lt;body&gt;<br />
+    &nbsp;&nbsp;&nbsp;&lt;h3&gt;This is a heading in Times&lt;/h3&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;p class=&quot;quote&quot;&gt;This is the exception, a quote in Verdana&lt;/p&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;p&gt;Here we return to Times&lt;/p&gt;<br />
+&lt;/body&gt; 
+&nbsp;</code></figure>
+ <a href="../examples/e510_css_rules06.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>Considering and taking advantage of  the hierarchical relations of HTML and nested tags makes your coding a lot more efficient. </p>
+    <p>&nbsp;</p>
+
+
+    <h3 id="selectors-pseudo">Pseudo formats</h3>
+    <p>A pseudo format allows you to specify styles for elements (or states) that have no direct expression in HTML. With pseudo-formats you can specify CSS rules for interactive states such as mouseover or mouseleave for example.</p>
+
+    <h4>syntax</h4>
+    <p>In general, the syntax for specifying a pseudo format is </p>
+    <figure class="highlight">
+    <code class="prettyprint">selector:<strong>pseudo-class</strong> {property:value}</code></figure>
+    <p>You can also combine existing CSS clases with pseudo formats: </p>
+    <figure class="highlight"><code class="prettyprint">selector.class:pseudo-class {property:value}</code></figure>
+    
+    <h4>styling anchors </h4>
+    <p>One of the most popular uses of pseudo-formats is the styling of achors. A hyperlink has several states: univisited, visited, mouse over, pressed. You can assign a special format to each of these states. </p>
+    <figure class="highlight">
+    <code class="prettyprint">a:link        &nbsp;&nbsp;&nbsp;{color:#3300CC;} //unvisited<br />
+        a:visited   {color:#00CC00;} //visited <br />
+        a:hover     &nbsp;&nbsp;{color:#FFFFFF; background-color:#3300CC;} //mouse over<br />
+        a:active    &nbsp;{color:#FF6600; background-color:#000033;}
+        //mouse pressed </code></figure>
+
+    <a href="../examples/e513_css_pseudo01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>Note, that the order of link, visited, hover, active is important and has to be respected. </p>
+    <p>The pseudo-formats can be used in the usual selector and class combinations. Thus in order to define two types of pseudo formats depending on the nesting of the anchor, you can write: </p>
+    <figure class="highlight">
+    <code class="prettyprint">#menu a:link  {color:#3300CC;}<br />
+    #menu a:visited {color:#00CC00;}<br />
+    ... <br />
+        #content a:link     {color:#CC3300; text-decoration:none;}<br />
+    #content a:visited  {color:#00CC00; text-decoration:underline;}<br />
+    ... </code></figure>
+     <a href="../examples/e513_css_pseudo02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>The example displays two different hyperlink styles depending on the location of the anchor, either the menu- or content layer. </p>
+
+    <h4>:first-letter</h4>
+    <p>The <code>:first-letter</code> pseudo-format allows you to define a specific style for the first letter of a paragraph. </p>
+
+    <figure class="highlight">
+    <code class="prettyprint">p {background-color:white; color:black;} <br />
+        p:first-letter {background-color:black; color:white; } </code></figure>
+    <a href="../examples/e513_css_pseudo03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>The corresponding HTML then doesn't have to mark-off the first letter. Automatically CSS applies the defined style to the first letter: </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p&gt;Every first letter of the paragraph will swap b/w.&lt;/p&gt;</code></figure>
+
+    <h4>:first-line </h4>
+    <p>Similar to the styling the first letter of a paragraph one can specify a variation for the first line as shown below. </p>
+    <figure class="highlight">
+        <code class="prettyprint">p {color:#000000; background-color:#FFFFFF;}<br />
+    p:first-line {color:#FFFFFF; background-color:#000000}    </code></figure>
+    <a href="../examples/e513_css_pseudo04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>Furthermore, CSS2 contains various other pseudo-elements such as <code>:first-child</code>, <code>:before</code>, <code>:after</code>, <code>:lang</code>, <code>:last-child</code>, <code>:empty</code> and others. Be sure to check the <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">w3c overview</a> to see which pseudo-format is support by which CSS version (1,2 or 3).</p>
+
+
+
+<div class="page-header">
+  <h1 id="text-css">Styling Text</h1>
+</div>
+    <p>Here is a small selection of CSS properties to style paragraphs and characters. </p>
+    <h3 id="text-css-font">Font</h3>
+    <p>You can choose between using standard fonts or download a custom font. <a href="http://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">Web safe fonts</a> such as  Verdana, Times, Courier, Arial are installed by default on most computers. If these default fonts are used, your page will load very fast. On the other hand you can use custom fonts which are aesthetically more interesting but have the disadvantage that text will load slower, since the browser has to download the font-data first. 
+
+    <p>Use the <span class="codeInText">font-family</span> in conjunction with some standard font for quick loading (<a href="http://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">check this list of web safe fonts</a>)</p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;font-family:Georgia, 'Times New Roman', Times, serif;&quot;&gt;Georgia&lt;/p&gt;<br />
+    &lt;p style=&quot;font-family:Verdana, Arial, Helvetica, sans-serif&quot;&gt;<span class="codeContent">Verdana</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;font-family:font-family:'Courier New', Courier, monospace&quot;&gt;<span class="codeContent">Couri</span>&lt;/p&gt;    </code></figure>
+    <a href="../examples/e507_css_text03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    
+
+    <p>In CSS3 you can use non-standard fonts by downloading its source (see <a href="http://www.w3schools.com/cssref/css3_pr_font-face_rule.asp" target="_blank">@font-face</a>). A convenient solution is to download and use fonts from a font-repository such as Google. See the <a href="http://www.google.com/fonts" target="_blank">list of available fonts</a>. The code to use one of those fonts is straight forward. First download the font you need (specifying its name here in bold):</p>
+    <figure class="highlight">
+    <code class="prettyprint">
+&lt;link href='http://fonts.googleapis.com/css?family=<strong>Frijole</strong>' rel='stylesheet' type='text/css'&gt;
+    </code></figure>
+    <p>Then define the font-family using the newly download font:</p>
+    <figure class="highlight">
+    <code class="prettyprint">
+        body {font-family: 'Frijole', serif; }
+    </code></figure>
+    <a href="../examples/e507_css_text15.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+    <p>After having specified the font-family, set the <span class="codeInText">font-size:</span> with absolute or relative numeric values </p>
+     <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;font-size:14px&quot;&gt;<span class="codeContent">Text set to 14 pixels</span>&lt;/p&gt;<br />
+     &lt;p style=&quot;font-size:2em&quot;&gt;<span class="codeContent">Double default size: 2em</span>&lt;/p&gt;<br />
+     &lt;p style=&quot;font-size:120%&quot;&gt;<span class="codeContent">Percentage 120%</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">font-weight:</span> bold | bolder | 100-900 </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;font-weight:bold&quot;&gt;<span class="codeContent">bold text</span>&lt;/p&gt;<br />
+     &lt;p style=&quot;font-weight:400&quot;&gt;<span class="codeContent">numeric value of 400</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">font-style:</span> italic | oblique. On the difference between italic vs oblique see <a href="http://stackoverflow.com/questions/1680624/css-font-style-italic-vs-oblique" target="_blank">this stackoverflow response</a>.</p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;font-style:italic&quot;&gt;<span class="codeContent">italic</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text06.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="text-css-text">Text </h3>
+    <p>Set <span class="codeInText">line-height:</span> with absolute or relative values. </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;line-height:3em&quot;&gt;<span class="codeContent">Line-height&lt;br  /&gt;is set&lt;br  /&gt;to triple default</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text07.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">letter-spacing:</span> to absolute or relative values. </p>
+    
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;letter-spacing:-2px;&quot;&gt;<span class="codeContent">Negative letter spacing.</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;letter-spacing:1.5em;&quot;&gt;<span class="codeContent">letter spacing set to 1.5em</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text08.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText"> text-align:</span> left | right | center | justify </p>
+
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;text-align:right&quot;&gt;<span class="codeContent">Align 2 right</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-align:center&quot;&gt;<span class="codeContent">center everything</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-align:justify&quot;&gt;<span class="codeContent">justify needs a bit more text.</span>...&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text09.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">text-decoration:</span> none | underline | overline | line-through </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;text-decoration:line-through;&quot;&gt;line-through&lt;/p&gt;<br />
+    &lt;p style=&quot;text-decoration:overline;&quot;&gt;<span class="codeContent">overline</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-decoration:underline;&quot;&gt;<span class="codeContent">underline</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text10.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText"> text-indent:</span> absolute or relative numeric value </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;text-indent:20px&quot;&gt;<span class="codeContent">The first line is indented &lt;br /&gt; in relation to the second by 20px. </span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-indent:-20px&quot;&gt;<span class="codeContent">The first line is indented &lt;br /&gt; in relation to the second by -20px.</span> &lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text11.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText"> text-transform:</span> uppercase | lowercase | capitalize </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;text-transform:uppercase&quot;&gt;<span class="codeContent">Uppercase</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-transform:lowercase&quot;&gt;<span class="codeContent">Lowercase</span>&lt;/p&gt;<br />
+    &lt;p style=&quot;text-transform:capitalize&quot;&gt;<span class="codeContent">capitalize</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text12.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">word-spacing</span>: to absolute or relative numeric value </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;word-spacing:-0.2em&quot;&gt;<span class="codeContent">Space between words set to -0.2em</span>&lt;/p&gt;</code></figure>
+    <a href="../examples/e507_css_text13.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+    <p>Set <span class="codeInText">text-shadow</span>: h-shadow v-shadow blur color</p>
+    <figure class="highlight">
+    <code class="prettyprint">
+    &lt;p style="text-shadow:2px 2px 1px blue"&gt;Text shadow with h-shadow:2px v-shadow:2px blur:1px color:blue&lt;/p&gt;
+    </code></figure>
+    <a href="../examples/e507_css_text14.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+<p>&nbsp;</p>
+
+
+<div class="page-header">
+  <h1 id="box">Box model</h1>
+</div>
+
+    <p>Imagine each HTML element is placed inside a box. CSS allows to set the margin, padding and border of this box.</p> 
+
+    <p>
+    <img src="../img/cssboxmodel2.png" width="322" height="204" alt="css box model">
+    </p>
+
+    <p>Margins are introduced between the border and the next element whereas padding adds space between the border and the actual content of the tag. Most importantly, margins, paddings and border-width all add to the overall width of the box.</p> 
+
+    <p>When specifying margin, padding or border each side of the rectangle can be identified with top, right, bottom, left. You can specify the properties individually or all in one go. </p>
+    <p>If all four values are specified they refer to top, right, bottom, left in this particular order.</p>
+    <p><code>property: 10px 11px 12px 13px</code>  &nbsp;&nbsp;&nbsp; top=10, right=11, bottom=12, left=13 </p>
+    <p>If only two values are specified they refer to top, bottom and left, right. </p>
+    <p><code>property: 10px 20px</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top=bottom=10px and right=left=20px </p>
+    <p>If only one value is specified it refers to all four sides</p>
+    <p><span class="codeInText">property: 10px</code>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top=right=bottom=left=10px</p>
+    <p>&nbsp;</p>
+    
+    <h3 id="box-margin">margin</h3>
+    <p>The CSS property <code>margin</code> defines the space between a selected element and its neighbouring, external elements. If you want to<em>create space around an element</em> use margin. You can either select each of the four sides individually or specify all at once. Note: if you set margin for left &amp; right to auto, this means your element will be <em>centered</em>!</p>
+
+    <p>You can specify each side invididually with margin-top, margin-right, margin-bottom, margin-left. </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;html&gt;<br />
+      &nbsp;&lt;head&gt;      <br />
+      &nbsp;&nbsp;&nbsp;&lt;title&gt;e508 - CSS - Margin&lt;/title&gt;<br />
+      &nbsp;&nbsp;&nbsp;&lt;style type=&quot;text/css&quot;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>margin-top:40px;</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:#000099 1px solid;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
+&nbsp;&lt;/head&gt;<br />
+&nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First paragraph with margin-top:40px&lt;/p&gt;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second paragraph with margin-top:40px&lt;/p&gt;<br />
+    &nbsp;&lt;/body&gt;<br />
+    &lt;/html&gt;</code></figure>
+    <a href="../examples/e508_css_marginPaddingBorder02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    
+    <p>What is important in the above example is to note how margin introduces spacing <em>between</em> the paragraphs.</p>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="box-padding">padding</h3>
+    <p>Padding defines the spacing between a selected element and <em>its content</em>. If you want to avoid text sticking to the border of a layer for example, use padding. Similar to margin you can set each side individually with padding-left, padding-right, etc. </p>
+    <figure class="highlight">
+    <code class="prettyprint">&lt;html&gt;<br />
+&nbsp;&lt;head&gt; <br />
+&nbsp;&nbsp;&nbsp;&lt;title&gt;e508 - CSS - Padding&lt;/title&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;style type=&quot;text/css&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> padding:100px 40px 1px 30%;</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:#000099 1px solid;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
+&nbsp;&lt;/head&gt;<br />
+&nbsp;&lt;body&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First paragraph with padding set &lt;/p&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second paragraph with padding set&lt;/p&gt;<br />
+&nbsp;&lt;/body&gt;<br />
+&lt;/html&gt;</code></figure>
+    <a href="../examples/e508_css_marginPaddingBorder03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Note how padding introduces a spacing between the border of the paragraph (blue line) and its content. </p>
+    <p>&nbsp;</p>
+    
+
+    <h3 id="box-border">border</h3>
+    <p>The border style of any HTML element can be controled by the following properties: </p>
+    <p>a) <code>border-color:</code> any color value <br />
+    b) <code>border-width:</code> thin | thick | medium | numeric value <br />
+    c) <code>border-style:</code> dotted | 
+dashed | 
+solid | double |
+groove | 
+ridge | 
+inset |
+outset<br>
+    c) <code>border-radius:</code> value (CSS3)<br>
+</p>
+    
+    <p>Each of the four borders can be controlled individually with <code>border-left-color:</code>, <code>border-left-width:</code>, <code>border-left-style:</code> and the same holds for <code>border-right</code>, <code>border-bottom</code>, and <code>border-top</code>. An alternative is to specify all four borders simultaneously with: <code>border:color width style</code></p>
+
+    <figure class="highlight">
+    <code class="prettyprint">&lt;p style=&quot;border:#0033FF 3px dotted;&quot;&gt;blue 3px dotted border&lt;/p&gt;<br />
+    &lt;p style=&quot;border-left:#6600CC 8px solid;&quot;&gt;just the left&lt;br/&gt; border&lt;/p&gt;<br />
+    &lt;p style=&quot;border-top:#FF6600 1px ridge;&quot;&gt;just the top border&lt;/p&gt;</code></figure>
+     <a href="../examples/e508_css_marginPaddingBorder01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+    <p>Using CSS3 we can furthermore work with <code>border-radius</code> as the following example demonstrates.</p>
+ <figure class="highlight">
+    <code class="prettyprint">
+p {<br>
+    &nbsp;&nbsp;&nbsp;padding:20px;<br> 
+    &nbsp;&nbsp;&nbsp;border:#000099 10px solid;<br>
+    &nbsp;&nbsp;&nbsp;<strong>border-radius:8px;</strong><br>
+}
+    </code></figure>
+    <a href="../examples/e508_css_marginPaddingBorder04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+    <p>The following example puts all CSS properties margin, padding and border in one example. </p>
+
+    <figure class="highlight">
+    <code class="prettyprint">
+.boxmodel {<br>
+        &nbsp;&nbsp;&nbsp;margin:40px 20px;<br>
+        &nbsp;&nbsp;&nbsp;padding:4px 20px;<br>
+        &nbsp;&nbsp;&nbsp;border: 5px solid #ac0000;<br>
+        &nbsp;&nbsp;&nbsp;border-radius: 4px;<br>
+        &nbsp;&nbsp;&nbsp;float:left;<br>
+    }
+    </code></figure>
+    <a href="../examples/e508_css_boxmodel.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p><code>float:left</code> aligns all paragraphs on the same horizontal line.</p>
+
+
+<div class="page-header">
+  <h1 id="classification">Classification</h1>
+</div>
+
+    <p>CSS provides some properties to change the behavior of the element displayed. These come in handy when constructing flexible layouts. </p>
+
+    <h3 id="classification-float">float: left | right | none</h3>
+    <p>The <code>float</code> property accepts three values: left | right | none and changes the alignment of the element to which it applies. Often it is used to undone the automatic linebreak that comes with block level elements such as <code>&lt;div&gt;&lt;/div&gt;</code> or <code>&lt;p&gt;&lt;/p&gt;</code> In the following example, several layers are brought onto the same horizontal line with the <code>float:left</code> property. </p>
+    
+    <figure class="highlight">
+    <code class="prettyprint">div#one&nbsp;&nbsp;  {width:33%; height:50px; float:left;}<br />
+     div#two    &nbsp;&nbsp;{width:33%; height:50px; float:left;}<br />
+     div#three  {width:33%; height:50px; float:left;}     </code></figure>
+    <a href="../examples/e514_css_class01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Without the <code>float</code> property set the layers &quot;one, two, three&quot; would appear one below the other. </p>
+    <p>In a similar fashion, setting the float property on an image will change where it appears in relation to the text. </p>
+    <figure class="highlight">
+    <code class="prettyprint">img.right {float:right;} <br />
+    img.left &nbsp;{float:left;} </code></figure>
+    <a href="../examples/e514_css_class02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Or, the float property specifies that text continues on the same line, canceling the automatic linebreak of a heading for example: </p>    
+    <figure class="highlight">
+    <code class="prettyprint">h1    {font-color:blau; float:left;}</code></figure>
+    <a href="../examples/e514_css_class03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+    <p>&nbsp;</p>
+
+    <h3 id="classification-clear">clear: left | right | both</h3>
+    <p>With <code>clear</code> you can specify which side of a floating element does not allow any further element. This comes in handy to clear the side of an image and start a fresh line of text below it. </p>
+   <figure class="highlight">
+    <code class="prettyprint">img.left {float:left;}<br />
+    img.right {float:right;}<br />
+    p.clearLeft     {clear:left;}<br />
+    p.clearRight        {clear:right;}  <br />
+    </code></figure>
+    <a href="../examples/e514_css_class04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p><code>clear</code> has to be used in conjunction with the <code>float</code> property. </p>
+    <p>&nbsp;</p>
+    
+    <h3 id="classification-display">display</h3>
+    <p>The display property controls how a given element will be displayed. This sounds tautologic but basically means that you can change the display-behavior of elements. For example, a block-level element such as <code>&lt;p&gt;&lt;/p&gt;</code> can be displayed as inline and the other way round, an inline element such as &lt;span&gt;&lt;/span&gt; can be displayed as block level element. </p>
+    <figure class="highlight">
+    <code class="prettyprint">p.inline  {display:inline;}<br />
+    &nbsp;.block&nbsp;&nbsp;{display:block; font-weight:bold;}<br />
+    </code></figure>
+    <a href="../examples/e514_css_class05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>For example, the display:block comes in handy if you want to display an inline element such as an anchor across the remaining width available. See this difference at work in the next code snippet and observe how the second links spans across the whole line. </p>
+    <figure class="highlight">
+    <code class="prettyprint">    a:link        &nbsp;{background-color:#FFF; color:#000; padding:10px; <strong>display:block;</strong>}<br />
+    a:hover     {background-color:#000; color:#FFF; padding:10px; <strong>display:block;</strong>} <br />
+    </code></figure>
+    <a href="../examples/e514_css_class05b.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>There is a whole range of further display values available for <code>tables</code>. However, these values are more used for formatting XML files rather than xHTML where table tags are available anyway. Check out the <a href="http://www.w3schools.com/css/pr_class_display.asp" target="_blank">CSS Display reference</a> for all available options. </p>
+    <p>&nbsp;</p>
+
+    <h3 id="classificatino-visibility">visibility: hidden | visible </h3>
+    <p>Another way of hidding elements is by setting the visibility property. The difference to display:none is, that the latter does not take up any space whereas the invisible elements do. </p>
+    <figure class="highlight">
+    <code class="prettyprint">p.none    &nbsp; &nbsp;{display:none; }<br />
+    p.hidden&nbsp;&nbsp;{visibility:hidden}    </code></figure>
+    <a href="../examples/e514_css_class06.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+ 
+    <p>In order to really see how this code works, open the example in a new window by clicking on &quot;open&quot; and view the source code. </p>
+
+    <h3 id="classificatino-overflow">overflow: auto | hidden | visible | scroll </h3>
+    <p>The <code>overflow</code> property controls what happens to content does does not fit its parent element. <code>overflow:auto</code> adds scrollbars if content does not fit while <code>overflow:scroll</code> always shows the scrollbars. With <code>overflow:hidden</code> the overflowing content will be clipped where <code>overflow:visible</code> renders the content outside the element's box (default behaviour).</p>
+    <figure class="highlight">
+    <code class="prettyprint">
+p           {width:100px; height:100px; border:1px solid black; margin:20px; float:left;}<br>
+.o-auto     {overflow:auto;}<br>
+.o-hidden   {overflow:hidden;}<br>
+.o-visible  {overflow:visible;}<br>
+.o-scroll   {overflow:scroll;}<br>
+    </code></figure>
+    <a href="../examples/e514_css_class07.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+ 
+    <p>The first line specific to the <code>p</code> tag just formats the layout a bit nice and adds a border to see the limit of each paragraph.</p>
+
+
+<div class="page-header">
+  <h1 id="layout">Page layout</h1>
+</div>
+    <p>The semantic markup introduced   in  HTML5   allows to construct page layouts differently. Although we still can use <code>&lt;div&gt;</code> tags for layouting, many of the standard page elements such as header, navigation, footer have now their own tags. This does not change the way CSS and HTML work together but it makes our code more meaningful and saves us from typing some <code>&lt;div&gt;</code>'s
+    </p>
+    <p>&nbsp;</p>        
+
+    
+    <h3 id="layout-hsf">header, Main Section, Footer</h3> 
+    <p>A basic layout uses a header, a main content area and a footer. On the HTML side there is nothing new except that we use a div wrapper layer for centering the content in the browser. </p>
+    <figure class="highlight">
+        <code class="prettyprint pre">&lt;body&gt;
+  &lt;div id=&quot;wrapper&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;this is the header&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;Here would come the main content&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+      &lt;p&gt;last but not least, the footer&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code>
+            </figure>
+    <a href="../examples/e806_html5_HeadMainFoot.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+            
+            <p>Now looking at the CSS, first we reset the margin and padding and tell the browser to render all HTML5 section tags as block. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">*  {  
+  margin:0px; 
+  padding:0px;}
+
+header, footer, section, aside, article, nav {
+  display: block;}</code></figure>
+            <p>The wrapper centers the rest of the content </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">div#wrapper {
+   width:90%; 
+   margin:0px auto;}</code></figure>
+            <p>While we simply add some color to distinguish the three sections of the document: header, the main section and the footer. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">header {
+  background-color:#CCC;
+  height:50px;}
+
+section {
+  background-color:#F3C200;
+  height:100px;}
+
+footer {
+  background-color:#CC6;
+  height:20px;}</code></figure>
+  <a href="../examples/e806_html5_HeadMainFoot.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+          <p>&nbsp;</p>
+
+            <h3 id="layout-h2cf">Header, Two Columns, Footer</h3>
+            <p>The following example is a classic. Apart from header and footer, we have two columns as the main stage, one for the content and the other for the menu. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">&lt;body&gt;
+  &lt;header&gt; 
+    &lt;hgroup&gt;
+      &lt;h1&gt;The main title&lt;/h1&gt;
+      &lt;h2&gt;A subtile&lt;/h2&gt;
+    &lt;/hgroup&gt;
+  &lt;/header&gt;
+  &lt;article&gt; &lt;p&gt;This is the main section.&lt;/p&gt; &lt;/article&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;About&lt;/li&gt;
+      &lt;li&gt;Service&lt;/li&gt;
+      &lt;li&gt;Contact&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;footer&gt; &lt;p&gt;the footer&lt;/p&gt; &lt;/footer&gt;
+&lt;/body&gt;</code></figure>
+    <a href="../examples/e807_html5_HeadNavMainFooter.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>Open the code in a new window and resize it to see how the width adapts!</p>
+    <p>First, in our CSS section we introduce a little bit of padding between the browser window and the content. Then, we add some color to the <span class="codeInText">header</span> and <span class="codeInText">footer</span> to actually see them. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">body {
+    padding:0 10%;}
+header {
+    background-color:#0033FF;}
+footer {
+    background-color:#00CCFF;
+    text-align:center;}</code></figure>
+            <p>The actual trick of aligning both the main article and the navigation horizontally on the same line is done with <span class="codeInText">float:left;</span> while making sure that both fill the full available width. Note that although the sum of the article + nav layer adds up to 100%, the <span class="codeInText">padding</span> introduced for the <span class="codeInText">body</span> actually reduces the overall width to 90% of the browser window. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">article {
+    background-color:#0066FF;
+    float:left;
+    width:80%;
+    height:100px;}
+nav {
+    background-color:#0033FF;
+    float:left;
+    width:20%;
+    height:100px;}</code></figure>
+     <a href="../examples/e807_html5_HeadNavMainFooter.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+
+
+   
+    <h3 id="layout-complex">More Complex Page</h3>
+    <p>Finally, a more complex example that combines a header, main section, side bar, and footer. The difference to the previous example is the fact that each of these four main sections contains itself further sub-divisions. <a href="examples/e808_html5_Header2NavAside.html" target="_blank">View this demo page here</a>. </p>
+    
+    <p>The basic HTML5 structure is quite straight forward: </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">&lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;
+        &lt;header id=&quot;site&quot;&gt; 
+           ...
+        &lt;/header&gt;
+        &lt;article&gt; 
+            ...
+        &lt;/article&gt;
+        &lt;aside class=&quot;ads&quot;&gt;...&lt;/aside&gt;
+        &lt;aside class=&quot;ads&quot;&gt;...&lt;/aside&gt;
+        &lt;aside class=&quot;ads&quot;&gt;...&lt;/aside&gt;
+        &lt;footer&gt; 
+            ...        
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;           </code>
+            </figure>
+            <p>The CSS for the basic layout looks like follows. First, by wrapping all other content with the wrapper <span class="codeInText">div</span> we restrict the overall page width to 90% of the browser and leave a little bit of extra <span class="codeInText">margin</span> to the top-border. In addition, the margin-left / margin-right is set to <span class="codeInText">auto</span> meaning our content will always be centered inside the browser. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">div#wrapper {
+    width:90%; 
+    margin: 10px auto;
+}</code></figure>
+            <p>Next, we set explicitly the <span class="codeInText">height</span> of the header to 80 pixels, add some background color and <span class="codeInText">padding</span>. The margin values introduce top and bottom spacing of 10px. In addition all content will be centered with <span class="codeInText">text-align:center</span>. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">header#site {
+    height:80px;
+    padding:10px;
+    background-color:#0033FF;
+    margin:10px 0px;
+    text-align:center;
+}</code>
+            </figure>
+            
+            <p>The CSS for the <span class="codeInText">article</span> tag. Here we have to make sure that we leave some space for the advertising, so we set its width to 80%. In addition, in order to prevent that the ads are being pushed below the main article, we set <span class="codeInText"> float:left</span>. </p>
+            <figure class="highlight">
+        <code class="prettyprint pre">article {
+    float:left;
+    width:80%;
+    margin-right:10px;<br>    background-color:#0066FF;
+}</code>
+            </figure>
+            <p>On the right border we place the ads. This is done with the <span class="codeInText">aside</span> tag indicating only remotely related content to the actual article. Each ad has a specific height and width. The overall width together with the main article adds up to 98% (80% + 18%). This is necessary because we have to take into account the 10px margin-right of the article. <span class="codeInText">float:left</span> makes sure the ads are really on the same height as the main article (not below). </p>
+           <figure class="highlight">
+        <code class="prettyprint pre">.ads {
+    height:100px;
+    width:18%;
+    background-color:#0033FF;
+    margin-bottom:20px;
+    float:left; 
+}</code></figure>
+            <p>Finally, the <span class="codeInText"> footer</span>. Usually has a small <span class="codeInText">font-size</span> which is set in our example to 0.8 units of the standard size. Again, some background color. The <span class="codeInText">clear:both</span> make sure that the footer actually is displayed below the main article; it explictly tells the browser that no floating elements are allowed on both sides of the footer. </p>
+<figure class="highlight">
+        <code class="prettyprint pre">footer {
+    font-size:0.8em;
+    clear:both;
+}</code>
+</figure>
+<a href="../examples/e808_html5_Header2NavAside.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+            
+            
+            <p>This builds the main layout of the page. Each of the main sections now contains in turn further elements. </p>
+            
+             
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
         </div><!-- end bs-docs-section -->
       </div><!-- end bs-md-9 main -->
     </div><!-- bs-docs-container -->
 
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <footer>
+        <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"> <img class="noBorderImg" alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/> </a> </p>
+    </footer>
 
-  <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+ 
+  <!--/Creative Commons License-->
+<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Work rdf:about="">
+        <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+    </Work>
+    <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+    <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+    <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+    <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+    <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+    <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+    <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+    <requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+    </License>
+    </rdf:RDF> -->
   </body>
 </html>
