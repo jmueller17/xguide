@@ -155,7 +155,7 @@
 
             <h3 id="basics-css">What are Cascading Style Sheets?</h3>
 
-           <p>Cascading Style Sheets (CSS) are used to control the layout of a HTML  documents. They have been introduced to seperate better between  content and layout. Style-Sheets offer you a wider and more  flexible way to design your web pages. With HTML tags you structure information (paragraphs, anchors, lists, etc.) -<em> with CSS you decide their look. </em>Note that its syntax and language has nothing to do with HTML itself. You have to start from scratch! </p>
+           <p>Cascading Style Sheets (CSS) are used to control the layout of a HTML  documents. They have been introduced to seperate better between  content and format. Style-Sheets offer you a wider and more  flexible way to design your web pages. With HTML tags you structure information (paragraphs, anchors, lists, etc.) -<em> with CSS you decide their look. </em>Note that its syntax and language has nothing to do with HTML itself. You have to start from scratch! </p>
           <p>The advantages of CSS are: </p>
           <p>
               <ul>
@@ -189,7 +189,7 @@
     <p>There are several ways how CSS can be linked to HTML. There are three options: (1) writing CSS directly into the <code>&lt;head&gt;&lt;/head&gt;</code> of a HTML file, (2) linking to external CSS files, or (3) attaching CSS directly to TAGS. </p>
  
     <h4>(1) CSS in HTML header section </h4>
-    <p>CSS rules can be written directly into the HTML document's header section. This makes sense if the CSS rules are specific for this particular HTML file and this file only. Watch this example in action and see how it affects the size of the text (font-size) and the background color of your page. </p>
+    <p>CSS rules can be written directly into the HTML document's header section. This makes sense if the CSS rules are specific for this particular HTML file and this file only. Watch this example in action and see how it affects the size of the text (font-size). </p>
 
 <figure class="highlight">
 <code class="prettyprint">&lt;html&gt;<br />
@@ -251,7 +251,7 @@
   <h1 id="selectors">CSS Selectors</h1>
 </div>
 
-    <p>CSS2 is a very powerful language. It is very flexible when it comes to &quot;knitting&quot; CSS and HTML together. Laying down which styles apply to which HTML tags is crucial for efficient use of CSS. A simple selector has already been introduced, namely the selector which is based on the type of the HTML tag. But there are many more possibilities as shown below. For a complete list of CSS selectors, check out the W3 schools <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">CSS reference</a> (notice the right most column which indicates in which CSS version the property is defined). </p>
+    <p>CSS is a very powerful language. It is very flexible when it comes to &quot;knitting&quot; CSS and HTML together. Laying down which styles apply to which HTML tags is crucial for efficient use of CSS. A simple selector has already been introduced, namely the selector which is based on the type of the HTML tag. But there are many more possibilities as shown below. For a complete list of CSS selectors, check out the W3 schools <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">CSS reference</a> (notice the right most column which indicates in which CSS version the property is defined). </p>
     <p>&nbsp;</p>
     
     <h3 id="selectors-type">Type </h3>
@@ -282,7 +282,7 @@
     
     <h3 id="selectors-id">ID  &nbsp;&nbsp;&quot;#&quot; </h3>
     <p>The id selector is used to define a unique style. </p>
-    <p class="note"><span class="noteTxt">Note:</span> ID's have to be unique within your HTML document! You cannot have two tags with the same ID!! </p>
+    <p class="bs-callout bs-callout-warning">Note: ID's have to be unique within your HTML document! You cannot have two tags with the same ID!! </p>
     <p>It applies only to that element whose ID equals the CSS rule. Usually the ID selector is used to control positioning of elements where each tag (e.g. a layer) has a unique position. To define a unique style use the &quot;#&quot;: </p>
     <figure class="highlight">
 <code class="prettyprint"><strong>#layer01</strong> {position:absolute; bottom:10px; right:10px; background-color:green;} </code></figure>
@@ -321,11 +321,11 @@
     
 
     <h3 id="selectors-inheritance">Inheritance </h3>
-    <p>Another important concept with CSS is inheritance. This means that HTML elements contained by another higher-level HTML elements will inherit its associated parent CSS properties. All paragraphs will inherent for example the CSS rules specified for the body. The advantage is that you can specify a default font-family for the &lt;body&gt; and then only define the exceptions to the rule. Example: </p>
+    <p>Another important concept with CSS is inheritance. This means that HTML elements contained by another higher-level HTML elements will inherit its associated parent CSS properties. All paragraphs will inherent for example the CSS rules specified for the body. The advantage is that you can specify a default font-family for the <code>&lt;body&gt;</code> and then only define the exceptions to the rule. Example: </p>
     <figure class="highlight">
 <code class="prettyprint">body {font-family: &quot;Times New Roman&quot;; font-size:2em;}<br />
     p.quote {font-family: Verdana; font-size:1em;} </code></figure>
-    <p>By default all &lt;p&gt;&lt;/p&gt; - since they are contained by the &lt;body&gt;&lt;/body&gt; - will be displayed with &quot;Times New Roman.&quot; Certain paragraphs are set off with a specific font (Verdana). </p>
+    <p>By default all <code>&lt;p&gt;&lt;/p&gt;</code> - since they are contained by the <code>&lt;body&gt;&lt;/body&gt;</code> - will be displayed with &quot;Times New Roman.&quot; Certain paragraphs are set off with a specific font (Verdana). </p>
     <figure class="highlight">
 <code class="prettyprint">&lt;body&gt;<br />
     &nbsp;&nbsp;&nbsp;&lt;h3&gt;This is a heading in Times&lt;/h3&gt;<br />
@@ -397,7 +397,7 @@
 </div>
     <p>Here is a small selection of CSS properties to style paragraphs and characters. </p>
     <h3 id="text-css-font">Font</h3>
-    <p>You can choose between using standard fonts or download a custom font. <a href="http://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">Web safe fonts</a> such as  Verdana, Times, Courier, Arial are installed by default on most computers. If these default fonts are used, your page will load very fast. On the other hand you can use custom fonts which are aesthetically more interesting but have the disadvantage that text will load slower, since the browser has to download the font-data first. 
+    <p>You can choose between using standard fonts or download a custom font. <a href="http://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">Web safe fonts</a> such as  Verdana, Times, Courier, Arial are installed by default on most computers. If these default fonts are used, your page will load very fast. On the other hand you can use custom fonts which are aesthetically more interesting but have the disadvantage that text will load slower the first time a user visits the page, since the browser has to download the font-data first. 
 
     <p>Use the <span class="codeInText">font-family</span> in conjunction with some standard font for quick loading (<a href="http://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">check this list of web safe fonts</a>)</p>
     <figure class="highlight">
@@ -503,7 +503,7 @@
     <p>Imagine each HTML element is placed inside a box. CSS allows to set the margin, padding and border of this box.</p> 
 
     <p>
-    <img src="../img/cssboxmodel2.png" width="322" height="204" alt="css box model">
+    <img src="../img/cssboxmodel.png" width="322" height="204" alt="css box model">
     </p>
 
     <p>Margins are introduced between the border and the next element whereas padding adds space between the border and the actual content of the tag. Most importantly, margins, paddings and border-width all add to the overall width of the box.</p> 
@@ -514,13 +514,15 @@
     <p>If only two values are specified they refer to top, bottom and left, right. </p>
     <p><code>property: 10px 20px</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top=bottom=10px and right=left=20px </p>
     <p>If only one value is specified it refers to all four sides</p>
-    <p><span class="codeInText">property: 10px</code>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top=right=bottom=left=10px</p>
+    <p><code>property: 10px</code>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top=right=bottom=left=10px</p>
     <p>&nbsp;</p>
     
     <h3 id="box-margin">margin</h3>
-    <p>The CSS property <code>margin</code> defines the space between a selected element and its neighbouring, external elements. If you want to<em>create space around an element</em> use margin. You can either select each of the four sides individually or specify all at once. Note: if you set margin for left &amp; right to auto, this means your element will be <em>centered</em>!</p>
+    <p>The CSS property <code>margin</code> defines the space between a selected element and its neighbouring, external elements. If you want to <em>create space around an element</em> use margin. You can either select each of the four sides individually or specify all at once.</p>
 
-    <p>You can specify each side invididually with margin-top, margin-right, margin-bottom, margin-left. </p>
+    <p class="bs-callout bs-callout-info">Note: if you set <code>margin</code> for left &amp; right to auto, this means your element will be <em>centered</em>!</p>
+
+    <p>You can specify the margin of each side invididually with <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>, <code>margin-left</code>. </p>
     <figure class="highlight">
     <code class="prettyprint">&lt;html&gt;<br />
       &nbsp;&lt;head&gt;      <br />
@@ -617,6 +619,7 @@ p {<br>
     <a href="../examples/e508_css_boxmodel.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
     <p><code>float:left</code> aligns all paragraphs on the same horizontal line.</p>
 
+<p>&nbsp;</p>
 
 <div class="page-header">
   <h1 id="classification">Classification</h1>
@@ -660,7 +663,7 @@ p {<br>
     <p>&nbsp;</p>
     
     <h3 id="classification-display">display</h3>
-    <p>The display property controls how a given element will be displayed. This sounds tautologic but basically means that you can change the display-behavior of elements. For example, a block-level element such as <code>&lt;p&gt;&lt;/p&gt;</code> can be displayed as inline and the other way round, an inline element such as &lt;span&gt;&lt;/span&gt; can be displayed as block level element. </p>
+    <p>The display property controls how a given element will be displayed. This sounds tautologic but basically means that you can change the display-behavior of elements. For example, a block-level element such as <code>&lt;p&gt;&lt;/p&gt;</code> can be displayed as inline and the other way round, an inline element such as <code>&lt;span&gt;&lt;/span&gt;</code> can be displayed as block level element. </p>
     <figure class="highlight">
     <code class="prettyprint">p.inline  {display:inline;}<br />
     &nbsp;.block&nbsp;&nbsp;{display:block; font-weight:bold;}<br />
@@ -674,10 +677,10 @@ p {<br>
     </code></figure>
     <a href="../examples/e514_css_class05b.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
 
-    <p>There is a whole range of further display values available for <code>tables</code>. However, these values are more used for formatting XML files rather than xHTML where table tags are available anyway. Check out the <a href="http://www.w3schools.com/css/pr_class_display.asp" target="_blank">CSS Display reference</a> for all available options. </p>
+    <p>There is a whole range of further display values available for <code>tables</code>. However, these values are more used for formatting XML files rather than HTML where table tags are available anyway. Check out the <a href="http://www.w3schools.com/css/pr_class_display.asp" target="_blank">CSS Display reference</a> for all available options. </p>
     <p>&nbsp;</p>
 
-    <h3 id="classificatino-visibility">visibility: hidden | visible </h3>
+    <h3 id="classification-visibility">visibility: hidden | visible </h3>
     <p>Another way of hidding elements is by setting the visibility property. The difference to display:none is, that the latter does not take up any space whereas the invisible elements do. </p>
     <figure class="highlight">
     <code class="prettyprint">p.none    &nbsp; &nbsp;{display:none; }<br />
@@ -686,7 +689,7 @@ p {<br>
  
     <p>In order to really see how this code works, open the example in a new window by clicking on &quot;open&quot; and view the source code. </p>
 
-    <h3 id="classificatino-overflow">overflow: auto | hidden | visible | scroll </h3>
+    <h3 id="classification-overflow">overflow: auto | hidden | visible | scroll </h3>
     <p>The <code>overflow</code> property controls what happens to content does does not fit its parent element. <code>overflow:auto</code> adds scrollbars if content does not fit while <code>overflow:scroll</code> always shows the scrollbars. With <code>overflow:hidden</code> the overflowing content will be clipped where <code>overflow:visible</code> renders the content outside the element's box (default behaviour).</p>
     <figure class="highlight">
     <code class="prettyprint">
@@ -700,7 +703,7 @@ p           {width:100px; height:100px; border:1px solid black; margin:20px; flo
  
     <p>The first line specific to the <code>p</code> tag just formats the layout a bit nice and adds a border to see the limit of each paragraph.</p>
 
-
+<p>&nbsp;</p>
 <div class="page-header">
   <h1 id="layout">Page layout</h1>
 </div>

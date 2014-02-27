@@ -221,7 +221,7 @@
 
 
             <h3 id="basics-tags">TAGs explained</h3>
-            <p>Most but not all TAGs come in pairs. The TAGs are applied to "their" content. For example, whatever text is contained by the tag "strong" will be rendered <strong>bold</strong>: </p>
+            <p>Most but not all TAGs come in pairs. The TAGs are applied to "their" content. For example, whatever text is contained by the tag <code>&lt;strong&gt; &lt;/strong&gt;</code> will be rendered <strong>bold</strong>: </p>
 <figure>
 <pre class="prettyprint"><code>
   &lt;html&gt;
@@ -240,7 +240,7 @@
 
 
     <h4>Nesting Tags</h4> 
-    <p>TAGs can be <strong>nested</strong> into each other. Most TAGs can contain other TAGs in turn. The <code>&lt;html&gt;</code> TAG contains <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> TAGs before it closes again with <code>&lt;/html&gt;</code>. The <code>&lt;body&gt; &lt;/body&gt;</code> in turn contains many other tags such as paragraphs <code>&lt;p&gt; &lt;/p&gt;</code>. 
+    <p>TAGs can be <strong>nested</strong> into each other. Most TAGs can contain other TAGs in turn. The <code>&lt;html&gt;</code> TAG contains <code>&lt;head&gt; &lt;/head&gt;</code> and <code>&lt;body&gt; &lt;/body&gt;</code> TAGs before it closes again with <code>&lt;/html&gt;</code>. The <code>&lt;body&gt; &lt;/body&gt;</code> in turn contains many other tags such as paragraphs <code>&lt;p&gt; &lt;/p&gt;</code>. 
 
    <p>It is essential that the nesting order is coherent. The opening and closing order has to be respected - the following code is therefore <strong>wrong</strong>: </p>
 
@@ -465,12 +465,12 @@
 
 
   <h3 id="links-paths">Understanding paths</h3>
-    <p>This section demonstrates how to reference external media  files in HTML documents. Since HTML files contain text only it does not contain other files such as images or videos for example.  However, HTML allows to describe the location where additional  material is located. The issue is to understand how to  reference correctly those external resources. </p>
+    <p>This section demonstrates how to reference external media  files in HTML documents. Since HTML contains text only, binary files such as images or videos are not directly embedded but referenced.  HTML thus allows to describe the location where additional  material is located. The issue is to understand how to  reference correctly those external resources. </p>
 
     <h4>Site relative, document relative and absolute paths </h4>
     <p>A fundamental difference exists between <em>absolute</em> vs. <em>relative</em> paths.</p> 
 
-    <p><strong>Absolute path</strong> describes the location of a certain file taking into account the  specific computer / domain this file is stored.It is the complete URL to a specific document. The absolute path of this document is: </p>
+    <p><strong>Absolute path</strong> describes the location of a certain file taking into account the  specific computer / domain this file is stored. It is the complete URL to a specific document. The absolute path of this document is: </p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) &nbsp;<span class="codeInText">&nbsp;http://www.toytic.com/class/guide-html/index.html</span></p>
     <p>Anybody on the Internet can identify and link to it by citing the above address. This path is independent from where it is located itself. </p>
 
@@ -478,7 +478,7 @@
     <p> &nbsp;&nbsp;&nbsp;&nbsp;(2) &nbsp;&nbsp;<span class="codeInText">e506_html_anchors01.html</span></p>
     <p>With just the name of the file it is not possible to know where this file is located precisely. Its absolute path could be as in example (1) but it also could be something different such as http://www.nevermind.com/e506_html_anchors01.html </p>
 
-    <p>As a consequence, when thinking in relative paths, it is important to bear in mind the location of the current link. There is a basic difference between "site relative paths" vs. "document relative paths." a) Site relative paths always take into consideration the root folder of the current site. Their applicatio is a bit more specific and not recommended for a start (<a href="http://help.adobe.com/en_US/dreamweaver/cs/using/WScbb6b82af5544594822510a94ae8d65-7c44a.html" target="_blank">see details</a>) b) Document relative paths take into account the current document. </p>
+    <p>As a consequence, when thinking in relative paths, it is important to bear in mind the location of the current link. There is a basic difference between "site relative paths" vs. "document relative paths." a) Site relative paths always take into consideration the root folder of the current site. Their application is a bit more specific and not recommended for a start (<a href="http://help.adobe.com/en_US/dreamweaver/cs/using/WScbb6b82af5544594822510a94ae8d65-7c44a.html" target="_blank">see details</a>) b) Document relative paths take into account the current document. </p>
 
     <p><span class="noteTxt">Note</span>: When creating a site use <strong>document relative</strong> paths. The links will always work as long as you keep the locations of files and folders consistent in relation to each other.</p>
 

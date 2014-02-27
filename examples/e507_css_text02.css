@@ -1,0 +1,12 @@
+/* CSS Document */
+
+body {
+	background-color:#000000;
+	color:#ffffff;
+}
+
+p {
+	font-size:3em;
+	letter-spacing:2em;
+	line-height:2em;
+}
