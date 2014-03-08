@@ -19,6 +19,11 @@
     <link href="../css/main.css" rel="stylesheet">
 
 
+    <!-- Flowplayer skin -->
+    <link rel="stylesheet" href="../js/flowplayer-5.4.6/skin/minimalist.css">
+
+
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -28,10 +33,39 @@
     <script src="../js/jquery/jquery-1.10.2.mins.js"></script>
     <script src="../js/prettify/prettify.js"></script>
     <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/flowplayer-5.4.6/flowplayer.min.js"></script>
 
     <script>
       $(function(){
         window.prettyPrint && prettyPrint();
+
+
+
+        var allPlayList = [
+          [
+            { webm:  "../vid/clips/css_setup2.webm" },
+            { mp4:   "../vid/clips/css_setup2.mp4" }
+          ]
+        ];
+
+        $("#vidplayer").flowplayer({
+          playlist: allPlayList 
+        });
+
+
+        var player = flowplayer();
+
+
+        $(".btn-vid").on("click", function(){
+            var vidindex = parseInt($(this).attr("vidindex"));
+            var vidtitle = $(this).attr("title");
+
+            $("#videoModal .modal-title").empty().append("Video Tutorial - " + vidtitle);
+            $("#videoModal").modal("show");
+
+            player.play(vidindex);
+
+        })
 
         var offset = 76;
         $('.bs-sidenav li a').click(function(event) {
@@ -187,6 +221,8 @@
 
     <h3 id="basics-link">Link CSS &amp; HTML</h3>
     <p>There are several ways how CSS can be linked to HTML. There are three options: (1) writing CSS directly into the <code>&lt;head&gt;&lt;/head&gt;</code> of a HTML file, (2) linking to external CSS files, or (3) attaching CSS directly to TAGS. </p>
+
+    <button type="button" class="btn btn-warning btn-vid" vidindex="0" title="Linking CSS and HTML together"><span class="glyphicon glyphicon-facetime-video"></span> Watch video tutorial</button>
  
     <h4>(1) CSS in HTML header section </h4>
     <p>CSS rules can be written directly into the HTML document's header section. This makes sense if the CSS rules are specific for this particular HTML file and this file only. Watch this example in action and see how it affects the size of the text (font-size). </p>
@@ -892,6 +928,24 @@ nav {
         <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"> <img class="noBorderImg" alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/> </a> </p>
     </footer>
 
+
+ <!-- modal for videos -->
+      <div class="modal fade" id="videoModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Video Tutorial</h4>
+          </div>
+          <div class="modal-body">
+            <div id="vidplayer" class="flowplayer"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
  
   <!--/Creative Commons License-->
 <!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
