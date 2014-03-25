@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTML // CSS // Javascript</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../js/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Google Prettify -->
+    <link href="../css/prettify.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/main.css" rel="stylesheet">
+
+
+    <!-- Flowplayer skin -->
+    <link rel="stylesheet" href="../js/flowplayer-5.4.6/skin/minimalist.css">
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery/jquery-1.10.2.mins.js"></script>
+    <script src="../js/prettify/prettify.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/flowplayer-5.4.6/flowplayer.min.js"></script>
+
+    <script>
+      $(function(){
+        window.prettyPrint && prettyPrint();
+
+
+
+        var allPlayList = [
+          [
+            { webm:  "../vid/clips/js_firstSteps.webm" },
+            { mp4:   "../vid/clips/js_firstSteps.mp4" }
+          ]
+        ];
+
+        $("#vidplayer").flowplayer({
+          playlist: allPlayList 
+        });
+
+
+        var player = flowplayer();
+
+
+        $(".btn-vid").on("click", function(){
+            var vidindex = parseInt($(this).attr("vidindex"));
+            var vidtitle = $(this).attr("title");
+
+            $("#videoModal .modal-title").empty().append("Video Tutorial - " + vidtitle);
+            $("#videoModal").modal("show");
+
+            player.play(vidindex);
+
+        })
+
+        var offset = 76;
+        $('.bs-sidenav li a').click(function(event) {
+          event.preventDefault();
+          $($(this).attr('href'))[0].scrollIntoView();
+          scrollBy(0, -offset);
+        });
+      })
+    </script>
+  </head>
+
+  <body  data-spy="scroll" data-target=".bs-sidebar">
+
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav bs-docs-nav-js" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../" class="navbar-brand">{xGuide}</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav navbar-js">
+            <li>
+              <a href="../guide-html">HTML//</a>
+            </li>
+            <li>
+              <a href="../guide-css/">CSS//</a>
+            </li>
+            <li class="active">
+              <a href="../guide-js/">//JavaScript</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-header-js" id="content">
+      <div class="container">
+        <h1>JavaScript</h1>
+        <p>The very basics</p>
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+            <ul class="nav bs-sidenav">
+                <li>
+                  <a href="#basics">Introduction</a>
+                  <ul class="nav">
+                    <li><a href="#basics-js">What is Javascript</a></li>
+                    <li><a href="#basics-hello-world">Hello world</a></li>
+                    <li><a href="#basics-external">External files</a></li>
+                    <li><a href="#basics-comments">Comments</a></li>
+                    <li><a href="#basics-debug">Debugging</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#var">Storing data</a>
+                  <ul class="nav">
+                    <li><a href="#var-var">Variables</a></li>
+                    <li><a href="#var-string">String</a></li>
+                    <li><a href="#var-number">Number</a></li>
+                    <li><a href="#var-bool">Boolean</a></li>
+                    <li><a href="#var-array">Arrays</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#conditionals">Making Decisions</a>
+                  <ul class="nav">
+                    <li><a href="#conditionals-if">if...</a></li>
+                    <li><a href="#conditionals-if-else">if...else</a></li>
+                    <li><a href="#conditionals-else-if">...else if ...</a></li>
+                    <li><a href="#conditionals-switch">switch</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#loops">Loops</a>
+                  <ul class="nav">
+                    <li><a href="#loop-for">for</a></li>
+                    <li><a href="#loop-while">while</a></li>
+                    <li><a href="#loop-for-in">for ... in</a></li>
+                    <li><a href="#loop-break">break / continue</a></li>
+                    
+                  </ul>
+                </li>
+                <li>
+                  <a href="#functions">Functions</a>
+                  <ul class="nav">
+                    <li><a href="#functions-define">Defining</a></li>
+                    <li><a href="#function-call">Calling</a></li>
+                    <li><a href="#function-params">Passing values</a></li>
+                    <li><a href="#function-return">Returning results</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#oop">Objects</a>
+                  <ul class="nav">
+                    <li><a href="#oop-introduction">Introduction</a></li>
+                    <li><a href="#oop-detail">Some details</a></li>
+                  </ul>
+                </li>
+                 <li>
+                  <a href="#dom">DOM</a>
+                  <ul class="nav">
+                    <li><a href="#dom-hierarchy">Hierarchy</a></li>
+                    <li><a href="#dom-access">Accessing elements</a></li>
+                    <li><a href="#dom-properties">Manipulation</a></li>
+                    <li><a href="#dom-shortcuts">Access shortcuts</a></li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-9" role="main">
+            <!-- Global Bootstrap settings ================================================== -->
+          <div class="bs-docs-section">
+    
+    <p>&nbsp;</p>      
+    <div class="page-header">
+      <h1 id="basics">Introduction</h1>
+    </div>
+   
+      <h3 id="basics-js">What is Javascript?</h3>
+
+      <p>Javascript adds interactivity to webpages. It allows you to </p>
+      <ul>
+      <li>detect and react to user triggered events</li>
+      <li>validate forms before sending them</li>
+      <li>manipulate the content of your page interactively</li>
+      <li>retrieve basic information about the browser</li>
+      <li>and many other things. </li>
+      </ul>
+      <p>Learning JavaScript means to learn a new language. You have to
+      learn a specific vocabulary and how to combine it, its syntax. </p>
+      <p>For coding JavaScript you need nothing more than a plain text
+      editor like Notepad (PC) or SimpleText (Mac). JavaScript can be either embedded directly into HTML or linked as external file. Its file extension is *.js </p>
+
+      <h3 id="basics-hello-world">Hello world</h3>
+      <p>Let's start with a simple example: </p>
+      <figure class="highlight">
+      <code class="prettyprint">&lt;html&gt;<br />
+      &nbsp;&nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&nbsp;<strong>&lt;script
+      type="text/javascript"&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Hello world");<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Goodbye world");<br />
+      &nbsp;&nbsp;&nbsp;&lt;/script&gt;</strong><br />
+      &nbsp;&nbsp;&lt;/head&gt; <br />
+      &nbsp;&nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;p&gt;Normal
+      content&lt;/p&gt;<br />
+      &nbsp;&nbsp;&lt;/body&gt; <br />
+      &lt;/html&gt;</code></figure>
+      <a href="../examples/e600_js_basic01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>JavaScript is here embedded into the <span class="codeInText">&lt;head&gt;&lt;/head&gt;</span> of a HTML document. The rest of the HTML tag skeleton remains the same, just the <span class="codeInText">&lt;script&gt;&lt;/script&gt;</span> tag indicates the section reserved for JavaScript.&nbsp;</p>
+
+      <p><span class="codeInText">alert()</span> is a specific predefined JavaScript function. When the HTML file is loaded into the browser it will open a small message box. The content of the message can be specified within quotes "Hello world". Text messages inside of JavaScript are called a "string" Try it: open the above example, save the source code&nbsp;to your local machine and edit its message!&nbsp;</p>
+
+      <p class="bs-callout bs-callout-warning"><em>Note</em>: the place and order of the code is important. Browsers read the code from top to bottom and from left to right. Note how the browser displays first the "Hello world" message and then the "Goodbye world" message.</p>
+
+      <h3 id="basics-external">External JavaScript files</h3>
+      <p>JavaScript code can get quite large and complex.Developers therefore have the possibility to save code in extra files. This also makes sense for recycling the same&nbsp;code across different HTML pages. Inside the external *.js file there is no need for the <span class="codeInText">&lt;script&gt;&lt;/script&gt;</span> tag</p>
+
+      <p>Let's create a new JavaScript file. Open your favorite editor and write: </p>
+      <figure class="highlight">
+      <code class="prettyprint">alert("Hello world");</code></figure>
+      
+      <p>Now, save it as &quot;HelloWorld.js&quot; &nbsp;After opening a HTML document, linking your JavaScript file is easy: </p>
+
+      <figure class="highlight">
+      <code class="prettyprint">
+      &lt;html&gt;<br />
+      &nbsp;&nbsp;&lt;head&gt;<br />
+      &nbsp;&nbsp;&nbsp;&lt;script src="HelloWorld.js" type="text/javascript"&gt;&lt;/script&gt;<br />
+      &nbsp;&nbsp;&lt;/head&gt; <br />
+      &nbsp;&nbsp;&lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;p&gt;Normal
+      content&lt;/p&gt;<br />
+      &nbsp;&nbsp;&lt;/body&gt; <br />
+      &lt;/html&gt;
+      </code></figure>
+      <a href="../examples/e600_js_basic02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      <p>The result will be exactly the same as the first example, but be sure to see the difference in the source code.</p>
+
+      <h3 id="basics-comments">Comments</h3>
+      <p>Because code is often very cryptic it is absolutely necessary to comment each line of code. Here is how you do it: </p>
+      <p>JavaScript ignores the rest of the line after <code> //</code></p>
+      <p>and it also ignores anything that comes between <code>/* ....*/</code> This type of comment can span several lines.</p>
+      <figure class="highlight">
+      <code class="prettyprint">alert("Hello world"); //a one line comment<br /><br />
+      /*<br />
+      This is a multiline comment block. Everything between the slashes will be ignored by JavaScript. <br />
+      */</code></figure>
+
+      <h3 id="basics-debug">Debugging</h3>
+      <p>Scripts often execute many operations before something visible happens. Since the execution is a very intangible process where many errors can happen, extra tools are necessary to inspect the code "in action". A great tool - not just for JavaScript - but for inspecting also HTML and CSS is <a href="http://getfirebug.com/">Firebug</a> which you already know. It is available as add-on for Firefox. Mayor modern browsers such as Firefox, Opera, Chrome ship with a build-in Javascript console which informs you about errors during the scripts' execution.</p> 
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="var">Storing data</h1>
+    </div>
+
+      <h3 id="var-var">Variables</h3>
+      <p>A variable is basically a container that can hold different
+      values during the execution of a program. To keep it simple at the
+      start, variables in JavaScript come in three basic
+      flavors: String, Number and Boolean. For the moment being let's note,
+      that we put text into String variables, do math with Number
+      variables, and Booleans are used to make decisions in the
+      form true/false. Variables account (amongst other things) for the basic
+      flexibility of a script. </p>
+
+      <p>How are variables created? The reserved word <strong>var</strong> indicates
+      that we are about to define a variable for the first time. A
+      variable has a short name which then gets a value assigned. For example:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">
+      var name = "Klaus";<br />
+      var age = 27; </code></figure>
+
+      <p class="bs-callout bs-callout-warning"><em>Note</em>: variable names should be short and
+      descriptive. They are case sensitive, start with underscore or a letter, and do not contain whitespace!</p>
+
+      <p>The values of variables can change during the execution of a
+      script. Of course, that's the whole point for using variables. A new value is
+      easy to assign:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">age = 28; <br />
+      age = age + age; </code></figure>
+
+      <p>Either one assigns directly a new value to the variable, or as an alternative we can also operate with the variables - or rather its content. In the above example, since the content is a number, we can use mathematical operations on it and store the result.&nbsp;Literally, the second line above would read: The new value of the variable age is its current value (28) plus its current value (28), yielding 56. Also note that we don't use "var" anymore because we assume that the variable already has been defined previously in the code. </p>
+
+
+      <h3 id="var-string">String</h3>
+      <p>Strings represent text in scripting languages. In order to be treated as text, it has to be enclosed by single or double quotation marks. </p>
+      <figure class="highlight">
+      <code class="prettyprint">var name = "Bond 007";<br />
+      var city &nbsp; = "Tokyo and Berlin?";&nbsp;</code></figure>
+
+      <p>You can tie several strings together with the "+" operator.&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var movieTitle = name + " in " + city; &nbsp;</code></figure>
+      <a href="../examples/e601_js_vars01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      
+      <p>The new value of the variable <span class="codeInText">movieTitle</span> then is "Bond 007 in Tokyo and Berlin?". Note how the " in " gets placed in between the two
+      variables. Enclosing numbers into quotes also converts them into strings. </p>
+
+       <p class="bs-callout bs-callout-warning"><em>Note</em>: Especially for beginners it is confusing to see the difference between the name of a variable and a string. See next example!</p>
+
+       <p>Both are words or texts but how they are treated by JavaScript is radically different. The following example tries to illustrate this:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">alert(hello); <br />
+      alert("hello");&nbsp;</code></figure>
+
+      <p>In the first line, the <code>alert()</code> function will try to display
+      the content of the variable called <code>hello</code>. Since a variable with the name <code>hello</code> has not been defined, it will produce an error. The second line, is correct, since the quotation marks indicate that it is not a variable but a plain text which cannot contain values.&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var hello = "message in a variable";&nbsp;<br />
+      alert(hello);&nbsp;</code></figure>
+
+      <p>Now the above code works fine. The variable has been defined and a value has been assigned. The result is the same as if we would write directly:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">alert("message in a variable"); </code></figure>
+
+      <p>JavaScript provides additional predefined functions to operate on strings such as converting a whole string to upperCase, counting the number of characters it contains, or reading the character at a certain position of the string. See the <a href="http://www.w3schools.com/js/js_obj_string.asp">String W3C reference guide.</a> </p>
+
+
+      <h3 id="var-number">Number</h3>
+      <p>Number variables are straight forward. No quotation marks involved, just the standard mathematical operations:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var age = 28; <br />
+      var weAreCounting = 0;&nbsp;<br />
+      var x = -1; <br />
+      </code></figure>
+      <a href="../examples/e601_js_vars02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      
+      <p>A simple standard arithmetic operation could add a certain value to the variable x:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">x = x + 10;&nbsp;</code></figure>
+
+      <p>Translated into language it means: the new value of x is the old value plus 10 (in our case it would be 9, if we define x with the value of -1).</p>
+
+      <p>JavaScript comes with some predefined mathematical functions such as sin, cos, sqrt, etc. All are available through the <a href="http://www.w3schools.com/jsref/jsref_obj_math.asp">Math W3C reference guide.</a> </p>
+
+
+      <h3 id="var-bool">Boolean</h3>
+      <p>Boolean variables can only have two values, either true or false, also often represented with the numeric values&nbsp;1 for true and 0 for false. A simple example would be:</p>
+      <figure class="highlight">
+      <code class="prettyprint">var isSunday = false // or true;&nbsp;</code></figure>
+
+      <p>Boolean variables are important to make decisions in the
+      execution of the program (see JavaScript "conditionals" further down)</p>
+      
+
+      <h3 id="var-array">Arrays</h3>
+      <p>Arrays&nbsp;store several values under one name. Imagine a shopping list that would contain several items.&nbsp;Each value is accessible by its position in the list, called <em>index</em>. Arrays can hold Strings, numbers, boolean, and other type of objects. Think of arrays as mini-database, or mini-tables where each row is numbered.&nbsp;</p>
+
+      <h4>Defining arrays</h4>
+      <p>To define an empty array: </p>
+      <figure class="highlight">
+      <code class="prettyprint">var shoppingList = new Array();&nbsp;</code></figure>
+      <p>To define an array with three initial values, in this case with strings: </p>
+      <figure class="highlight">
+      <code class="prettyprint">var shoppingList = new Array("eggs", "butter",
+      "ham");</code></figure>
+      <p>As an alternative, arrays can be populated by
+      assigning specific positions (indicated by the index) a value:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">var shoppingList = new Array();<br />
+      shoppingList[0] = "eggs"; <br />
+      shoppingList[1] = "butter"; <br />
+      shoppingList[2] = "ham";&nbsp;</code></figure>
+      <a href="../examples/e601_js_vars03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      
+      <p>There is no direct limit of how many elements you can add to your array.</p>
+      
+      <h4>Retrieving values</h4>
+      <p>Individual values can be accessed by specifying the position where they are stored in the array.&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">alert(shoppingList[0]); //will produce "eggs"<br />
+      alert(shoppingList[2]); //will produce "ham"</code></figure>
+
+      <p class="bs-callout bs-callout-warning"><em>Note</em>: the first position in the array has
+      the index "0" (!) and not "1" as common sense would suggest.&nbsp;</p>
+
+      <h4>&nbsp;Modifying values</h4>
+      <p>Modifying existing values is as simple as assigning a new value at the desired position of the array:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">shoppingList[2] = "apples";&nbsp;</code></figure>
+      <a href="../examples/e601_js_vars04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      
+      <p>This would overwrite the value of "ham" with "apples".&nbsp;</p>
+
+      <p>Javascript provides furthermore a whole set of predefined functions to be used with arrays such as sorting the values, reversing the order of the array, splitting it or joining two arrays among other things. Check out the full <a href="http://www.w3schools.comjsrefjsref_obj_array.asp">array reference at W3C schools.</a> </p>
+      <p>&nbsp;</p>
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="conditionals">Making Decisions</h1>
+    </div>
+
+      <p> Conditional statements are a fundamental part of each scripting and programming language. They allow to make decisions in a script. There are two statements, the <span class="codeInText">if...else</span> constructs and <span class="codeInText">switch... case</span>.&nbsp;</p>
+
+      <h3 id="conditionals-if">if...</h3>
+      <p>The general syntax of this conditional statement looks as follows:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">if (condition){<br />
+      &nbsp;&nbsp;&nbsp;&nbsp; //code
+      to be executed if condition is met<br />
+      }</code></figure>
+
+      <p>Let's say we have a variable called age and we want to check if it matches a certain value. The code would look like this:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">if (age == 18) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;//code to executed if the variable age has value 18.<br />
+      }</code></figure>
+      <a href="../examples/e603_js_ifs01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      <p>&nbsp;</p>
+      <p class="bs-callout bs-callout-warning"><em>Note</em>: how we use a doubled "==" sign to test for equality. A common mistake is to use a single "=" equal sign instead which does not test for equality but rather assigns a value to
+      the variable!</p>
+
+      <h3 id="conditionals-if-else">One condition... and all the rest: if...else</h3>
+      <p>Many times we want to single out one specific case and treat al the rest. This is achieved with the <span class="codeInText">if...else</span> construct</p>
+      <figure class="highlight">
+      <code class="prettyprint">if (condition) {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;//code to be executed if condition is met<br />
+      } else {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;//code to be execute if condition is not met<br />
+      }</code></figure>
+
+      <p>An example would be to check for the age and treat the users differently depending if they are over 18 or not: </p>
+      <figure class="highlight">
+      <code class="prettyprint">if (age &gt; 18 ) {<br />
+      &nbsp; &nbsp;alert("you are full age");<br />
+      } else {<br />
+      &nbsp; &nbsp;alert("you are too young, below 18"); <br />
+      }</code></figure>
+      <a href="../examples/e603_js_ifs02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h3 id="conditionals-else-if">Several conditions: if ... else if ...</h3>
+      <p>Several conditions can be checked by adding further else if
+      constructs:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">if (condition1) {<br />
+      &nbsp; &nbsp;//code to be executed if condition1 is met<br />
+      } else if (condition2) {<br />
+      &nbsp; &nbsp;//code to be execute if condition2 is not met<br />
+      } else if (condition3){<br />
+      &nbsp; &nbsp;//code to be execute if condition3 is not met<br />
+      } else {<br />
+      &nbsp; &nbsp;//code to be execute if none of the above
+      conditions is to be met. <br />
+      }</code></figure>
+      <a href="../examples/e603_js_ifs03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h3 id="conditionals-switch">switch... case</h3>
+      <p>Checking a condition against several cases can be a bit cumbersome with the <span class="codeInText">if..else</span> if construct. An easier way consists of using the switch statement:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">switch (condition){<br />
+      &nbsp; case 1:<br />
+      &nbsp;&nbsp;&nbsp; //do something<br />
+      &nbsp;&nbsp;&nbsp; break; <br />
+      &nbsp; case 2:<br />
+      &nbsp;&nbsp;&nbsp; //do something else<br />
+      &nbsp;&nbsp;&nbsp; break;<br />
+      &nbsp; case 3: <br />
+      &nbsp;&nbsp;&nbsp; //do something other<br />
+      &nbsp;&nbsp;&nbsp; break;<br />
+      &nbsp; default: <br />
+      &nbsp;&nbsp;&nbsp; //if nothing of the above applies. <br />
+      }<br />
+      </code></figure>
+      <a href="../examples/e603_js_ifs04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+      <p>The switch statement compares the condition against the numbers 1,2,3 in the above case.</p>
+
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="loops">Looping constructs</h1>
+    </div>
+     
+      <p>Looping constructs execute a certain section of code a certain number of times. Several loop constructs exist in JavaScript: the <span class="codeInText">for</span> loop, the <span class="codeInText">while</span> loop, and <span class="codeInText">for...in</span> loop. Imagine for example an array of 100 elements and the need to compare each entry against a certain value. A for-loop provides the solution.</p>
+
+      <h3 id="loop-for">for</h3>
+      <p>The for-construct is used if the number of iterations is known. The general syntax of a for-loop looks like follows:</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">for (var startValue; endCondition; increment){<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;//code
+      to be executed each iteration<br />
+      }</code></figure>
+
+      <p>Let's say we have an array with 10 names and need to display each value:&nbsp;&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">for (var i=0; i&lt;10; i++) {<br />
+      &nbsp;&nbsp;&nbsp; //do something here<br />
+      }</code></figure>
+
+      <p>First, we define the start value of our counter <span class="codeInText">var i=0</span>;&nbsp; Many times this variable is just called "i". We set it to 0 to start at the first entry of a fictive array. Next, we check if "i" is still smaller than 10, the total length of our array; <span class="codeInText">i&lt;10;</span> in order to determine if the loop has finished. And finally we increment "i" for each iteration. (Writing <span class="codeInText"> i++</span> is actually the same as writing <span class="codeInText">i=i+1;</span>) The first time we execute the loop, "i" has the value of "0". The second time "i" has the value of "1". Since it is still smaller than "10" it will execute a third time, and the value of "i" increments to "3", and so forth until i reaches the value of "9".&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var names = new Array ("ann", "klaus", "frank", "sara",
+      "tomy", "jen");&nbsp;<br />
+      for (var i=0; i&lt;names.length; i++) {<br />
+      &nbsp;&nbsp;&nbsp;document.write("names[" + i + "] = " + names[i] + " &lt;br/&gt;");<br />
+      }</code></figure>
+       <a href="../examples/e604_js_loops01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>There are one thing to note: first, the condition to stop the
+      loop now incorporates in a convenient way the size of the array. Instead of writing "6" manually, the <span class="codeInText">array.length</span> property returns automatically the size of the array. This means, even after we have added or deleted elements to the array, the loop always will work correctly, iterating over the correct number of elements.</p>
+
+      <h3 id="loop-while">while</h3>
+      <p>A second looping construct is while. It will be executed while a certain condition is met. Be careful however, if the condition is always true the while construct tends to freeze your application! It will be executed at least once even if the initial condition is not true.</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">while (condition) {<br />
+      &nbsp;&nbsp;&nbsp; //execute code<br />
+      }</code></figure>
+
+      <p>In the following example, we use the <span class="codeInText">Math.random()</span> function to generate random numbers between 1 and 10000. This process will continue as
+      long as it takes to hit the number 3452. Testing the application several times should take different timespans.</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var rnd = 0; <br />
+      while (rnd != 3452) {<br />
+      &nbsp;&nbsp;&nbsp; rnd = Math.round(Math.random()*10000);<br />
+      }</code></figure>
+       <a href="../examples/e604_js_loops02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h3 id="loop-for-in">for ... in</h3>
+      <p>Finally, there is the <span class="codeInText">for...in</span> statement. &nbsp;This loop lets you iterate through a series of elements/properties even you are not sure how to reference them. The general syntax is:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">for (variable in object){<br />
+      &nbsp;&nbsp;&nbsp; //do something<br />
+      }</code></figure>
+
+      <p>For example, in order to loop through an array where the keys are not numeric but strings is only possible with the<span class="codeInText"> for...in</span> construct:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">var prices = new Array(); <br />
+      prices["milk"] = 2.40; <br />
+      prices["butter"] = 1.20; <br />
+      prices["cheese"] = 0.50;<br />
+      <br />
+      for (var x in prices){<br />
+      &nbsp;&nbsp;&nbsp; document.write("The price of " + x + " is " + prices[x] + "&lt;br/&gt;"); <br />
+      }<br />
+      </code></figure>
+       <a href="../examples/e604_js_loops03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h3 id="loop-break">controlling loops: break / continue</h3>
+      <p>The break statement enables to jump out of a loop before the actual ending condition has been met.&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">var i; <br />
+      for (i=10; i&gt;0; i--){<br />
+      &nbsp;&nbsp;&nbsp; if (i == 6) {<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      }<br />
+      </code></figure>
+       <a href="../examples/e604_js_loops04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>The continue statement skips one loop.&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">for (var i=5; i&gt;0; i--){<br />
+      &nbsp;&nbsp;&nbsp; if (i == 3) {<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; continue;<br />
+      &nbsp;&nbsp;&nbsp; }<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;document.write("i: " + i + "&lt;br/&gt;");<br />
+      }</code></figure>
+       <a href="../examples/e604_js_loops05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="functions">Functions</h1>
+    </div>
+
+      <p>A so called "function" in JavaScript allows to bundle several commands into one. They give you the possibility to build modular code or blocks of several tasks that have to be performed again and again. In order for a function to be executed, it has to be &quot; called&quot;.  A function that is never "called" will have no effect.&nbsp;</p>
+
+      <h3 id="functions-define">Defining a function</h3>
+      <p>A function starts with the keyword "function", has a &quot;name&quot; and a "body" of code that will be executed when it is called. Its general syntax is:</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">function myFunctionName([var1, var2, ...]){<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="codeComment">//code
+      to be executed once the function has been called</span><br />
+      }</code></figure>
+      <p>Functions can also receive optional values (see below). A simple function would display a message: </p>
+
+      <figure class="highlight">
+      <code class="prettyprint">function showMessage(){<br />
+      &nbsp;&nbsp;&nbsp; alert("hello world");<br />
+      }<br />
+      </code></figure>
+
+      <p>Upon calling this function, the well known <span class="codeInText">alert()</span> message would pop up. Including the <span class="codeInText">alert()</span> message directly into the script outside of a function would execute it when the file is loaded.&nbsp;Now, it's inactive until we explicitly execute it, by clicking on a link for example. </p>
+
+      <h3 id="function-call">Calling functions</h3>
+      <p>How do you trigger a function, i.e. how do you execute the code that it contains? Simply write the name by which it is defined! You can call a function as many times as you like from almost every position in your code. </p>
+
+      <figure class="highlight">
+      <code class="prettyprint">function showMessage(){<br />
+      &nbsp;&nbsp;&nbsp; alert("hello world");<br />
+      }<br />
+      showMessage(); //function call. </code></figure>
+      
+      <p class="bs-callout bs-callout-warning"><em>Note</em>: that the function call comes<em> after</em> the function has been defined. Otherwise it would produce an error.</p>
+      <p>A function can be triggered from HTML:</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">&nbsp;&nbsp;
+      &lt;a href="javascript:showMessage();"&gt;click here to see
+      message&lt;/a&gt;</code></figure>
+      <a href="../examples/e605_js_fnc01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h3 id="function-params">Passing values inside a function</h3>
+      <p>Functions can receive values. For example, we need a function that adds two numbers together: </p>
+      <figure class="highlight">
+      <code class="prettyprint">function sum (a, b) {<br />
+      &nbsp;&nbsp;&nbsp; var result = a + b;<br />
+      &nbsp;&nbsp;&nbsp; alert("The result is " + result);<br />
+      }<br />
+      sum(5, 7);</code></figure>
+      <a href="../examples/e605_js_fnc02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>The function accepts now two values in the form of variables called "a" and "b". Internally, inside the body of the function, it adds up both values and prints the result.</p>
+
+      <p>The way the function is called now changes slightly as well: the function call passes now the actual numeric values (5 and 7) to the function.&nbsp;</p>
+
+      <h3 id="function-return">Retrieving values from functions</h3>
+      <p>Functions can return values as well. This allows to receive the result of whatever has been going on inside of it.</p> 
+
+      <figure class="highlight">
+      <code class="prettyprint">function sum (a, b) {<br />
+      &nbsp;&nbsp;&nbsp; var result = a + b;<br />
+      &nbsp;&nbsp;&nbsp; return result; <br />
+      }<br />
+      var r1 = sum (49,2);<br />
+      var r2 = sum (1,1);<br />
+      alert(r1); <br />
+      alert(r2);
+      </code></figure>
+      <a href="../examples/e605_js_fnc03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>Since the function returns the result, it can be stored in a variable, here called &quot;r1&quot;. The result of another, second operation will be stored in &quot;r2&quot;. </p>
+
+
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="oop">Objects</h1>
+    </div>
+
+      <h3 id="oop-introduction">Introduction</h3>
+      <p>Objects in JavaScript - and in other programming languages - are a way to organize required functionalities. An object can be anything: a car, a geometrical shape, a person.... it does not matter. Objects in programming represent these "objects" with their main features and functionalities.&nbsp;</p>
+      <p>A simple example: think of a geometrical shape such as a circle. A circle has a specific radius and a typical operation would consists of&nbsp;calculating its surface. The corresponding circle object in JavaScript would then bundle these two features: the radius gets stored as a property and the area function as a method belonging to the circle</p>
+
+      <p>An instance of an objects is created with the keyword "new": </p>
+      <figure class="highlight">
+      <code class="prettyprint">var circle = new Object();&nbsp;</code></figure>
+      <p>The properties of an object are "attached" with a dot "." In other words, the radius is a variable that "belongs" to a circle. Here it is set to 12 units. &nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">circle.radius = 12;&nbsp;</code></figure>
+      <p>In the same way, functions specific to the circle are attached with a "." dot. Imagine a function that returns the area of the circle:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">//define the function<br />
+      circle.area = function (){<br />
+      &nbsp;&nbsp;&nbsp; return Math.PI * this.radius *
+      this.radius;&nbsp;<br />
+      }<br />
+      <br />
+      //call it<br />
+      var a = circle.area(); <br />
+      </code></figure>
+      <p>JavaScript provides many predefine objects. Wellknown examples  would be the <a href="http://www.w3schools.com/jsref/jsref_obj_date.asp">Date object</a>, or the <a href="http://www.w3schools.com/jsref/jsref_obj_math.asp">Math</a> and <a href="http://www.w3schools.com/jsref/jsref_obj_string.asp">String</a> object. Consult the corresponding JavaScript reference guide to learn which properties and methods are supported by these objects. In general, the HTML DOM elements are objects which. </p>
+
+      <h3 id="oop-detail">A taste of Object Oriented Programming</h3>
+      <p>JavaScript is a object oriented programming (OOP) language. Apart from the predefined objects (String, Math, Date, etc.) developers can create their own custom objects. These always involves two logical steps: first, a given object and its functionalities are defined. Second, these objects are used by creating concrete <em>instances</em> of it. An example will make these two steps clearer.&nbsp;</p>
+
+      <p>1) Imagine you want to create an application for your family. In order to get organized, you would define an object to represent each person or family member. First you define the properties or the information that each person will have. This is the so-called "constructor" function: &nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">function person (name, age, address){<br />
+      &nbsp;&nbsp;&nbsp; this._name = name; <br />
+      &nbsp;&nbsp;&nbsp; this._age = age; <br />
+      &nbsp;&nbsp;&nbsp; this._address = address; <br />
+      }</code></figure>
+      <p>Our person object has now three properties, _name, _age, _address (others are possible). &nbsp;The underscore "_" is introduced to distinguish the properties of the object from the parameters passed to the function.&nbsp;</p>
+
+      <p>2) Now, for using this object it is necessary to create an instance of it. This is the second step after defining its structure. A family has many different members and for each member a <em>new</em> person-instance is created which allows to store the data associated with <em>this</em> specific person (note, the "this" keyword in the constructor). &nbsp;</p> 
+
+      <figure class="highlight">
+      <code class="prettyprint">var dad = new person("jim", 56, "town x");<br />
+      var grandma = new person("sally", 90, "village y");</code></figure>
+
+      <p>The values of the properties of each person are now accessible throught he
+      dot "." syntax. Since "grandma" is an instance of "person", it has automatically all the properties and functions defined for this object:</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">alert(dad._name);<br />
+      alert(grandma._age);</code></figure>
+
+      <p>In a similar fashion, an object can have specific methods. A method that belongs to an object is (1) referenced in the  constructor and then defined outside of it. We add to the constructor a new line:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">function person (name, age, address){<br />
+      &nbsp;&nbsp;&nbsp; this._name = name; <br />
+      &nbsp;&nbsp;&nbsp; this._age = age; <br />
+      &nbsp;&nbsp;&nbsp; this._address = address; <br />
+      &nbsp;&nbsp;&nbsp; <strong>this.describe = _describe;</strong>
+      <br />
+      }<br />
+      <br />
+      function _describe(){<br />
+      &nbsp;&nbsp;&nbsp; return "This is " + this._name + "!!.
+      I'm
+      " + this._age + " years old."; <br />
+      }</code></figure>
+
+      <p>Now it is possible to (2) call the describe function on any person instance</p>
+      <figure class="highlight">
+      <code class="prettyprint">dad.describe();&nbsp;<br />
+      grandma.describe();</code></figure>
+       <a href="../examples/e607_js_obj01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>Which will return the description of this person, to be displayed with the alert() message for example. Object instances provide here a way to keep all information and functionalities organized.</p>
+
+
+    <p>&nbsp;</p>
+    <div class="page-header">
+      <h1 id="dom">Document Object Model</h1>
+    </div>
+
+      <p>The Document Object Model (DOM) provides a tree like model to access and manipulate the browser, HTML documents and their HTML elements. For example, through the DOM it is possible to</p>
+      <ul>
+      <li>check the input fields of forms&nbsp;</li>
+      <li>open new browser windows or resize existing ones</li>
+      <li>add or delete HTML content</li>
+      <li>change images</li>
+      <li>retrieve information of user's browser &amp; operating
+      system&nbsp;</li>
+      <li>change the position of layers</li>
+      <li>among many other things...</li>
+      </ul>
+
+      <p>The DOM is a standard way to represent the HTML page in a hierarchical, tree like manner. Combined with JavaScript it provides developers with a powerful way to build dynamic HTML pages. </p>
+
+      <h3 id="dom-hierarchy">DOM Hierarchy</h3>
+      <p>DOM represents the HTML document as a tree. Each HTML element (leaf) is identified by the path&nbsp;that leads from the root (the window) to the specific element (image, form, etc.). The graphic below describes the hierarchy between the most standard elements.&nbsp; </p>
+      <p><img alt="Document Object Model Hierarchy" src="../img/DOM_hierarchy.gif" /></p>
+      <p>The window contains besides the information about the browser, the URL of the current page, the browsing history and others,&nbsp;the actual HTML document. Each document can contain several images, anchors, forms all of which are represented in arrays (note the array "[]" brackets).</p>
+
+      <h3 id="dom-access">Accessing DOM elements</h3>
+      <p>Accessing a specific element in a HTML document is as easy as writing down the path that leads to it. A simple example:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">&lt;html&gt;<br />
+      &nbsp;&nbsp;&nbsp;
+      &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;img src="goose.gif" name="pic1" /&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;img src="goose.gif" name="pic2" /&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;/body&gt;<br />
+      &lt;/html&gt; </code></figure>
+      <p>The above HTML file contains two identical images but with different names ("pic1" and "pic2"). In order to access the images, the DOM provides the following path:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">window.document.images["pic1"];<br />
+      window.document.images["pic2"];</code></figure>
+
+      <p>Read: inside the window we have a HTML document which contains several images stored in an array. The first image is identified by "pic1", the second with "pic2". </p>
+      <p>Another example with form elements:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">&lt;html&gt;<br />
+      &nbsp;&nbsp;&nbsp;
+      &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;body&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;form name="test"&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &lt;input type="text" name="zip"
+      /&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &lt;select name="birthdate"&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;option value="2008"&gt;Year 2008&lt;/option&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;option value="2009"&gt;Year 2009&lt;/option&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &lt;/select&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+      name="sex" type="radio" value="male" /&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+      name="sex" type="radio" value="female"/&gt;<br />
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &lt;/form&gt;<br />
+      &nbsp;&nbsp;&nbsp; &lt;/body&gt;<br />
+      &lt;/html&gt; </code></figure>
+      <p>The different HTML elements inside the form can be accessed by writing down the DOM path:&nbsp;</p>
+
+      <figure class="highlight">
+      <code class="prettyprint">window.document.forms["test"].elements["zip"];<br />
+      window.document.forms["test"].elements["birthdate"];<br />
+      window.document.forms["test"].elements["sex"][0]
+      </code></figure>
+      <p>The radio button object has itself an array of options. Thus, the "male" field is accessed with index [0] and the female field with index [0]. </p>
+
+      <h3 id="dom-properties">Reading and manipulating properties</h3>
+      <p>HTML elements can be manipulated. Each HTML object and element has its specific properties and methods. These are all referenced in the <a href="http://www.w3schools.com/js/js_htmldom.asp">W3C HTML DOM reference guide.</a> The properties tell you what actions are possible on these elements and which information is available. Some examples:&nbsp;</p>
+
+      <p>1) To return to the first example: images have a ".src" property to change the actual source image file. Changing the source will change the visible image:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">window.document.images["pic1"].<strong>src</strong>
+      = "cow.gif";
+      </code></figure>
+      <a href="../examples/e606_js_dom01.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>2) With forms&nbsp;it is possible to check the user input before sending it off:&nbsp;</p>
+      <figure class="highlight">
+      <code class="prettyprint">var zip
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+      document.forms["test"].elements["zip"]<strong>.value</strong>;<br />
+      var birthdate =
+      document.forms["test"].elements["birthdate"]<strong>.value</strong><br />
+      var male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+      document.forms["test"].elements["sex"]<strong>[0].checked</strong><br />
+      if (isNaN(zip)){<br />
+      &nbsp;&nbsp;&nbsp; alert("Please provide zip code"); <br />
+      }</code></figure>
+      <a href="../examples/e606_js_dom02.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p><span class="codeInText">isNaN()</span> is a JavaScript function to test if a given value is a number or not. If users did not fill out a number into the zip field <span class="codeInText">isNaN()</span> will return true and the <span class="codeInText">alert()</span> message will be displayed.
+      </p>
+
+      <p>Note, that the full path to the HTML elements can actually be shortened. Since the script always refers to the current window it is embedded in, we can just erase the "window" of each path. The script "knows" that the active window is meant.</p>
+
+      <p>3) As a third example, all CSS properties can be read/changed through the DOM <span class="codeInText">style</span> property.</p>
+
+      <p>In the following example, an array stores different gray color values. The <span class="codeInText">changeColor</span> function gets called from within the HTML section of the
+      document. It receives not an actual color value but the index to a certain color value in the array which then gets assigned to the CSS background-color property: </p>
+
+      <figure class="highlight">
+      <code class="prettyprint">&lt;script type="text/javascript"&gt;<br />
+      &nbsp; var colors =
+      ["#ffff33","#030303","#151515","#272727","#383838","#4a4a4a"];<br />
+      <br />
+      &nbsp; function <strong>changeColor(which)</strong>{<br />
+      &nbsp;&nbsp;&nbsp; document.body.<strong>style</strong>.backgroundColor
+      =
+      colors[which];<br />
+      &nbsp; }<br />
+      &lt;/script&gt;<br />
+      ...<br />
+      &lt;body&gt;<br />
+      &nbsp; &lt;a href="" onmouseover="<strong>changeColor(2)</strong>"&gt;change
+      background color&lt;/a&gt;<br />
+      &lt;/body&gt;<br />
+      </code></figure>
+      <a href="../examples/e606_js_dom06.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+      <p class="note">Note: all CSS properties that use a dash "-" are converted using the CamelCase system since the dash would be interpreted by JavaScript as the mathematical "-" sign and cause an error.  The CSS property "background-color" becomes the DOM equivalent "backgroundColor", or "font-size" becomes "fontSize", "font-family" -&gt; "fontFamily", etc.&nbsp;<br /> </p>
+
+      <h3 id="dom-shortcuts">Access shortcuts </h3>
+      <p>Writing down the whole path for accessing certain elements can get quite cumbersome. Luckily there exist several&nbsp;methods to access DOM elements in a more direct manner. </p>
+
+      <h4>getElementById()</h4>
+      <p>Each HTML element with its ID set can be accessed directly. In the following example, the <span class="codeInText">getElementById()</span> function provides access to the specified layer and resizes it to 10x10px. </p>
+      <figure class="highlight">
+      <code class="prettyprint">...<br />
+      &lt;body&gt;<br />
+      &lt;div <strong>id="one"</strong>&gt;&lt;/div&gt;<br />
+      &lt;script&gt;<br />
+      &nbsp;&nbsp;document.<strong>getElementById("one")</strong>.style.width
+      = "10px"; <br />
+      &nbsp;&nbsp;document.<strong>getElementById("one"</strong>).style.height
+      = "10px";<br />
+      &lt;/script&gt;<br />
+      &lt;/body&gt;
+      <br />
+      ...
+      <br />
+      </code></figure>
+      <a href="../examples/e606_js_dom03.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <p>&nbsp;The DOM <span class="codeInText">style</span> property represents all CSS
+      properties of an HTML element. In our case, "width" and "height".&nbsp;</p>
+
+      <h4>getElementsByName()</h4>
+      <p><span class="codeInText">getElementsByName()</span> provides an array of all HTML elements with the same "name" attribute set. For example, all paragraphs named "cool" will be transformed. For the following code, the number of available paragraphs gets saved into the variable "n" which then is used to loop over all items returned by getElementsByName().&nbsp; </p>
+
+      <figure class="highlight">
+      <code class="prettyprint"> &lt;body&gt;<br />
+      &lt;p <strong>name="cool"</strong>&gt;First
+      paragraph&lt;/a&gt;<br />
+      &lt;p <strong>name="cool"</strong>&gt;Second
+      paragraph&lt;/a&gt;<br />
+      <br />
+      &lt;script&gt;<br />
+      &nbsp;&nbsp;var n = document.<strong>getElementsByName("cool").length</strong>;<br />
+      <br />
+      &nbsp;&nbsp;for (var i=0; i&lt;n; i++){<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementsByName("cool").<strong>item(i)</strong>.style.fontSize
+      = "40px" <br />
+      &nbsp;&nbsp;}<br />
+      &lt;/script&gt;<br />
+      ...
+      </code></figure>
+      <a href="../examples/e606_js_dom04.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+      <h4>getElementsByTagName()</h4>
+      <p><code>getElementsByTagName()</code> provides a convenient way to access all HTML tags of a certain type. This makes it easy for example to change the look of all anchors: </p>
+      <figure class="highlight">
+      <code class="prettyprint"> &lt;body&gt;<br />
+      &lt;a href="#"&gt;link 1&lt;/a&gt;<br />
+      &lt;a href="#"&gt;link 2&lt;/a&gt;<br />
+      <br />
+      &lt;script&gt;<br />
+      &nbsp;&nbsp;var n = document.<strong>getElementsByTagName</strong>("a").<strong>length</strong><br />
+      <br />
+      &nbsp;&nbsp;for (var i=0; i&lt;n; i++){<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;document.getElementsByTagName("a").<strong>item(i)</strong>.style.backgroundColor
+      = "black";<br />
+      &nbsp;&nbsp;}<br />
+      &lt;/script&gt;<br />
+      ...
+      </code></figure>
+      <a href="../examples/e606_js_dom05.html" class="btn btn-primary btn-xs btn-view-code" target="_blank" role="button">View example in new window  <span class="glyphicon glyphicon-new-window"></span></a>
+
+
+        </div><!-- end bs-docs-section -->
+      </div><!-- end bs-md-9 main -->
+    </div><!-- bs-docs-container -->
+
+    <footer>
+        <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"> <img class="noBorderImg" alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/> </a> </p>
+    </footer>
+
+
+ <!-- modal for videos -->
+      <div class="modal fade" id="videoModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Video Tutorial</h4>
+          </div>
+          <div class="modal-body">
+            <div id="vidplayer" class="flowplayer"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+ 
+  <!--/Creative Commons License-->
+<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Work rdf:about="">
+        <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+    </Work>
+    <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+    <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+    <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+    <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+    <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+    <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+    <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+    <requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+    </License>
+    </rdf:RDF> -->
+  </body>
+</html>

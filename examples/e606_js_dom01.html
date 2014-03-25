@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>DOM - images</title><style type="text/css" media="screen">
+<!--
+@import url("../css/webDesign08b.css");
+-->
+</style>
+<script type="text/javascript">
+
+function changeImage(){
+	window.document.images["pic2"].src = "../img/number_two.gif"; 	
+}
+
+</script></head>
+
+<body>
+<img src="../img/number_one.gif" name="pic1" alt="number 1" height="80" width="100" /> 
+<img src="../img/number_one.gif" name="pic2" alt="number 1" height="80" width="100" /> <br />
+<a href="javascript:changeImage()">change the source (.src) from "number_one.gif" to <br />"number_two.gif" for the second image</a>
+</body></html>

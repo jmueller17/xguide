@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DOM - getElementByID</title>
+<style type="text/css" media="screen">
+<!--
+@import url("../css/webDesign08b.css");
+.layers {
+	width:100px;
+	height:100px;
+	background-color:#009;
+	margin:2px;
+}
+-->
+</style>
+<script type="text/javascript">
+
+function shrink(id){
+	
+	document.getElementById(id).style.width = "10px"; 
+	document.getElementById(id).style.height = "10px"; 
+	
+}
+
+</script>
+</head>
+<body>
+<p>Click on the layers to shrink them.</p>
+<div id="one" class="layers" onclick="shrink('one')"></div>
+<div id="two" class="layers" onclick="shrink('two')"></div>
+<div id="three" class="layers" onclick="shrink('three')"></div>
+</body>
+</html>

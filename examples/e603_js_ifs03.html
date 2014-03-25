@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>conditionals</title>
+<!--
+@import url("../css/webDesign08a.css");
+-->
+<script type="text/javascript">
+
+//populates the variable age with a random number between 0 and 100; 
+var age = Math.round(Math.random()*100);
+
+
+if (age <= 30) {
+   alert("age is smaller or equal to 30: " + age);
+} else if (age > 30 && age <= 60) {
+   alert("age is bigger than 30 and smaller or equal to 60: " + age);
+} else if (age > 60 && age < 90 ) {
+    alert("age is bigger than 60 and smaller or equal to 90: " + age);
+} else {
+	alert("close to 100" + age); 
+}
+
+</script>
+</head>
+
+<body>
+<p>Reload the page to generate a new random number!!</p>
+<code>
+if (age &lt;= 30) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;age is smaller or equal to 30: &quot; + age);<br />
+} else if (age &gt; 30 &amp;&amp; &lt;= 60 ) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;age is bigger than 30 and smaller or equal to 60: &quot; + age);<br />
+} else if (age &gt; 60 &amp;&amp; &lt; 90 ) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;age is bigger than 60 and smaller or equal to 90: &quot; + age);<br />
+} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;close to 100&quot; + age); <br />
+}
+</code>
+</body>
+</html>

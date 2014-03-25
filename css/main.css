@@ -61,6 +61,11 @@ clear: left;
   background-color:#5a9ce6;
 }
 
+.bs-header-js {
+  color: #4F4F4F;
+  background-color:#faa528;
+}
+
 
 .bs-docs-nav {
   text-shadow: 0 -1px 0 rgba(0,0,0,.15);
@@ -74,6 +79,11 @@ clear: left;
 
 .bs-docs-nav-css {
   border-color: #5a9ce6;
+
+}
+
+.bs-docs-nav-js {
+  border-color: #faa528;
 
 }
 
@@ -104,6 +114,11 @@ clear: left;
 .bs-docs-nav .navbar-css > .active > a,
 .bs-docs-nav .navbar-css > .active > a:hover {
   background-color: #5a9ce6;
+}
+
+.bs-docs-nav .navbar-js > .active > a,
+.bs-docs-nav .navbar-js > .active > a:hover {
+  background-color: #faa528;
 }
 
 .bs-docs-nav .navbar-toggle {

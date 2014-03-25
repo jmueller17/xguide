@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>DOM - form</title>
+
+<style type="text/css" media="screen">
+<!--
+@import url("../css/webDesign08b.css");
+-->
+</style>
+<script type="text/javascript">
+function checkForm(){
+//get the value of zip field
+var zip = document.forms["test"].elements["zip"].value; //read the value of the selection field
+var birthdate = document.forms["test"].elements["birthdate"].value; //see if male/female radion button is checked
+var male = document.forms["test"].elements["sex"][0].checked; var female = document.forms["test"].elements["sex"][1].checked; //check if zip code is a number
+if (isNaN(zip)) {
+alert("please insert number in zip code field");
+}
+//check if nothing was selected from the options. The first item has value=0!
+if (birthdate == 0){
+alert("Please choose a year"); }
+if (!male && !female){
+alert("please choose male/female"); }
+}
+</script>
+</head>
+
+<body>
+<p>Try to submit the form before filling it out!</p>
+<form name="test"> <input name="zip" value="zip code" type="text" /><br />
+<br />
+<select name="birthdate"><option value="0">Please choose a year</option><option value="2006">Year 2006</option><option value="2007">Year 2007</option><option value="2008">Year 2008</option><option value="2009">Year 2009</option></select>
+<br />
+Male: <input name="sex" value="male" type="radio" />&nbsp;&nbsp;&nbsp;Female:
+<input name="sex" value="female" type="radio" />
+<br />
+<br />
+<input onclick="checkForm()" value="submit" type="button" /></form>
+</body></html>
